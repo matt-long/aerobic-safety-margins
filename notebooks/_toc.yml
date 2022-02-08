@@ -2,9 +2,10 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: into
+root: intro
 parts:
-- caption: Trait Space
+- caption: Metabolic Index Traits
+  chapters:
   - file: trait-space-description
   - file: trait-space-joint-pdf
 - caption: Earth System Model Data
