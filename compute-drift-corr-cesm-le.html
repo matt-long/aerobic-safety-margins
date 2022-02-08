@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply linear drift correction to upper ocean fields in CESM1-LE &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compute \(P_{\mathrm{O}_2}\) from drift corrected fields" href="compute-pO2-cesm-le.html" />
+    <link rel="prev" title="Overview" href="data-assets-preprocessing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Aerobic Saftey Margins for Marine Ectotherms</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Metabolic Index Traits
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-description.html">
+   Metabolic Index trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-joint-pdf.html">
+   Generate a PDF describing occurence frequency in trait space
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Earth System Model Data
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="data-assets-preprocessing.html">
+   Overview
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Apply linear drift correction to upper ocean fields in CESM1-LE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-pO2-cesm-le.html">
+     Compute
+     <span class="math notranslate nohighlight">
+      \(P_{\mathrm{O}_2}\)
+     </span>
+     from drift corrected fields
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-habitat-cesm-le.html">
+     Examine changes in viable habitat
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Habitat Change
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="aerobic-habitat-change.html">
+   Changes in aerobic habitat
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/compute-drift-corr-cesm-le.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matt-long/aerobic-safety-margins"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=tree/notebooks/compute-drift-corr-cesm-le.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data-with-intake-esm">
+   Load data with intake-esm
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Apply linear drift correction to upper ocean fields in CESM1-LE</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-data-with-intake-esm">
+   Load data with intake-esm
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="apply-linear-drift-correction-to-upper-ocean-fields-in-cesm1-le">
+<h1>Apply linear drift correction to upper ocean fields in CESM1-LE<a class="headerlink" href="#apply-linear-drift-correction-to-upper-ocean-fields-in-cesm1-le" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">cftime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+
+<span class="kn">import</span> <span class="nn">pop_tools</span>
+
+<span class="kn">import</span> <span class="nn">metabolic</span>
+<span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">data_collections</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">cluster</span>
+    <span class="n">client</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">cluster</span><span class="p">,</span> <span class="n">client</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">get_ClusterClient</span><span class="p">(</span><span class="n">memory</span><span class="o">=</span><span class="s1">&#39;100GB&#39;</span><span class="p">)</span>
+    <span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
+<span class="n">client</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px;">Client</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-48be4b52-7f1b-11ec-a8b7-3cecef1b157c</p>
+        <table style="width: 100%; text-align: left;">
+
+        <tr>
+
+            <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> PBSCluster</td>
+
+        </tr>
+
+
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard: </strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                </td>
+                <td style="text-align: left;"></td>
+            </tr>
+
+
+        </table>
+
+
+            <details>
+            <summary style="margin-bottom: 20px;"><h3 style="display: inline;">Cluster Info</h3></summary>
+            <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output">
+    <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;">
+    </div>
+    <div style="margin-left: 48px;">
+        <h3 style="margin-bottom: 0px; margin-top: 0px;">PBSCluster</h3>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">cdd0f2e7</p>
+        <table style="width: 100%; text-align: left;">
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                </td>
+                <td style="text-align: left;">
+                    <strong>Workers:</strong> 0
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">
+                    <strong>Total threads:</strong> 0
+                </td>
+                <td style="text-align: left;">
+                    <strong>Total memory:</strong> 0 B
+                </td>
+            </tr>
+
+        </table>
+
+        <details>
+            <summary style="margin-bottom: 20px;">
+                <h3 style="display: inline;">Scheduler Info</h3>
+            </summary>
+
+            <div style="">
+    <div>
+        <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
+        <div style="margin-left: 48px;">
+            <h3 style="margin-bottom: 0px;">Scheduler</h3>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-1622510a-eef9-43c3-b7d8-24ec34a95cfb</p>
+            <table style="width: 100%; text-align: left;">
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Comm:</strong> tcp://10.12.206.59:40694
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Workers:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total threads:</strong> 0
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: left;">
+                        <strong>Started:</strong> Just now
+                    </td>
+                    <td style="text-align: left;">
+                        <strong>Total memory:</strong> 0 B
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <details style="margin-left: 48px;">
+        <summary style="margin-bottom: 20px;">
+            <h3 style="display: inline;">Workers</h3>
+        </summary>
+
+
+
+    </details>
+</div>
+
+        </details>
+    </div>
+</div>
+            </details>
+
+
+    </div>
+</div></div></div>
+</div>
+<div class="section" id="load-data-with-intake-esm">
+<h2>Load data with intake-esm<a class="headerlink" href="#load-data-with-intake-esm" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://intake-esm.readthedocs.io/en/latest/">Intake-esm</a> provides a API to CESM1-LE data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl_drift</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">drift</span><span class="p">(</span><span class="n">experiment</span><span class="o">=</span><span class="s1">&#39;CTRL&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="s1">&#39;pop.h&#39;</span><span class="p">)</span>
+<span class="n">ctrl_drift</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ &#39;esm_collection&#39;: &#39;data/catalogs/glade-cesm1-le.json&#39;,
+  &#39;name&#39;: &#39;linear-drift&#39;,
+  &#39;operator_kwargs&#39;: [ { },
+                       { },
+                       { }],
+  &#39;operators&#39;: [ &#39;compute_time&#39;,
+                 &#39;sel_time_slice&#39;,
+                 &#39;compute_drift&#39;],
+  &#39;preprocess&#39;: &#39;_preprocess_pop_h_upper_1km&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl_drift</span><span class="o">.</span><span class="n">_cache_files</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;37abaecb560214dea1fad9d005f96481&#39;: &#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.CTRL.ocn.pop.h.001.O2_CONSUMPTION.linear-drift.zarr&#39;,
+ &#39;614f74b1ebc2a91715ffc087e1d96266&#39;: &#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.CTRL.ocn.pop.h.001.O2_PRODUCTION.linear-drift.zarr&#39;,
+ &#39;8fcc769db7d90e1e1d00b5f08b3a3a4a&#39;: &#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.CTRL.ocn.pop.h.001.SALT.linear-drift.zarr&#39;,
+ &#39;9202145d6037a88a609827093704966c&#39;: &#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.CTRL.ocn.pop.h.001.TEMP.linear-drift.zarr&#39;,
+ &#39;b944f7d7bc08d0c2be543296a50edd6b&#39;: &#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.CTRL.ocn.pop.h.001.O2.linear-drift.zarr&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">ds_drift</span> <span class="o">=</span> <span class="n">ctrl_drift</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;O2&#39;</span><span class="p">],</span> <span class="n">clobber</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ds_drift</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 362 ms, sys: 126 ms, total: 487 ms
+Wall time: 713 ms
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;CTRL.ocn.pop.h.1&#39;: &lt;xarray.Dataset&gt;
+ Dimensions:  (nlat: 384, nlon: 320, z_t: 40)
+ Coordinates:
+     KMT      (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TAREA    (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLAT     (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLONG    (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULAT     (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULONG    (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     dz       (z_t) float32 dask.array&lt;chunksize=(10,), meta=np.ndarray&gt;
+   * z_t      (z_t) float32 500.0 1.5e+03 2.5e+03 ... 8.788e+04 9.847e+04
+ Dimensions without coordinates: nlat, nlon
+ Data variables:
+     O2       (z_t, nlat, nlon) float64 dask.array&lt;chunksize=(10, 384, 320), meta=np.ndarray&gt;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_drift</span><span class="p">[</span><span class="s1">&#39;CTRL.ocn.pop.h.1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">O2</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">z_t</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2b79621a5050&gt;
+</pre></div>
+</div>
+<img alt="_images/compute-drift-corr-cesm-le_8_1.png" src="_images/compute-drift-corr-cesm-le_8_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;SALT&#39;</span><span class="p">,</span> <span class="s1">&#39;O2_CONSUMPTION&#39;</span><span class="p">,</span> <span class="s1">&#39;O2_PRODUCTION&#39;</span><span class="p">]</span> <span class="c1">#&#39;Jint_100m_DIC&#39;, &#39;photoC_sp&#39;, &#39;photoC_diat&#39;, &#39;photoC_diaz&#39;]</span>
+<span class="n">experiments</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;20C&#39;</span><span class="p">,</span> <span class="s1">&#39;RCP85&#39;</span><span class="p">]</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="s1">&#39;pop.h&#39;</span>
+<span class="n">drft_corr</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">drift_corrected_ens</span><span class="p">(</span>
+    <span class="n">experiment</span><span class="o">=</span><span class="n">experiments</span><span class="p">,</span> 
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> 
+<span class="p">)</span>
+<span class="n">drft_corr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{ &#39;esm_collection&#39;: &#39;data/catalogs/glade-cesm1-le.json&#39;,
+  &#39;name&#39;: &#39;drift-corrected&#39;,
+  &#39;operator_kwargs&#39;: [ { },
+                       { },
+                       { }],
+  &#39;operators&#39;: [ &#39;compute_time&#39;,
+                 &#39;sel_time_slice&#39;,
+                 &#39;compute_drift_correction&#39;],
+  &#39;preprocess&#39;: &#39;_preprocess_pop_h_upper_1km&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">drft_corr</span><span class="o">.</span><span class="n">_cache_files</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>04497132dae54113e1a131b9633844a2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.O2_PRODUCTION.drift-corrected.zarr
+048301bf29a5afac393f707c66eb2cde: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.SALT.drift-corrected.zarr
+059de953590f50bdb7e02fdbb4ab46b0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.O2_CONSUMPTION.drift-corrected.zarr
+05b1141a8521818acb8a4e949930ccc8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.O2_PRODUCTION.drift-corrected.zarr
+05e7d2426e939ff42771c116fc85bb03: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.TEMP.drift-corrected.zarr
+06ceeabd62d3e281b8a45281b50cc59e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.TEMP.drift-corrected.zarr
+06ec06f76d06333445f0fce90891c1f7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.O2_CONSUMPTION.drift-corrected.zarr
+078729aa6b85387f4f10fab258f3a5d7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.O2_CONSUMPTION.drift-corrected.zarr
+079e6c27d6ea99ebabb2e8e0f588d6b8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.TEMP.drift-corrected.zarr
+0833053739018ad08927ee1f32542d58: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.TEMP.drift-corrected.zarr
+086e1b74df4e930c9f340aa842dd7f25: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.TEMP.drift-corrected.zarr
+0a3ea0e9fb875153e29856c45554cfee: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.O2.drift-corrected.zarr
+0bb3c3e7a14df46e3f94422ed0c6e520: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.SALT.drift-corrected.zarr
+0c7b5be3415681e4dcbb79fce16c1b14: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.O2_CONSUMPTION.drift-corrected.zarr
+0dfb681a4f9db825300a03b161ad5e7f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.O2_CONSUMPTION.drift-corrected.zarr
+0e2080fcc53505fdd6d0a660f14e9860: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.O2_CONSUMPTION.drift-corrected.zarr
+0f9db2c7eb642f8338a6c62c926379f2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.O2_CONSUMPTION.drift-corrected.zarr
+112b6cc71d2fad37c6988107b96c2ae8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.TEMP.drift-corrected.zarr
+11950f0e35762555acdb292f4ffb5257: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.O2.drift-corrected.zarr
+11d6ac31d29a13676e6a142f8ffcb8a2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.O2.drift-corrected.zarr
+13cded4552623aa5ddbb2fa432f53f52: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.O2.drift-corrected.zarr
+1428daa11993756f28bb7f1eb9932812: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.O2.drift-corrected.zarr
+1461e186eb9966d46a63a4f960fe553e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.SALT.drift-corrected.zarr
+14865cc11bdf843500c5c3aa18968013: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.033.TEMP.drift-corrected.zarr
+15eafdf4ef0491ee4a465f949845792c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.SALT.drift-corrected.zarr
+15f7158ddb29c8ba8b7a8e24a37bfeaa: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.TEMP.drift-corrected.zarr
+16064d8284df23e5e8152c975d6f1ed7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.O2_CONSUMPTION.drift-corrected.zarr
+16a6411fe7021e5e9d67a3f85188f69a: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.SALT.drift-corrected.zarr
+178de1d4b058cff1c4fb234fb9821c2d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.O2_CONSUMPTION.drift-corrected.zarr
+184aa841762f615fde5767375ef362d0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.O2_CONSUMPTION.drift-corrected.zarr
+190ded66f33c7c0fd9b42b989259ee41: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.TEMP.drift-corrected.zarr
+1ab0113d3de47178e20b33a21df9db63: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.001.O2_CONSUMPTION.drift-corrected.zarr
+1ab81df1bc6c4d781afaeb954a674bb5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.SALT.drift-corrected.zarr
+1b5200e67c62d05bf1d4848129331d54: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.O2_PRODUCTION.drift-corrected.zarr
+1b7124648cdefcb5d7ba3873373f7c1e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.O2.drift-corrected.zarr
+1e336d3c4104f5e14ec535c98f40fd5c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.O2.drift-corrected.zarr
+1f24b8d4daf12c61b253c1af8d26f765: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.O2.drift-corrected.zarr
+21ebe43112c45075a8c16f33a3c687be: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.TEMP.drift-corrected.zarr
+22351e2eb0cb7f1b0afa3baf86df3bd0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.033.O2_CONSUMPTION.drift-corrected.zarr
+2288d4fe6fbf22d3d1d8566b1d7fab6b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.SALT.drift-corrected.zarr
+22f4875293b8debb26a32c0465cee72e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.O2.drift-corrected.zarr
+2319971326119fef659d02acf276b674: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.SALT.drift-corrected.zarr
+23f7eb0ee2e81e824f586bff76df27c9: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.O2.drift-corrected.zarr
+25a6afeff04418c2138805d7d58946d0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.O2_PRODUCTION.drift-corrected.zarr
+26bce4e7754a9cd7b8d9e1bfbfc24453: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.TEMP.drift-corrected.zarr
+27b1a4b12be144b9cdca1d4451cc6a0c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.O2_CONSUMPTION.drift-corrected.zarr
+27c3294726103fcd98d8a9de7935f95f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.O2_CONSUMPTION.drift-corrected.zarr
+28852e5330d05aa0c652a316c4120f33: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.TEMP.drift-corrected.zarr
+28ad5157d4c04ea19560be0d45ed5a44: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.TEMP.drift-corrected.zarr
+29f5b0f0b8d2ac5aa343ff7d8962875f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.SALT.drift-corrected.zarr
+2be04727bff92672078834629ec57ac6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.TEMP.drift-corrected.zarr
+2d1741f4546d5a827e14849c386b0127: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.O2_CONSUMPTION.drift-corrected.zarr
+2dce3d9f073a55bd729320f9943d2ebb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.TEMP.drift-corrected.zarr
+2f66c2faac589d558a12273146af83b3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.O2.drift-corrected.zarr
+31b7287a6e4ec9e226b9f5e1fcf61a87: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.SALT.drift-corrected.zarr
+324ea3ee25c9c4129fe8fd52789ec370: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.O2_CONSUMPTION.drift-corrected.zarr
+3262b8d9122074aea867ab3dee7e3c16: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.O2_PRODUCTION.drift-corrected.zarr
+33fb5e87b937564ff49a5986be4bcb20: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.O2.drift-corrected.zarr
+35047efc20c5689f22217539a0c93896: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.SALT.drift-corrected.zarr
+35c131fbe4e33275549f4982bf325961: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.O2.drift-corrected.zarr
+398ab3ea70e350f4a0ad5a491bfb90ba: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.TEMP.drift-corrected.zarr
+39a9109e93a3c5bdbb15b0565c81141c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.O2.drift-corrected.zarr
+3b563b68b7df763cac0852e7a23b9aa4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.SALT.drift-corrected.zarr
+3cdec9f6e5aec2286df5c1f91febc416: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.O2.drift-corrected.zarr
+3d17826067221e07fc8676edf8008ff5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.TEMP.drift-corrected.zarr
+3d403a47f2d3d0740f6ca60ec26f3ca5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.SALT.drift-corrected.zarr
+3dbc60d7ed94aa13407a8bd290a52f31: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.SALT.drift-corrected.zarr
+3f8a04084eb8895c0d2a069813f41c0a: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.O2_CONSUMPTION.drift-corrected.zarr
+414b42413a4adeaad25b1dc091b12ea3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.TEMP.drift-corrected.zarr
+4253a0445bd3a9ff822cef931b360a0b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.O2_CONSUMPTION.drift-corrected.zarr
+425c505dd4a461811a88e612cd690c71: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.O2_PRODUCTION.drift-corrected.zarr
+432dec27142bea21a081a5d4085b1b03: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.SALT.drift-corrected.zarr
+435a10ad02ce1598221987daf98b9575: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.SALT.drift-corrected.zarr
+43635ecc640d7fb6d800b58de97fcdf0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.O2_CONSUMPTION.drift-corrected.zarr
+4382ae3776fdec51b82580e6722448bd: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.O2.drift-corrected.zarr
+438ac0306510a4e980b268ae27c54f5e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.O2_CONSUMPTION.drift-corrected.zarr
+448d7b2614184c3b5e43e59f175149c3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.O2_CONSUMPTION.drift-corrected.zarr
+449c0466cc3d0aac0d17b18d584c48bc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.TEMP.drift-corrected.zarr
+46ea7deadd3732b584db5e71453a7763: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.SALT.drift-corrected.zarr
+475eb19ad064f638dad13747d497a7d6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.TEMP.drift-corrected.zarr
+4792e87ac023d4b3165eca32e7dd63c6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.SALT.drift-corrected.zarr
+4800931e51a4dfb4526ca8714a76e78c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.O2_PRODUCTION.drift-corrected.zarr
+486e402de35ecb90dec01e0348631f15: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.O2.drift-corrected.zarr
+49158dce968622e11364ae4aac1fd25c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.O2_CONSUMPTION.drift-corrected.zarr
+49e19662692f099e4dadd0adfc73ecf4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.TEMP.drift-corrected.zarr
+4b4b01764bba1f09cc4a9a52ec9e4bd7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.TEMP.drift-corrected.zarr
+4c20c2745875d6516344ce919bce7408: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.033.O2.drift-corrected.zarr
+4c44b50b87b1798daf832fc0332dbaf1: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.O2.drift-corrected.zarr
+4c73c3ca324c645bfd50d6db81619109: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.SALT.drift-corrected.zarr
+4cd61467f9e8e33d0c1b4d1267e86d40: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.SALT.drift-corrected.zarr
+4d165373f01b62f7d0f6a67905e141e8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.SALT.drift-corrected.zarr
+4d48bcaf52488953022942d2958b2980: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.SALT.drift-corrected.zarr
+4da5374f3697020248e4ca234f7dce42: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.SALT.drift-corrected.zarr
+4e42b210f90da05aab04a39e53ad7966: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.O2_CONSUMPTION.drift-corrected.zarr
+4e6680046fce99064d948d82f2b33e19: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.O2_CONSUMPTION.drift-corrected.zarr
+4e904cb6f3c7ccb7370fd5285a742f50: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.O2.drift-corrected.zarr
+4fafe1a2b0439dbdbb8d9fc73f4ebd25: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.O2.drift-corrected.zarr
+50097e2544c1fc349823ef5f114ccc32: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.TEMP.drift-corrected.zarr
+514e8cf8bd28ecf16399d39abf47fad0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.SALT.drift-corrected.zarr
+53110f7c2d94e52710f92a942f1f1999: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.O2_PRODUCTION.drift-corrected.zarr
+53a8e063c94c5de9261b16a98f3b8484: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.O2_CONSUMPTION.drift-corrected.zarr
+54120f21c78725260b9606e87567b3f8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.SALT.drift-corrected.zarr
+54ac08bf02f5335117188c97295ba50e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.O2.drift-corrected.zarr
+56b5eb1375bb37ba94fbba09447f5f84: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.SALT.drift-corrected.zarr
+573aa68669b28c9db9c2101dbe3d2e09: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.TEMP.drift-corrected.zarr
+5762672fab5a7082c2487f1dd6b868cd: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.O2_CONSUMPTION.drift-corrected.zarr
+57e76623772ee41977ae1147685a5e2f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.O2.drift-corrected.zarr
+58a1099ded287c094fd382df8c5509eb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.SALT.drift-corrected.zarr
+58e816dca5845c7abfdabdb46bcc7105: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.O2_PRODUCTION.drift-corrected.zarr
+5a6d3e9a6c0023ef9fb8c938bc9b9989: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.TEMP.drift-corrected.zarr
+5ae9665a8c991c36075afb648a9161a2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.001.TEMP.drift-corrected.zarr
+5bf48ede01d785f7a795b94eeea06826: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.O2_CONSUMPTION.drift-corrected.zarr
+5c60a05d8292c3ae323215766218caea: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.O2.drift-corrected.zarr
+5c75e3aba8f8e3ce144531b572539972: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.TEMP.drift-corrected.zarr
+5c787bdb0b270c00db8e755527cb8549: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.O2_CONSUMPTION.drift-corrected.zarr
+5d04140c0316f7028e4dbe8af3ddecac: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.O2.drift-corrected.zarr
+5e53fc41ada2ef5957ba3fd381dd214c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.SALT.drift-corrected.zarr
+5e7e422620417af9999ae13bf45bd5fb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.SALT.drift-corrected.zarr
+604a9e362c4c9f155ce987e9df6e69a0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.O2_PRODUCTION.drift-corrected.zarr
+6052ba4217f5b223fbc54c47c8fda214: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.O2.drift-corrected.zarr
+6179d31fa1c617415a6d5923cfe770a6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.TEMP.drift-corrected.zarr
+62f21ff6276778f2a7d6c67d8cb89a74: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.SALT.drift-corrected.zarr
+63b581f3cada120a928fed5899def74f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.O2_CONSUMPTION.drift-corrected.zarr
+640858bfff3ffa98ee066d2b6c0b9786: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.SALT.drift-corrected.zarr
+659b925c7b0e126bb61c62854d1267d2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.O2.drift-corrected.zarr
+660a1da634396ade2a74771d093f1056: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.TEMP.drift-corrected.zarr
+664338bf5a131e2d047b026beefd59e5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.001.O2_CONSUMPTION.drift-corrected.zarr
+67965df1f852d235c15ae3291faa1677: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.O2_CONSUMPTION.drift-corrected.zarr
+67bf4e7de5efada795c02f5c6fac6faf: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.O2.drift-corrected.zarr
+6937715cd7b2e30eeff1484f71beebbc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.O2_CONSUMPTION.drift-corrected.zarr
+69ecdaed20916f18a7ee186bce9ee75e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.O2_CONSUMPTION.drift-corrected.zarr
+6a2a95f9a53196d5dabd90f4571627b1: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.SALT.drift-corrected.zarr
+6a5cdfb8e60dab7d287401c13b8efa86: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.SALT.drift-corrected.zarr
+6aa410b7a16b7c660fef557d4a91acec: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.O2_CONSUMPTION.drift-corrected.zarr
+6ac316c0d1d9281580476c177e691dc5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.TEMP.drift-corrected.zarr
+6b5f8347f876414c1453b29c2d1290b5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.O2.drift-corrected.zarr
+6b6e8149018de3d43bde721f0d5bb2c1: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.O2.drift-corrected.zarr
+6b73d7822f15da306569fb3398a1b6f3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.TEMP.drift-corrected.zarr
+6bbbb44e0d1d3da04b86d1dae0e1fec4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.SALT.drift-corrected.zarr
+6d2b18ce0180bf28c483b5505c3fba81: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.O2.drift-corrected.zarr
+6e02e58ef5ca7c037813f836fca75a56: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.O2.drift-corrected.zarr
+6e3912e268dda67e20437275e2e7db07: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.O2.drift-corrected.zarr
+6f7d3040341ed555fb55efee7754592d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.O2_CONSUMPTION.drift-corrected.zarr
+71429fbd4bd87cfcc048db60651b474c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.O2_CONSUMPTION.drift-corrected.zarr
+72b1e119d0876aa18f902c413d43b027: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.TEMP.drift-corrected.zarr
+73b6d58a264b5b4d9e6935881fab69e4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.O2_CONSUMPTION.drift-corrected.zarr
+74fdd22aabf3a17360d2efb523640bba: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.TEMP.drift-corrected.zarr
+75496f79f635737cc5ae09616cdf4e9b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.TEMP.drift-corrected.zarr
+774b4ef9130ae05da52e09980137cb4d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.O2_CONSUMPTION.drift-corrected.zarr
+7813fc037900015cb2cd7badee54e395: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.TEMP.drift-corrected.zarr
+784d35470b524cbc093a364706ae13aa: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.SALT.drift-corrected.zarr
+78c2e8ce7e1d45ae3493c39cfdd4fda5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.TEMP.drift-corrected.zarr
+79a6f86f86c178ae5c6cb79a948d0e81: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.SALT.drift-corrected.zarr
+7ac4bfbdf10a71db698e348debf1946c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.O2_CONSUMPTION.drift-corrected.zarr
+7b10250d13a2a6e7819c4703f4cc0ccd: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.033.O2.drift-corrected.zarr
+7b1d89351eaecaab4e29d4376e83e0b7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.SALT.drift-corrected.zarr
+7ce9f54b9a308352a7c64964ffcf7398: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.001.O2.drift-corrected.zarr
+7dadedac50889eb7fa930e5f988c52da: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.SALT.drift-corrected.zarr
+7eeff32b831b8e1ae91abdee5326a35a: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.O2_CONSUMPTION.drift-corrected.zarr
+7f29f0d61db5e5737e82d623abf1e582: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.O2_CONSUMPTION.drift-corrected.zarr
+7f77d6e2a4ca8aad6846ab4145cf1aab: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.O2_PRODUCTION.drift-corrected.zarr
+8027a069da098a9ef57d17bd7bb9f124: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.SALT.drift-corrected.zarr
+822e215b5d3de36762fd5635fd2cf881: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.TEMP.drift-corrected.zarr
+823f4a1c380b0c7a2a7b3166edea0287: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.O2_CONSUMPTION.drift-corrected.zarr
+83fc7fd25ef854dc6c3dfe3da28e004b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.TEMP.drift-corrected.zarr
+84264898ac7e019aa0d2c7ee2ae0ece5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.SALT.drift-corrected.zarr
+886efebb16565f7ed72afee4bf1617a3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.O2_CONSUMPTION.drift-corrected.zarr
+89d9f04a2f584c52c8abd0e48d75b3fb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.O2.drift-corrected.zarr
+8af2f77db94ed5c5e2404d624f85f6d3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.O2.drift-corrected.zarr
+8b87066c0557b2f9be95ee2d0d6a2cc6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.TEMP.drift-corrected.zarr
+8c22555069d2858a0c3acb21db1d9350: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.O2_CONSUMPTION.drift-corrected.zarr
+8d2fd0f33aac75fcea00a99743438c81: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.001.O2_PRODUCTION.drift-corrected.zarr
+8d529c72cc62fb6b6438a092e5e97340: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.TEMP.drift-corrected.zarr
+8dc43bab9a86141496a889803b2552cc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.O2.drift-corrected.zarr
+9125f3149719177ae75c5833b76685da: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.SALT.drift-corrected.zarr
+922773d63437730e1621ac26e60a0dfa: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.TEMP.drift-corrected.zarr
+936b18b7d522207ac3d15a7aeae252d2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.SALT.drift-corrected.zarr
+955141cd485c98db7f90cc6121661e83: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.TEMP.drift-corrected.zarr
+9599c808358870c2b1a143333eacf382: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.O2_CONSUMPTION.drift-corrected.zarr
+95f3cefe5bea7b1e839f3f3dcd36bc94: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.SALT.drift-corrected.zarr
+96d52678f1414008e09dfb34d993bf79: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.O2.drift-corrected.zarr
+972aad9db76837aa514f2ec0a909b855: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.O2_CONSUMPTION.drift-corrected.zarr
+9885279fb4be1a3428e62faa3ec4246c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.TEMP.drift-corrected.zarr
+98f614e400dcf940074cd9d912e26198: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.O2_PRODUCTION.drift-corrected.zarr
+9a3c8e8b7958d985110ae87d9db5366e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.O2.drift-corrected.zarr
+9b75a133ca8846e6938de87af59925d5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.O2_CONSUMPTION.drift-corrected.zarr
+9b8d7357c649423a42018ff637a8f39b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.SALT.drift-corrected.zarr
+9c7e7ebd9c00ea6992d0c29ae5b9d8de: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.033.O2_CONSUMPTION.drift-corrected.zarr
+9cb4eea58d8f7010a34413ad326870bc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.O2.drift-corrected.zarr
+9f03a36ce977e9a2919b5dade64521a8: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.TEMP.drift-corrected.zarr
+a0612b864eca675394c04d85aacb9400: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.SALT.drift-corrected.zarr
+a16b765cf8e524a9de66077ec4630635: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.TEMP.drift-corrected.zarr
+a2e95674865810fe0986f1dd11e2f10f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.TEMP.drift-corrected.zarr
+a315627f39e978c19205817d7f3f4c5b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.001.O2.drift-corrected.zarr
+a33451d0678b1bd9a132b42ac0f3d6f0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.SALT.drift-corrected.zarr
+a3a64aed440d0f5a5ad21ad4a7646260: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.O2_CONSUMPTION.drift-corrected.zarr
+a4b65027b9db974e229a0e830b0f5ec0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.O2_CONSUMPTION.drift-corrected.zarr
+a61e7a9e3f99341b737a2719ba2f91a4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.O2_CONSUMPTION.drift-corrected.zarr
+a721a241b1aad35208af72f85a01060f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.O2_CONSUMPTION.drift-corrected.zarr
+a791dc8e7410d3572930eee880c0f7fe: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.SALT.drift-corrected.zarr
+a7ca72a32937e5027e18c7909b230d2a: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.TEMP.drift-corrected.zarr
+a8e2add99173cc4273eb5abb61edc4e2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.O2.drift-corrected.zarr
+a9917c98b7347dfe6906f594ac310a84: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.SALT.drift-corrected.zarr
+aa391c13ef23fe1bd8ab5349d64bdb64: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.O2_PRODUCTION.drift-corrected.zarr
+aa52410c3080015fa21890386dc163b5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.O2.drift-corrected.zarr
+aab8ad0788557181e5ad06341f19c978: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.O2.drift-corrected.zarr
+ac8f3a464ed42bb592633f296fd7701d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.SALT.drift-corrected.zarr
+ae746a3e6dbd72c6d504ecea62b85b23: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.SALT.drift-corrected.zarr
+af34a87adc0d59bae20bf3de7348e2ce: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.O2.drift-corrected.zarr
+af7b5a549387f0a66f376f5940fcac8b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.O2.drift-corrected.zarr
+b05cecd7ae74cd2f8b6cc20947cc98b6: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.TEMP.drift-corrected.zarr
+b2e88d948b734b5302481b6d7022d9e3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.SALT.drift-corrected.zarr
+b2f1e6990477a2a1f3e8361c8cfd8819: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.O2.drift-corrected.zarr
+b360fd885fb499a1639554f52cff89d7: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.TEMP.drift-corrected.zarr
+b3ea0842cd7408f2d6be888a018070b4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.TEMP.drift-corrected.zarr
+b46a8affeff18638461c69a59098cc8c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.O2_PRODUCTION.drift-corrected.zarr
+b96f9aaa275ec274c45486790dc95efb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.O2.drift-corrected.zarr
+b9829b61d39543633bf397d831c8800b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.O2.drift-corrected.zarr
+ba0e263dff38b6188e5d7e51b8d1c706: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.SALT.drift-corrected.zarr
+be371134b94f02e8e7f8e24b93c24879: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.O2_CONSUMPTION.drift-corrected.zarr
+be924da1765891b5376ac06a600b1851: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.O2.drift-corrected.zarr
+bf5f0f5610d031b422accb9fc79d4e85: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.O2_CONSUMPTION.drift-corrected.zarr
+c01650e3bc8a846b27290de04dc0f82e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.O2.drift-corrected.zarr
+c2d3b13d0e98b1d91a188439282a6c9d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.O2.drift-corrected.zarr
+c317da95a9b4be47634f449293aeed6e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.O2.drift-corrected.zarr
+c3e8e6aafe9a934ace7d86a075821af4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.TEMP.drift-corrected.zarr
+c6fb7926593b9a973c60771a81de84a1: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.SALT.drift-corrected.zarr
+c726d766f7f9543a32f45eb6caa8da7b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.O2.drift-corrected.zarr
+c7c8afd0cbb153d79f1daad1d80acaab: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.O2.drift-corrected.zarr
+c820a47f4a2e85d0ab10b4a40f663d74: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.O2.drift-corrected.zarr
+c98f95624ed3ee5003b3ff99a43ef9f3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.O2.drift-corrected.zarr
+ca0549f6555e3183e0f604272caa7a69: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.SALT.drift-corrected.zarr
+ca089f2d67131d5f5fe43aaec87318bc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.TEMP.drift-corrected.zarr
+ca0c33cb8c1b0fced88840d28dd1a5db: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.TEMP.drift-corrected.zarr
+ca87149b3d1f6ce44acd1039e14d56bb: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.TEMP.drift-corrected.zarr
+cb9995a8de03a29a35c91f11d8c5e5ce: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.O2_CONSUMPTION.drift-corrected.zarr
+cdc2352de5f7a2d9bc727e4882ad740d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.O2.drift-corrected.zarr
+cdf833e5d2d43fdf2ecb22fbcc4f7fd2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.O2_CONSUMPTION.drift-corrected.zarr
+cf6fe14792849f0a81456c247a11d5f0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.001.SALT.drift-corrected.zarr
+cfca6e640d034fb5e251487b916dc05e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.TEMP.drift-corrected.zarr
+d14b167e07d70c2051a87fa17d6da462: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.033.SALT.drift-corrected.zarr
+d1f02926bc4555bd6c4eab31567dfca0: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.O2.drift-corrected.zarr
+d2df72f0c74a0fd522564597c5713dba: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.O2_PRODUCTION.drift-corrected.zarr
+d4e5a8bce4126993a567544fe41d88b9: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.TEMP.drift-corrected.zarr
+d8bd284b991516868535b02dc0e48ec3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.O2.drift-corrected.zarr
+d8ce8fe5ece8ca633bd3da3215b27947: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.SALT.drift-corrected.zarr
+dc21b87b3f2f6cfdf85967f779647359: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.SALT.drift-corrected.zarr
+dc6361645c57530d6d9b8780f3e397c5: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.SALT.drift-corrected.zarr
+dc82a674c0dff55ba0cfc19a6cdeefe4: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.O2.drift-corrected.zarr
+dc8707515681279deb4b128cade0cc7b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.TEMP.drift-corrected.zarr
+dd0b8eca907e78c3a1dac1508de82eef: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.O2_CONSUMPTION.drift-corrected.zarr
+de609c83a8ec1714ae3abf1f9385aef2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.SALT.drift-corrected.zarr
+e01bcacd97200ae369bfeb57e2137046: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.O2_CONSUMPTION.drift-corrected.zarr
+e07b6d3aefe6cb0503027cbd580be768: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.SALT.drift-corrected.zarr
+e0cd5a38dd6b19d86d770acf9c635c9c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.O2_CONSUMPTION.drift-corrected.zarr
+e0d9653caeb2a825115936122f01d194: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.O2_CONSUMPTION.drift-corrected.zarr
+e1fdd0ca566bc8eb777d08c23b6bc2d9: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.TEMP.drift-corrected.zarr
+e2cecc031a0e5d57ceb22e715a5b90aa: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.O2.drift-corrected.zarr
+e2d634c69afea80a2010a31798ad4dc2: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.O2.drift-corrected.zarr
+e36b6ae5304522e623253ae0ef997cec: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.O2_CONSUMPTION.drift-corrected.zarr
+e3b383425b91d68748504d4f9d341c1b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.TEMP.drift-corrected.zarr
+e3e415470563dc26845892a4011419d9: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.O2_PRODUCTION.drift-corrected.zarr
+e5413d9b1407dc01c9589a51189d4e45: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.O2_PRODUCTION.drift-corrected.zarr
+e5a0c9e7eba2e95cf51f16c9cd87f097: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.TEMP.drift-corrected.zarr
+e5bf058ff442f1d617ad2c9552d6de6e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.O2_PRODUCTION.drift-corrected.zarr
+e5cb65e396239264626ed3921648b041: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.SALT.drift-corrected.zarr
+e6bf596d3b8319b8ccbfe71887126995: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.O2.drift-corrected.zarr
+e7fbf01364c24abdff3598ac18405a06: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.SALT.drift-corrected.zarr
+e8c35e6a03a48cb91d634203cfe117f9: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.001.SALT.drift-corrected.zarr
+e977cc8d3be089450e2b4f43429bde3f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.O2.drift-corrected.zarr
+eabe0a05b41be34d54cc45b4d1eaf74b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.033.SALT.drift-corrected.zarr
+eb6ef3619b24c2b0a2b2b8387b645ef3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.TEMP.drift-corrected.zarr
+ec842e2b877d9a7f3944d2434ed5bb73: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.SALT.drift-corrected.zarr
+edf0c1e00dcdc698420241ba2146144b: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.O2_CONSUMPTION.drift-corrected.zarr
+efd3742644d455cf2e7d6bd222a89090: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.TEMP.drift-corrected.zarr
+f15e2b4544dd18240fcb15e269725bda: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.O2_CONSUMPTION.drift-corrected.zarr
+f1922d8fb0474d19e8f4a8dad6137fec: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.TEMP.drift-corrected.zarr
+f2fbf9ede2226bda1b0ab3c924f52880: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.TEMP.drift-corrected.zarr
+f36c74ed633c50f1d15d975982f0f50a: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.001.TEMP.drift-corrected.zarr
+f509b30a2a8dfd023efcb8fc7cca2f6d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.O2_CONSUMPTION.drift-corrected.zarr
+f6df59446a30ba8084f8116334ef62cc: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.033.TEMP.drift-corrected.zarr
+f71e7402dd84bf6c332d3625b057fd39: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.TEMP.drift-corrected.zarr
+f89fc0923bf2dad82ad95cc19d1be2e3: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.O2_CONSUMPTION.drift-corrected.zarr
+f8ab20258971bd7717619efc70a012be: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.SALT.drift-corrected.zarr
+f969b37a30aa90caaa40f4cc5050e13f: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.O2_PRODUCTION.drift-corrected.zarr
+fa0dfcf288e229c9065ca3e7f84cc5da: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.SALT.drift-corrected.zarr
+fa96c11df260d41a5e50605f753f300e: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.O2_CONSUMPTION.drift-corrected.zarr
+fb3c6b91020284d848d1a21bf5d9724d: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.O2_CONSUMPTION.drift-corrected.zarr
+fcacb0d87a7c32100da6d336676100a1: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.TEMP.drift-corrected.zarr
+fdfa68f22cc4b3a370de0df28256941c: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.O2_CONSUMPTION.drift-corrected.zarr
+fe36b03af1b803c65344bc2e5b9db8ac: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.O2.drift-corrected.zarr
+fe522aff05218d266dbd598e27e5c7ee: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.O2.drift-corrected.zarr
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">dsets</span> <span class="o">=</span> <span class="n">drft_corr</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">(</span><span class="n">variable</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span> <span class="n">clobber</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dsets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; The keys in the returned dictionary of datasets are constructed as follows:
+	&#39;experiment.component.stream.member_id&#39;
+</pre></div>
+</div>
+<div class="output text_html">
+<div>
+    <style>
+        /* Turns off some styling */
+        progress {
+            /* gets rid of default border in Firefox and Opera. */
+            border: none;
+            /* Needs to be in here for Safari polyfill so background images work as expected. */
+            background-size: auto;
+        }
+        .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+            background: #F44336;
+        }
+    </style>
+  <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
+  100.00% [1/1 00:00<00:00]
+</div>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.45 s, sys: 650 ms, total: 10.1 s
+Wall time: 2min 4s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;20C.ocn.pop.h.2&#39;: &lt;xarray.Dataset&gt;
+ Dimensions:         (nlat: 384, nlon: 320, time: 1032, z_t: 40, d2: 2, z_t_150m: 15)
+ Coordinates:
+     KMT             (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TAREA           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLAT            (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLONG           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULAT            (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULONG           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     dz              (z_t) float32 dask.array&lt;chunksize=(10,), meta=np.ndarray&gt;
+   * time            (time) object 1920-01-17 00:29:59.999993 ... 2005-12-16 1...
+     time_bound      (time, d2) object dask.array&lt;chunksize=(12, 2), meta=np.ndarray&gt;
+   * z_t             (z_t) float32 500.0 1.5e+03 2.5e+03 ... 8.788e+04 9.847e+04
+   * z_t_150m        (z_t_150m) float32 500.0 1.5e+03 ... 1.35e+04 1.45e+04
+ Dimensions without coordinates: nlat, nlon, d2
+ Data variables:
+     O2              (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     TEMP            (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     SALT            (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     O2_CONSUMPTION  (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     O2_PRODUCTION   (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+ Attributes: (12/16)
+     Conventions:               CF-1.0; http://www.cgd.ucar.edu/cms/eaton/netc...
+     NCO:                       4.3.4
+     calendar:                  All years have exactly  365 days.
+     cell_methods:              cell_methods = time: mean ==&gt; the variable val...
+     contents:                  Diagnostic and Prognostic Variables
+     history:                   Tue Sep 10 00:22:02 2013: /glade/apps/opt/nco/...
+     ...                        ...
+     revision:                  $Id: tavg.F90 41939 2012-11-14 16:37:23Z mlevy...
+     source:                    CCSM POP2, the CCSM Ocean Component
+     start_time:                This dataset was created on 2013-07-26 at 16:4...
+     tavg_sum:                  2592000.0
+     tavg_sum_qflux:            2592000.0
+     title:                     b.e11.B20TRC5CNBDRD.f09_g16.002,
+ &#39;RCP85.ocn.pop.h.2&#39;: &lt;xarray.Dataset&gt;
+ Dimensions:         (nlat: 384, nlon: 320, time: 1140, z_t: 40, d2: 2, z_t_150m: 15)
+ Coordinates:
+     KMT             (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TAREA           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLAT            (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     TLONG           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULAT            (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     ULONG           (nlat, nlon) float64 dask.array&lt;chunksize=(384, 320), meta=np.ndarray&gt;
+     dz              (z_t) float32 dask.array&lt;chunksize=(10,), meta=np.ndarray&gt;
+   * time            (time) object 2006-01-17 00:29:59.999993 ... 2100-12-16 1...
+     time_bound      (time, d2) object dask.array&lt;chunksize=(12, 2), meta=np.ndarray&gt;
+   * z_t             (z_t) float32 500.0 1.5e+03 2.5e+03 ... 8.788e+04 9.847e+04
+   * z_t_150m        (z_t_150m) float32 500.0 1.5e+03 ... 1.35e+04 1.45e+04
+ Dimensions without coordinates: nlat, nlon, d2
+ Data variables:
+     O2              (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     TEMP            (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     SALT            (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     O2_CONSUMPTION  (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+     O2_PRODUCTION   (time, z_t, nlat, nlon) float64 dask.array&lt;chunksize=(12, 10, 384, 320), meta=np.ndarray&gt;
+ Attributes:
+     Conventions:               CF-1.0; http://www.cgd.ucar.edu/cms/eaton/netc...
+     NCO:                       4.3.4
+     calendar:                  All years have exactly  365 days.
+     cell_methods:              cell_methods = time: mean ==&gt; the variable val...
+     contents:                  Diagnostic and Prognostic Variables
+     history:                   Fri Sep  6 10:41:04 2013: /glade/apps/opt/nco/...
+     intake_esm_dataset_key:    RCP85.ocn.pop.h.2
+     intake_esm_varname:        [&#39;O2&#39;]
+     nco_openmp_thread_number:  1
+     revision:                  $Id: tavg.F90 41939 2012-11-14 16:37:23Z mlevy...
+     source:                    CCSM POP2, the CCSM Ocean Component
+     title:                     b.e11.BRCP85C5CNBDRD.f09_g16.002}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-miniconda3-metabolic-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-miniconda3-metabolic-py",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-miniconda3-metabolic-py'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="data-assets-preprocessing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="compute-pO2-cesm-le.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compute <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span> from drift corrected fields</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Matthew C. Long, Curtis Deutsch, Precious Mongwe<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
