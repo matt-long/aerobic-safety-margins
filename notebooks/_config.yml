@@ -1,0 +1,75 @@
+#######################################################################################
+# A default configuration that will be loaded for all jupyter books
+# See the documentation for help and more options:
+# https://jupyterbook.org/customize/config.html
+
+#######################################################################################
+# Book settings
+title: Aerobic Saftey Margins for Marine Ectotherms
+author: Matthew C. Long, Curtis Deutsch, Precious Mongwe 
+copyright: "2022"
+#logo: new-logo.png
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+  only_build_toc_files: true
+  exclude_patterns:
+    - '_check-pO2-calc.ipynb'
+    - 'compute-MI-cesm-le.ipynb'
+    - 'ATmax.ipynb'
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_engine: pdflatex
+  latex_documents:
+    targetname: aerobic-safety-margins.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+sphinx:
+  config:
+    bibtex_reference_style: author_year
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  
+  local_extensions:
+    add_book_to_path: ../
+    
+  extra_extensions:
+  - sphinx.ext.autodoc
+  - sphinx.ext.autosummary
+  - sphinx.ext.napoleon
+  - sphinx_click
+  
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/matt-long/aerobic-safety-margins
+  path_to_book: notebooks
+  branch: main
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  #favicon: favicon.ico
+  use_issues_button: false
+  use_repository_button: true
+  home_page_in_navbar: false
+  #google_analytics_id: UA-196809533-2
+
+  
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    - html_image
+    - linkify
+    # - replacements
+    - smartquotes
+    - substitution
+    # - tasklist    

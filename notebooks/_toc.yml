@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: into
+parts:
+- caption: Data assets and preprocessing  
+  chapters:
+  - file: data-assets-preprocessing
+    sections:
+    - file: compute-drift-corr-cesm-le
+    #- file: compute-MI-cesm-le
+    - file: compute-pO2-cesm-le
+    - file: compute-habitat-cesm-le
+- caption: Trait Space
+  - file: trait-space-description
+- caption: Habitat Change
+  chapters:
+  - file: aerobic-habitat-change
+- caption: References
+  chapters:
+  - file: references

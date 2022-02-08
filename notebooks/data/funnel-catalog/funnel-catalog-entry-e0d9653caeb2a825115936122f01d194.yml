@@ -1,0 +1,14 @@
+asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.O2_CONSUMPTION.drift-corrected.zarr
+esm_collection: data/catalogs/glade-cesm1-le.json
+key: RCP85.ocn.pop.h.30
+name: drift-corrected
+operator_kwargs:
+- {}
+- {}
+- {}
+operators:
+- compute_time
+- sel_time_slice
+- compute_drift_correction
+preprocess: _preprocess_pop_h_upper_1km
+variable: O2_CONSUMPTION

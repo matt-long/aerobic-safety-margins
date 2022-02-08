@@ -1,0 +1,13 @@
+description: Metabolic Index Traits (Deutsch et al. 2020)
+sources:
+  MI-traits:
+    driver: intake.source.jsonfiles.JSONFileSource
+    description: "Metabolic Index Traits"
+    args:
+      urlpath: simplecache::https://raw.githubusercontent.com/matt-long/Metabolic-Index-Traits/master/MI-traits-Deutsch-etal-2020.json
+      compression: 'infer'
+      storage_options:
+        invalidate_cache: true
+        simplecache:
+          same_names: true
+          cache_storage: "./data/MI-traits-data"

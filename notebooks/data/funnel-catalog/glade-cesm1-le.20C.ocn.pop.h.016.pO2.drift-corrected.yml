@@ -1,0 +1,14 @@
+asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.pO2.drift-corrected.zarr
+esm_collection: data/catalogs/glade-cesm1-le.json
+key: 20C.ocn.pop.h.16
+name: drift-corrected
+operator_kwargs:
+- {}
+- {}
+- {}
+operators:
+- compute_time
+- sel_time_slice
+- compute_drift_correction
+preprocess: _preprocess_pop_h_upper_1km
+variable: pO2
