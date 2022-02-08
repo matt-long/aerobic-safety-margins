@@ -1,0 +1,9 @@
+{
+    "N_traits": 56,
+    "_ARRAY_DIMENSIONS": [
+        "Ac",
+        "Eo"
+    ],
+    "long_name": "Trait density",
+    "units": "eV 1/kPa"
+}

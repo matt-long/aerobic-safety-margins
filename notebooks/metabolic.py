@@ -3,6 +3,8 @@ from functools import partial
 
 import intake
 import numpy as np
+import xarray as xr
+
 from scipy import stats as scistats
 
 import pandas as pd
@@ -14,6 +16,7 @@ import constants
 Tref = 15. # °C
 Tref_K = Tref + constants.T0_Kelvin
 
+dEodT_bar = -0.0226
 
 def open_traits_df(pressure_kPa=True):
     """Open the MI traits dataset from Deutsh et al. (2020); return a pandas.DataFrame

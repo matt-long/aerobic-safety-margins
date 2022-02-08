@@ -4,7 +4,10 @@
 format: jb-book
 root: into
 parts:
-- caption: Data assets and preprocessing  
+- caption: Trait Space
+  - file: trait-space-description
+  - file: trait-space-joint-pdf
+- caption: Earth System Model Data
   chapters:
   - file: data-assets-preprocessing
     sections:
@@ -12,8 +15,6 @@ parts:
     #- file: compute-MI-cesm-le
     - file: compute-pO2-cesm-le
     - file: compute-habitat-cesm-le
-- caption: Trait Space
-  - file: trait-space-description
 - caption: Habitat Change
   chapters:
   - file: aerobic-habitat-change

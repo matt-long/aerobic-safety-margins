@@ -21,10 +21,11 @@ dependencies:
 - intake-esm
 - intake-xarray
 - ipykernel
-- jupyter-server-proxy
+- jupyter-book
+- jupyter_client==6.1.12
 - jupyter_contrib_nbextensions
 - jupyterlab
-- lmfit
+- jupyter-server-proxy
 - matplotlib
 - metpy
 - nc-time-axis
@@ -32,7 +33,7 @@ dependencies:
 - netcdf4
 - numba
 - numpy
-- pandas=1.2.5 # pinned to avoid indexing error: ds.sel(time=slice('1920', '2100'))
+- pandas #=1.2.5 # pinned to avoid indexing error: ds.sel(time=slice('1920', '2100'))
 - pint
 - pip
 - pop-tools

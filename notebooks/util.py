@@ -1,6 +1,7 @@
 import os
 
 from collections.abc import Iterable
+import yaml
 
 import time
 import cftime
@@ -12,6 +13,8 @@ import xarray as xr
 import dask
 from dask_jobqueue import PBSCluster
 from dask.distributed import Client
+
+path_to_here = os.path.dirname(os.path.realpath(__file__))
 
 USER = os.environ['USER']    
 PBS_PROJECT = 'NCGD0011'
@@ -164,3 +167,61 @@ def pop_add_cyclic(ds):
                 
             
     return dso
+
+
+class curator_local_assets(object):    
+    
+    def __init__(self):
+        
+        cache_dir = 'data/cache'
+        os.makedirs(cache_dir, exist_ok=True)
+        
+        self.catalog_file = f"{path_to_here}/data/catalogs/catalog-local.yml"
+        if os.path.exists(self.catalog_file):
+            with open(self.catalog_file, "r") as fid:
+                self.catalog = yaml.safe_load(fid)               
+        else:
+            self.catalog = yaml.safe_load(
+                """
+                description: Local assets
+
+                plugins:
+                  source:
+                    - module: intake_xarray
+
+                sources: {}
+                """
+            )
+    
+    def add_source(self, key, urlpath, description, driver='netcdf', overwrite=False, **kwargs):
+        """add a new source to the catalog"""
+        
+        if key in self.catalog['sources']:
+            if not overwrite:
+                raise ValueError(f'source {key} exists; set `overwrite` to true to overwrite')
+            else:
+                print(f'overwriting "{key}" key in "sources"')
+            
+            
+        args = dict(urlpath=urlpath)
+        args.update(kwargs)
+        
+        self.catalog['sources'][key] = dict(
+            driver=driver,
+            description=description,
+            args=args,
+        )
+        self.persist()
+        
+    def persist(self):
+        """write the catalog to disk"""        
+        with open(self.catalog_file, "w") as fid:
+            yaml.dump(self.catalog, fid)    
+    
+    def open_catalog(self):
+        """return as intake catalog"""
+        return intake.open_catalog(self.catalog_file)
+    
+    def __repr__(self):
+        return self.catalog.__repr__()
+    
