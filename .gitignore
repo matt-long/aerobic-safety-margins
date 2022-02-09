@@ -132,4 +132,5 @@ dmypy.json
 notebooks/_build/
 notes.md
 .DS_Store
+cruft
 
