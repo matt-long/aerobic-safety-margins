@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&lt;no title&gt; &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Aerobic Saftey Margins for Marine Ectotherms</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Metabolic Index Traits
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-description.html">
+   Metabolic Index trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-joint-pdf.html">
+   Generate a PDF describing occurence frequency in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-obs-habitat-vol.html">
+   Habitat volume in trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="trait-space-ATmax.html">
+   Compute AT
+   <sub>
+    max
+   </sub>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Earth System Model Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="data-assets-preprocessing.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-drift-corr-cesm-le.html">
+     Apply linear drift correction to upper ocean fields in CESM1-LE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-pO2-cesm-le.html">
+     Compute
+     <span class="math notranslate nohighlight">
+      \(P_{\mathrm{O}_2}\)
+     </span>
+     from drift corrected fields
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-habitat-cesm-le.html">
+     Examine changes in viable habitat
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Habitat Change
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="aerobic-habitat-change.html">
+   Changes in aerobic habitat
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/_maintain-funnel-catalog.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/matt-long/aerobic-safety-margins"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=tree/notebooks/_maintain-funnel-catalog.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+
+<span class="kn">import</span> <span class="nn">funnel</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">funnel</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_catalog_dir</span><span class="si">}</span><span class="s1">/*.yml&#39;</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">files_w_missing_assets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">fid</span><span class="p">)</span>
+    
+    <span class="n">asset</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">f</span><span class="p">][</span><span class="s1">&#39;asset&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">asset</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;missing </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">files_w_missing_assets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="s1">&#39;additional_coord_values&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="n">f</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.Phi_prime.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.depth_habitat_trait_wgt.drift-corrected.zarr
+missing /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.depth_habitat_trait_wgt.drift-corrected.zarr
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files_w_missing_assets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.002.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.009.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.009.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.010.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.010.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.011.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.011.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.012.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.012.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.013.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.013.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.014.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.014.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.015.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.015.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.016.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.016.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.017.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.017.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.018.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.018.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.019.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.019.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.020.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.020.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.021.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.021.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.022.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.022.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.023.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.023.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.024.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.024.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.025.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.025.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.026.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.026.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.027.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.027.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.028.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.028.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.029.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.029.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.030.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.030.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.031.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.031.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.032.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.032.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.034.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.034.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.035.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.035.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.101.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.101.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.102.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.102.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.103.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.103.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.104.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.104.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.105.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.20C.ocn.pop.h.105.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.002.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.009.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.009.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.010.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.010.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.011.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.011.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.012.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.012.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.013.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.013.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.014.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.014.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.015.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.015.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.016.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.016.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.017.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.017.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.018.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.018.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.019.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.019.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.020.Phi_prime.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.020.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.021.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.022.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.023.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.024.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.025.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.026.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.027.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.028.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.029.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.030.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.031.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.032.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.034.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.035.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.101.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.102.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.103.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.104.depth_habitat_trait_wgt.drift-corrected.yml&#39;,
+ &#39;data/funnel-catalog/glade-cesm1-le.RCP85.ocn.pop.h.105.depth_habitat_trait_wgt.drift-corrected.yml&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files_w_missing_assets</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-miniconda3-metabolic-py"
+        },
+        kernelOptions: {
+            kernelName: "conda-env-miniconda3-metabolic-py",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-miniconda3-metabolic-py'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Matthew C. Long, Curtis Deutsch, Precious Mongwe<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
