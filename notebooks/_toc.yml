@@ -9,6 +9,7 @@ parts:
   - file: trait-space-description
   - file: trait-space-joint-pdf
   - file: trait-space-obs-habitat-vol
+  - file: trait-space-ATmax
 - caption: Earth System Model Data
   chapters:
   - file: data-assets-preprocessing

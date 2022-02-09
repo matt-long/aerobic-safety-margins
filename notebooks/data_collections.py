@@ -15,7 +15,7 @@ cache_dir = f'/glade/scratch/{USER}/ocean-metabolism/funnel-cache'
 
 use_only_ocean_bgc_member_ids = True
 ocean_bgc_member_ids = [
-    1, 2, 9, 10, 
+    2, 9, 10, # 1 has an initial time value that screws up merges
     11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 
     31, 32, 34, 35, # bad data on 33?

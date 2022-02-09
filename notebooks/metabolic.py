@@ -16,7 +16,7 @@ import constants
 Tref = 15. # °C
 Tref_K = Tref + constants.T0_Kelvin
 
-dEodT_bar = -0.0226
+dEodT_bar = 0.022 # eV/°C
 
 def open_traits_df(pressure_kPa=True):
     """Open the MI traits dataset from Deutsh et al. (2020); return a pandas.DataFrame
@@ -83,13 +83,14 @@ def compute_ATmax(pO2, Ac, Eo, dEodT=0.):
 
     Parameters
     ----------
-    Po2 : float
-        Ambient O2 pressure (atm)
+    pO2 : float
+        Ambient O2 pressure (atm or kPa)
 
     Ac : float
-        Hypoxia tolerance at Tref (1/atm) - can be either at rest (Ao) or at
-        an active state.  For active thermal tolerance, argument should
-        be Ac = Ao / Phi_crit
+        Hypoxia tolerance at Tref (1/atm) or (1/kPa) 
+        Can be either at rest (Ao) or at an active state.  
+        For active thermal tolerance, argument should be 
+           Ac = Ao / Phi_crit
 
     Eo : float
         Temperature sensitivity of hypoxia tolerance (eV)
@@ -97,13 +98,12 @@ def compute_ATmax(pO2, Ac, Eo, dEodT=0.):
     dEdT: float
         Rate of change of Eo with temperature
     
-
     Note: Ac*Po2 must be unitless, but the units of either one are arbitrary
 
     Returns
     -------
-    Tmax : float
-        The 
+    ATmax : float
+        The maximum temperature for sustained respiration at PO2.        
     """
     
     def Phi_opt(T):
@@ -113,7 +113,7 @@ def compute_ATmax(pO2, Ac, Eo, dEodT=0.):
     # - evaluate function over large temperature range
     # - find the zero crossings
     # - pick the highest 
-    trange = np.arange(-2., 201., 1.)
+    trange = np.arange(-200., 201., 1.)
     fvalue = Phi_opt(trange)
     fvalue[fvalue==0.] = np.nan
     sign = fvalue / np.abs(fvalue)

@@ -1,0 +1,94 @@
+{
+    "metadata": {
+        ".zattrs": {},
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "ATmax/.zarray": {
+            "chunks": [
+                8,
+                7
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8,
+                7
+            ],
+            "zarr_format": 2
+        },
+        "ATmax/.zattrs": {
+            "N_traits": 56,
+            "_ARRAY_DIMENSIONS": [
+                "Ac",
+                "Eo"
+            ],
+            "long_name": "AT$_{max}$",
+            "units": "\u00b0C"
+        },
+        "Ac/.zarray": {
+            "chunks": [
+                8
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8
+            ],
+            "zarr_format": 2
+        },
+        "Ac/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ac"
+            ],
+            "long_name": "Hypoxic tolerance (normalized by critical MI)",
+            "units": "1/kPa"
+        },
+        "Eo/.zarray": {
+            "chunks": [
+                7
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                7
+            ],
+            "zarr_format": 2
+        },
+        "Eo/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Eo"
+            ],
+            "long_name": "Temperature sensitivity of MI",
+            "units": "eV"
+        }
+    },
+    "zarr_consolidated_format": 1
+}
