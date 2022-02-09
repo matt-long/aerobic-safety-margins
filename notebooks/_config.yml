@@ -15,7 +15,8 @@ copyright: "2022"
 execute:
   execute_notebooks: off
   only_build_toc_files: true
-  exclude_patterns: []
+  exclude_patterns:
+  - _maintain-funnel-catalog.ipynb
 
 # Define the name of the latex output file for PDF builds
 latex:
