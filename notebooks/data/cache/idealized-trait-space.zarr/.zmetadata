@@ -4,6 +4,72 @@
         ".zgroup": {
             "zarr_format": 2
         },
+        "ATmax_active/.zarray": {
+            "chunks": [
+                8,
+                7
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8,
+                7
+            ],
+            "zarr_format": 2
+        },
+        "ATmax_active/.zattrs": {
+            "N_traits": 56,
+            "_ARRAY_DIMENSIONS": [
+                "Ac",
+                "Eo"
+            ],
+            "long_name": "AT$_{max}$(active)",
+            "metabolic_baseline": "active",
+            "note": "computed using dEodT = 0.022",
+            "units": "\u00b0C"
+        },
+        "ATmax_resting/.zarray": {
+            "chunks": [
+                8,
+                7
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8,
+                7
+            ],
+            "zarr_format": 2
+        },
+        "ATmax_resting/.zattrs": {
+            "N_traits": 56,
+            "_ARRAY_DIMENSIONS": [
+                "Ao",
+                "Eo"
+            ],
+            "long_name": "AT$_{max}$(resting)",
+            "metabolic_baseline": "resting",
+            "note": "computed using dEodT = 0.022",
+            "units": "\u00b0C"
+        },
         "Ac/.zarray": {
             "chunks": [
                 8
@@ -29,6 +95,33 @@
                 "Ac"
             ],
             "long_name": "Hypoxic tolerance (normalized by critical MI)",
+            "units": "1/kPa"
+        },
+        "Ao/.zarray": {
+            "chunks": [
+                8
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8
+            ],
+            "zarr_format": 2
+        },
+        "Ao/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ao"
+            ],
+            "long_name": "Hypoxic tolerance",
             "units": "1/kPa"
         },
         "Eo/.zarray": {
@@ -58,7 +151,7 @@
             "long_name": "Temperature sensitivity of MI",
             "units": "eV"
         },
-        "trait_spc_wgt/.zarray": {
+        "trait_spc_active/.zarray": {
             "chunks": [
                 8,
                 7
@@ -80,13 +173,46 @@
             ],
             "zarr_format": 2
         },
-        "trait_spc_wgt/.zattrs": {
+        "trait_spc_active/.zattrs": {
             "N_traits": 56,
             "_ARRAY_DIMENSIONS": [
                 "Ac",
                 "Eo"
             ],
-            "long_name": "Trait density",
+            "long_name": "Trait density (active)",
+            "metabolic_baseline": "active",
+            "units": "eV 1/kPa"
+        },
+        "trait_spc_resting/.zarray": {
+            "chunks": [
+                8,
+                7
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                8,
+                7
+            ],
+            "zarr_format": 2
+        },
+        "trait_spc_resting/.zattrs": {
+            "N_traits": 56,
+            "_ARRAY_DIMENSIONS": [
+                "Ao",
+                "Eo"
+            ],
+            "long_name": "Trait density (resting)",
+            "metabolic_baseline": "resting",
             "units": "eV 1/kPa"
         }
     },

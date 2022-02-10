@@ -4,6 +4,7 @@
         "Ac",
         "Eo"
     ],
-    "long_name": "Trait density",
+    "long_name": "Trait density (active)",
+    "metabolic_baseline": "active",
     "units": "eV 1/kPa"
 }

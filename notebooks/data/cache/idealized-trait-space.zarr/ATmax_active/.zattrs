@@ -1,0 +1,11 @@
+{
+    "N_traits": 56,
+    "_ARRAY_DIMENSIONS": [
+        "Ac",
+        "Eo"
+    ],
+    "long_name": "AT$_{max}$(active)",
+    "metabolic_baseline": "active",
+    "note": "computed using dEodT = 0.022",
+    "units": "\u00b0C"
+}

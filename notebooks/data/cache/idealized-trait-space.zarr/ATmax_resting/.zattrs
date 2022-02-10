@@ -1,0 +1,11 @@
+{
+    "N_traits": 56,
+    "_ARRAY_DIMENSIONS": [
+        "Ao",
+        "Eo"
+    ],
+    "long_name": "AT$_{max}$(resting)",
+    "metabolic_baseline": "resting",
+    "note": "computed using dEodT = 0.022",
+    "units": "\u00b0C"
+}
