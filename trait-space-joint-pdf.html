@@ -322,14 +322,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">import</span> <span class="nn">constants</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">metabolic</span> <span class="k">as</span> <span class="nn">mi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 </pre></div>
 </div>
 </div>
@@ -503,7 +502,7 @@
 <span class="n">Ac_coord_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">log10_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">log10_values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">Ac_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">Ac_coord_data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Ac&#39;</span><span class="p">)</span>
 <span class="n">Ac_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Ac_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
+<span class="n">Ac_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">Ac_coord</span>
 </pre></div>
 </div>
@@ -874,7 +873,7 @@ Attributes:
 <span class="n">Ao_coord_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">log10_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">log10_values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">Ao_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">Ao_coord_data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Ao&#39;</span><span class="p">)</span>
 <span class="n">Ao_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Ao_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
+<span class="n">Ao_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">Ao_coord</span>
 </pre></div>
 </div>
@@ -1241,9 +1240,9 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Eo_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Eo_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">))</span>
 <span class="n">Eo_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Eo_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">);</span>
+<span class="n">Eo_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <span class="n">Eo_coord</span>
 </pre></div>
 </div>
@@ -1611,8 +1610,8 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ac_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">,</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ac&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">,</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ac&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -1624,8 +1623,8 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ao_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ao&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ao&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -1637,8 +1636,8 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Eo_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Eo&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Eo&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
 </pre></div>
 </div>
@@ -1652,11 +1651,10 @@ Attributes:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
 <span class="c1"># active metabolism</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ac&#39;</span><span class="p">:</span> <span class="n">Ac_coord</span><span class="p">})</span> <span class="o">*</span>
-    <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
-<span class="p">)</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>                 
+<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ac&#39;</span><span class="p">:</span> <span class="n">Ac_coord</span><span class="p">}</span>
+<span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
+<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
 
 <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (active)&#39;</span>
@@ -1666,11 +1664,10 @@ Attributes:
 
 
 <span class="c1"># resting metabolism</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ao&#39;</span><span class="p">:</span> <span class="n">Ao_coord</span><span class="p">})</span> <span class="o">*</span>
-    <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
-<span class="p">)</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>                 
+<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ao&#39;</span><span class="p">:</span> <span class="n">Ao_coord</span><span class="p">}</span>
+<span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
+<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
 
 <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (resting)&#39;</span>
@@ -2116,18 +2113,18 @@ Data variables:
 
 <span class="n">PO2_atm</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">XiO2</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">kPa_per_atm</span>
 
-<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">40.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">Ac</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]):</span>
-    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">Eo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">Eo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]):</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
         <span class="n">ATmax_ij</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">compute_ATmax</span><span class="p">(</span><span class="n">PO2_atm</span><span class="p">,</span> <span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">mi</span><span class="o">.</span><span class="n">pO2_at_Phi_one</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ATmax_ij</span><span class="p">,</span> <span class="n">PO2_atm</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">PO2_atm</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eo=</span><span class="si">{</span><span class="n">Eo</span><span class="si">}</span><span class="s1">, Ac=</span><span class="si">{</span><span class="n">Ac</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>        
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2142,25 +2139,22 @@ Data variables:
 
 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">,</span> <span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]:</span>
     <span class="n">trait_space</span> <span class="o">=</span> <span class="n">dso</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
-    <span class="n">metabolic_baseline</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span> 
+    <span class="n">metabolic_baseline</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span>
+    <span class="n">hypoxic_tol</span><span class="p">,</span> <span class="n">temp_sens</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">dims</span>
 
-    <span class="n">ATmax</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">trait_space</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+    <span class="n">ATmax</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">trait_space</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
     <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ATmax_</span><span class="si">{</span><span class="n">metabolic_baseline</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AT$_</span><span class="si">{max}</span><span class="s1">$&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">metabolic_baseline</span><span class="si">}</span><span class="s1">)&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;°C&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;computed using dEodT = </span><span class="si">{</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="si">}</span><span class="s1">&#39;</span>
 
-    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">41.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
-    
-    <span class="n">hypoxic_tol</span><span class="p">,</span> <span class="n">temp_sens</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">dims</span>
-    
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">A_parm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trait_space</span><span class="p">[</span><span class="n">hypoxic_tol</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">Eo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trait_space</span><span class="p">[</span><span class="n">temp_sens</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
             <span class="n">ATmax_ij</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">compute_ATmax</span><span class="p">(</span><span class="n">PO2_atm</span><span class="p">,</span> <span class="n">Ac</span><span class="o">=</span><span class="n">A_parm</span><span class="p">,</span> <span class="n">Eo</span><span class="o">=</span><span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="p">)</span>
             <span class="n">ATmax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax_ij</span>
 
     <span class="n">dso</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax</span>
-    
+
 <span class="n">dso</span>
 </pre></div>
 </div>
@@ -2626,17 +2620,17 @@ Data variables:
 <span class="k">if</span> <span class="n">clobber</span><span class="p">:</span>
     <span class="n">cache_file</span> <span class="o">=</span> <span class="s1">&#39;data/cache/idealized-trait-space.zarr&#39;</span>
     <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cache_file</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">cache_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> 
-    
+    <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">cache_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="n">curator</span><span class="o">.</span><span class="n">add_source</span><span class="p">(</span>
-        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;trait-space&#39;</span><span class="p">,</span> 
+        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;trait-space&#39;</span><span class="p">,</span>
         <span class="n">urlpath</span><span class="o">=</span><span class="n">cache_file</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Idealized trait space generated by </span><span class="si">{</span><span class="n">this_notebook</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
         <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;zarr&#39;</span><span class="p">,</span>
         <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>    
-    
-<span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>  
+    <span class="p">)</span>
+
+<span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>
 <span class="n">ds_cache</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;trait-space&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 <span class="n">xr</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_identical</span><span class="p">(</span><span class="n">dso</span><span class="p">,</span> <span class="n">ds_cache</span><span class="p">)</span>
 
@@ -2740,7 +2734,7 @@ variables:
     <footer class="footer">
   <p>
     
-      By Matthew C. Long, Curtis Deutsch, Precious Mongwe<br/>
+      By Matthew C. Long, Curtis Deutsch, Precious Mongwe, Takamitsu Ito<br/>
     
         &copy; Copyright 2022.<br/>
   </p>
