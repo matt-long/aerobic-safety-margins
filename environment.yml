@@ -1,56 +1,57 @@
 name: metabolic
 channels:
-- conda-forge
-- defaults
+  - conda-forge
+  - defaults
 dependencies:
-- bokeh
-- bottleneck
-- cartopy
-- cf_units
-- cftime
-- cmocean
-- conda-lock
-- dask
-- distributed
-- dask-jobqueue
-- dask-mpi
-- eofs
-- esmpy
-- holoviews
-- intake
-- intake-esm
-- intake-xarray
-- ipykernel
-- jupyter-book
-- jupyter_client==6.1.12
-- jupyter_contrib_nbextensions
-- jupyterlab
-- jupyter-server-proxy
-- matplotlib
-- metpy
-- nc-time-axis
-- ncar-jobqueue
-- netcdf4
-- numba
-- numpy
-- pandas #=1.2.5 # pinned to avoid indexing error: ds.sel(time=slice('1920', '2100'))
-- pint
-- pip
-- pop-tools
-- pytest
-- python
-- scipy
-- seaborn
-- seawater
-- statsmodels
-- toolz
-- tqdm
-- watermark
-- xarray
-- xesmf
-- xgcm
-- xhistogram
-- xrft
-- zarr
-- pip:
-  - sphinx-click
+  - bokeh
+  - bottleneck
+  - cartopy
+  - cf_units
+  - cftime
+  - cmocean
+  - conda-lock
+  - dask
+  - distributed
+  - dask-jobqueue
+  - dask-mpi
+  - eofs
+  - esmpy
+  - holoviews
+  - intake
+  - intake-esm
+  - intake-xarray
+  - ipykernel
+  - jupyter-book
+  - jupyter_client==6.1.12
+  - jupyter_contrib_nbextensions
+  - jupyterlab
+  - jupyter-server-proxy
+  - matplotlib
+  - metpy
+  - nc-time-axis
+  - ncar-jobqueue
+  - netcdf4
+  - numba
+  - numpy
+  - pandas #=1.2.5 # pinned to avoid indexing error: ds.sel(time=slice('1920', '2100'))
+  - pint
+  - pip
+  - pop-tools
+  - pre-commit
+  - pytest
+  - python
+  - scipy
+  - seaborn
+  - seawater
+  - statsmodels
+  - toolz
+  - tqdm
+  - watermark
+  - xarray
+  - xesmf
+  - xgcm
+  - xhistogram
+  - xrft
+  - zarr
+  - pip:
+      - sphinx-click

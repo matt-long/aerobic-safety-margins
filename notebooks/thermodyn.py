@@ -7,7 +7,7 @@ import xarray as xr
 V = 32e-6  # partial molar volume of O2 (m3/mol)
 
 
-def compute_pO2(O2, T, S, depth, isPOP=False, O2_in_gravimetric_units=False):
+def compute_pO2(O2, T, S, depth, isPOP=False, gravimetric_units=False):
     """
     Compute the partial pressure of O2 in seawater including
     correction for the effect of hydrostatic pressure of the
@@ -29,6 +29,13 @@ def compute_pO2(O2, T, S, depth, isPOP=False, O2_in_gravimetric_units=False):
 
     depth : float
        Depth (m)
+
+    isPOP : boolean, optional
+      If True, assume constant reference density and use function from
+      `pop_tools` to compute pressure from depth.
+
+    gravimetric_units : boolean, optional
+      Set to "True" if O2 is passed in with units of µmol/kg.
 
     Returns
     -------
@@ -55,8 +62,10 @@ def compute_pO2(O2, T, S, depth, isPOP=False, O2_in_gravimetric_units=False):
     dP = P * db2Pa
     pCor = np.exp(V * dP / (constants.R_gasconst * T_K))
 
-    # implicit division by Patm = 1 atm; solubility [mmol/m3/atm]
-    Kh = 1e-3 * O2sol(S, T) * rho / constants.XiO2
+    # implicit division by Patm = 1 atm
+    Kh = O2sol(S, T) / constants.XiO2  # solubility [µmol/kg/atm]
+    if not gravimetric_units:
+        Kh *= 1e-3 * rho  # solubility [mmol/m3/atm]
 
     pO2 = (xr.where(O2 < 0.0, 0.0, O2) / Kh) * pCor * constants.kPa_per_atm
     if isinstance(pO2, xr.DataArray):
@@ -69,14 +78,29 @@ def compute_pO2(O2, T, S, depth, isPOP=False, O2_in_gravimetric_units=False):
 def O2sol(S, T):
     """
     Solubility of O2 in sea water
-    INPUT:
-    S = salinity    [PSS]
-    T = temperature [degree C]
-    conc = solubility of O2 [mmol/m^3]
-    REFERENCE:
+
+    Reference:
     Hernan E. Garcia and Louis I. Gordon, 1992.
-    "Oxygen solubility in seawater: Better fitting equations"
-    Limnology and Oceanography, 37, pp. 1307-1312.
+      "Oxygen solubility in seawater: Better fitting equations"
+      Limnology and Oceanography, 37, pp. 1307-1312.
+      https://doi.org/10.4319/lo.1992.37.6.1307
+
+    Coefficients are in Table 1, using the fit to the Benson & Krause (1984) data.
+    Check value in Table 1: 274.610 at S = 35.0 and T = 10.0
+
+    Parameters
+    ----------
+
+    S : float, array_like
+      Salinity [PSS]
+    T : float, array_like
+      Temperature [degree C]
+
+    Returns
+    -------
+    conc : float, array_like
+      Solubility of O2 [µmol/kg]
+
     """
 
     # constants from Table 4 of Hamme and Emerson 2004
