@@ -53,7 +53,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Habitat volume in trait space" href="trait-space-obs-habitat-vol.html" />
+    <link rel="next" title="Defining the Aerobic Safety Margin" href="trait-space-obs-habitat-vol.html" />
     <link rel="prev" title="Metabolic Index trait space" href="trait-space-description.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -104,7 +104,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="trait-space-obs-habitat-vol.html">
-   Habitat volume in trait space
+   Defining the Aerobic Safety Margin
   </a>
  </li>
 </ul>
@@ -271,6 +271,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-a-higher-resolution-version-of-trait-space">
+   Generate a higher resolution version of trait space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-root-finding-technique-to-solve-to-atmax">
    Use root finding technique to solve to ATmax
   </a>
@@ -296,6 +301,11 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generate-a-higher-resolution-version-of-trait-space">
+   Generate a higher resolution version of trait space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#use-root-finding-technique-to-solve-to-atmax">
    Use root finding technique to solve to ATmax
   </a>
@@ -315,6 +325,12 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
 </pre></div>
 </div>
 </div>
@@ -498,12 +514,11 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log10_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">Ac_coord_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">log10_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">log10_values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">Ac_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">Ac_coord_data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Ac&#39;</span><span class="p">)</span>
-<span class="n">Ac_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Ac_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">Ac_coord</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ac_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">,</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ac&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
+<span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span>
 </pre></div>
 </div>
 </div>
@@ -864,17 +879,16 @@ array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])
 Dimensions without coordinates: Ac
 Attributes:
     long_name:  Hypoxic tolerance (normalized by critical MI)
-    units:      1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Ac'</div><ul class='xr-dim-list'><li><span>Ac</span>: 8</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-40637379-8042-4427-b35d-0a175587599e' class='xr-array-in' type='checkbox' checked><label for='section-40637379-8042-4427-b35d-0a175587599e' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0258 0.0399 0.0619 0.0959 0.1486 0.2303 0.3568 0.5528</span></div><div class='xr-array-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></div></li><li class='xr-section-item'><input id='section-46a14145-67bc-4b7e-abc3-b8e9fdb0aba5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-46a14145-67bc-4b7e-abc3-b8e9fdb0aba5' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-939fd1d8-af29-407f-abee-0cc861810e5f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-939fd1d8-af29-407f-abee-0cc861810e5f' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_4_1.png" src="_images/trait-space-joint-pdf_4_1.png" />
+    units:      1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Ac'</div><ul class='xr-dim-list'><li><span>Ac</span>: 8</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ac42944e-e515-4196-8556-cd795782eac9' class='xr-array-in' type='checkbox' checked><label for='section-ac42944e-e515-4196-8556-cd795782eac9' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0258 0.0399 0.0619 0.0959 0.1486 0.2303 0.3568 0.5528</span></div><div class='xr-array-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></div></li><li class='xr-section-item'><input id='section-cd180331-e58a-4830-9308-acc96099e5a1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cd180331-e58a-4830-9308-acc96099e5a1' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-d270b225-fb30-4084-9e5f-7614c3adf922' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d270b225-fb30-4084-9e5f-7614c3adf922' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_4_1.png" src="_images/trait-space-joint-pdf_4_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log10_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">Ao_coord_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">log10_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">log10_values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">8</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">Ao_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">Ao_coord_data</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Ao&#39;</span><span class="p">)</span>
-<span class="n">Ao_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Ao_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">Ao_coord</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ao_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ao&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
+<span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span>
 </pre></div>
 </div>
 </div>
@@ -1235,15 +1249,16 @@ array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])
 Dimensions without coordinates: Ao
 Attributes:
     long_name:  Hypoxic tolerance
-    units:      1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Ao'</div><ul class='xr-dim-list'><li><span>Ao</span>: 8</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ea479c3c-607a-4c69-96f5-183b948c3c0f' class='xr-array-in' type='checkbox' checked><label for='section-ea479c3c-607a-4c69-96f5-183b948c3c0f' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0613 0.0962 0.1508 0.2364 0.3707 0.5813 0.9114 1.429</span></div><div class='xr-array-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></div></li><li class='xr-section-item'><input id='section-ae2287ba-8997-46a8-b53e-3882eecd7baf' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ae2287ba-8997-46a8-b53e-3882eecd7baf' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-8df6eec3-0b23-4bbf-bfae-b498336c31b8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8df6eec3-0b23-4bbf-bfae-b498336c31b8' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_5_1.png" src="_images/trait-space-joint-pdf_5_1.png" />
+    units:      1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Ao'</div><ul class='xr-dim-list'><li><span>Ao</span>: 8</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7608108e-28fc-4119-9873-eaf875daea07' class='xr-array-in' type='checkbox' checked><label for='section-7608108e-28fc-4119-9873-eaf875daea07' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0613 0.0962 0.1508 0.2364 0.3707 0.5813 0.9114 1.429</span></div><div class='xr-array-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></div></li><li class='xr-section-item'><input id='section-6c2aefe2-eac5-4d69-a18f-55ede7f740ac' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-6c2aefe2-eac5-4d69-a18f-55ede7f740ac' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-478f4e56-68ee-40a6-a267-91635aa1f7f8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-478f4e56-68ee-40a6-a267-91635aa1f7f8' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_5_1.png" src="_images/trait-space-joint-pdf_5_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Eo_coord</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">))</span>
-<span class="n">Eo_coord</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span>
-<span class="n">Eo_coord</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">Eo_coord</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Eo_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Eo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
+<span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span>
 </pre></div>
 </div>
 </div>
@@ -1604,77 +1619,48 @@ array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])
 Dimensions without coordinates: Eo
 Attributes:
     long_name:  Temperature sensitivity of MI
-    units:      eV</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Eo'</div><ul class='xr-dim-list'><li><span>Eo</span>: 7</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-481e3b40-a037-474f-8466-aabd1a76c917' class='xr-array-in' type='checkbox' checked><label for='section-481e3b40-a037-474f-8466-aabd1a76c917' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</span></div><div class='xr-array-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></div></li><li class='xr-section-item'><input id='section-66086298-6af3-4b2b-b42c-3bad96cba22a' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-66086298-6af3-4b2b-b42c-3bad96cba22a' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-ebf3be2c-d136-4929-9347-69e7850ab919' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ebf3be2c-d136-4929-9347-69e7850ab919' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_6_1.png" src="_images/trait-space-joint-pdf_6_1.png" />
+    units:      eV</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'Eo'</div><ul class='xr-dim-list'><li><span>Eo</span>: 7</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-8611b450-f4ad-47e2-a505-31186f0c02c9' class='xr-array-in' type='checkbox' checked><label for='section-8611b450-f4ad-47e2-a505-31186f0c02c9' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</span></div><div class='xr-array-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></div></li><li class='xr-section-item'><input id='section-51c7c45d-bd2f-49d5-946a-13d960e4382f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-51c7c45d-bd2f-49d5-946a-13d960e4382f' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-3acab8c9-e3e0-4556-a0bf-53896aff3ff4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3acab8c9-e3e0-4556-a0bf-53896aff3ff4' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div></li></ul></div></div></div><img alt="_images/trait-space-joint-pdf_6_1.png" src="_images/trait-space-joint-pdf_6_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ac_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">,</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ac&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/trait-space-joint-pdf_7_0.png" src="_images/trait-space-joint-pdf_7_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Ao_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Ao&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ao</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/trait-space-joint-pdf_8_0.png" src="_images/trait-space-joint-pdf_8_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj_Eo_pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="s1">&#39;.-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Trait PDF: Eo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span><span class="p">));</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/trait-space-joint-pdf_9_0.png" src="_images/trait-space-joint-pdf_9_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gen_trait_space</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="p">):</span>
+    <span class="n">dso</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
 
-<span class="c1"># active metabolism</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
-    <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ac_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ac&#39;</span><span class="p">:</span> <span class="n">Ac_coord</span><span class="p">}</span>
-<span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1"># active metabolism</span>
+    <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ac&#39;</span><span class="p">:</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">}</span>
+    <span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
 
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (active)&#39;</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">Eo_coord</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">Ac_coord</span><span class="o">.</span><span class="n">units</span><span class="p">])</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;N_traits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (active)&#39;</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">obj_Ac_pdf</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">units</span><span class="p">])</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;N_traits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="c1"># resting metabolism</span>
+    <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ao&#39;</span><span class="p">:</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">}</span>
+    <span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+        <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (resting)&#39;</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">coord</span><span class="o">.</span><span class="n">units</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;resting&#39;</span>
+    <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;N_traits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="k">return</span> <span class="n">dso</span>
 
 
-<span class="c1"># resting metabolism</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
-    <span class="n">obj_Ao_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Ao_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Ao&#39;</span><span class="p">:</span> <span class="n">Ao_coord</span><span class="p">}</span>
-<span class="p">)</span> <span class="o">*</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">obj_Eo_pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">Eo_coord</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">),</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Eo&#39;</span><span class="p">:</span> <span class="n">Eo_coord</span><span class="p">})</span>
-<span class="n">dso</span><span class="p">[</span><span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span> <span class="o">/</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
-
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Trait density (resting)&#39;</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">Eo_coord</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="n">Ao_coord</span><span class="o">.</span><span class="n">units</span><span class="p">])</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;resting&#39;</span>
-<span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;N_traits&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dso</span><span class="o">.</span><span class="n">trait_spc_resting</span><span class="o">.</span><span class="n">size</span>
-
+<span class="n">dso</span> <span class="o">=</span> <span class="n">gen_trait_space</span><span class="p">(</span><span class="n">obj_Ac_pdf</span><span class="p">,</span> <span class="n">obj_Ao_pdf</span><span class="p">,</span> <span class="n">obj_Eo_pdf</span><span class="p">)</span>
 <span class="n">dso</span>
 </pre></div>
 </div>
@@ -2039,7 +2025,7 @@ Coordinates:
   * Ao                 (Ao) float64 0.0613 0.0962 0.1508 ... 0.5813 0.9114 1.429
 Data variables:
     trait_spc_active   (Ac, Eo) float64 0.001347 0.004475 ... 1.041e-05
-    trait_spc_resting  (Ao, Eo) float64 0.002386 0.007927 ... 0.000106 2.896e-05</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-f5a3ca3e-258c-4ddb-a6c2-76aa15c89e14' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f5a3ca3e-258c-4ddb-a6c2-76aa15c89e14' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 8</li><li><span class='xr-has-index'>Eo</span>: 7</li><li><span class='xr-has-index'>Ao</span>: 8</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-dda60bb4-0e30-410b-ab0b-a01cbd937095' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dda60bb4-0e30-410b-ab0b-a01cbd937095' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0258 0.0399 ... 0.3568 0.5528</div><input id='attrs-9d424818-ef8d-4e26-b420-457810fed67f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9d424818-ef8d-4e26-b420-457810fed67f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-934fcdb4-9c70-4f68-bc6e-5f03bcf51946' class='xr-var-data-in' type='checkbox'><label for='data-934fcdb4-9c70-4f68-bc6e-5f03bcf51946' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</div><input id='attrs-9da2a20c-e100-4d67-8609-03b235e9e4e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9da2a20c-e100-4d67-8609-03b235e9e4e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03843b4c-d7d2-4287-bb56-ba2d764e5594' class='xr-var-data-in' type='checkbox'><label for='data-03843b4c-d7d2-4287-bb56-ba2d764e5594' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ao</span></div><div class='xr-var-dims'>(Ao)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0613 0.0962 ... 0.9114 1.429</div><input id='attrs-c27fb84b-4d59-4e56-adf2-61709502aba0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c27fb84b-4d59-4e56-adf2-61709502aba0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-45d5ffa1-4f0f-42d0-a377-147ad0577007' class='xr-var-data-in' type='checkbox'><label for='data-45d5ffa1-4f0f-42d0-a377-147ad0577007' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e68cc242-64f3-4b62-a400-914cd57b5da7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e68cc242-64f3-4b62-a400-914cd57b5da7' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.001347 0.004475 ... 1.041e-05</div><input id='attrs-9b3d6c52-5b02-42d3-b2ef-35ea2619ecf7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9b3d6c52-5b02-42d3-b2ef-35ea2619ecf7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1af53142-66fa-47c8-8f72-2a8d3021e72e' class='xr-var-data-in' type='checkbox'><label for='data-1af53142-66fa-47c8-8f72-2a8d3021e72e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
+    trait_spc_resting  (Ao, Eo) float64 0.002386 0.007927 ... 0.000106 2.896e-05</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-1484115d-862c-47a2-ad51-3496a90550b8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-1484115d-862c-47a2-ad51-3496a90550b8' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 8</li><li><span class='xr-has-index'>Eo</span>: 7</li><li><span class='xr-has-index'>Ao</span>: 8</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-5fb7e0f5-cadd-4489-b138-6d097b8beb1d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5fb7e0f5-cadd-4489-b138-6d097b8beb1d' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0258 0.0399 ... 0.3568 0.5528</div><input id='attrs-e44f02df-f0ed-420f-b736-2fe9c41e54e2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e44f02df-f0ed-420f-b736-2fe9c41e54e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-91fe37b6-923c-427c-b01f-f3bc2c1d1e9d' class='xr-var-data-in' type='checkbox'><label for='data-91fe37b6-923c-427c-b01f-f3bc2c1d1e9d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</div><input id='attrs-e9e48a85-70fe-4a80-b855-dc1efec4249e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e9e48a85-70fe-4a80-b855-dc1efec4249e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a7f28cf7-7bb1-470c-92c0-476f462db933' class='xr-var-data-in' type='checkbox'><label for='data-a7f28cf7-7bb1-470c-92c0-476f462db933' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ao</span></div><div class='xr-var-dims'>(Ao)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0613 0.0962 ... 0.9114 1.429</div><input id='attrs-d22ee62b-2a18-4d78-a3a3-86f2681ba4e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d22ee62b-2a18-4d78-a3a3-86f2681ba4e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-22d60b9b-e671-45e2-a2a5-f36e64b105bf' class='xr-var-data-in' type='checkbox'><label for='data-22d60b9b-e671-45e2-a2a5-f36e64b105bf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-dfabe6d5-646c-4e16-99a7-143a090b96fd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dfabe6d5-646c-4e16-99a7-143a090b96fd' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.001347 0.004475 ... 1.041e-05</div><input id='attrs-783eac7d-7a37-4509-9252-817172cf138c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-783eac7d-7a37-4509-9252-817172cf138c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-52ab6b0f-21f3-4995-8de8-6e7eda4e5b51' class='xr-var-data-in' type='checkbox'><label for='data-52ab6b0f-21f3-4995-8de8-6e7eda4e5b51' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
         8.19298555e-03, 3.68959807e-03, 1.00813091e-03],
        [1.06140909e-02, 3.52708287e-02, 7.11130864e-02, 8.69930173e-02,
         6.45684353e-02, 2.90775046e-02, 7.94502019e-03],
@@ -2054,7 +2040,7 @@ Data variables:
        [1.11418788e-04, 3.70246781e-04, 7.46491996e-04, 9.13187634e-04,
         6.77791144e-04, 3.05233896e-04, 8.34008799e-05],
        [1.39113912e-05, 4.62278214e-05, 9.32045879e-05, 1.14017669e-04,
-        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.002386 0.007927 ... 2.896e-05</div><input id='attrs-0d1a01b6-7b72-4f86-ace0-33ef0c63448e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d1a01b6-7b72-4f86-ace0-33ef0c63448e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8611aa8a-eb07-423b-8cc0-46191fa743aa' class='xr-var-data-in' type='checkbox'><label for='data-8611aa8a-eb07-423b-8cc0-46191fa743aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (resting)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[2.38554272e-03, 7.92720445e-03, 1.59828390e-02, 1.95518920e-02,
+        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.002386 0.007927 ... 2.896e-05</div><input id='attrs-0884ca37-addb-4c37-856f-890bcb5fd535' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0884ca37-addb-4c37-856f-890bcb5fd535' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-37a609d8-d432-478e-8871-4588d45f5b78' class='xr-var-data-in' type='checkbox'><label for='data-37a609d8-d432-478e-8871-4588d45f5b78' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (resting)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[2.38554272e-03, 7.92720445e-03, 1.59828390e-02, 1.95518920e-02,
         1.45119127e-02, 6.53523980e-03, 1.78566259e-03],
        [9.38079224e-03, 3.11725535e-02, 6.28501391e-02, 7.68849099e-02,
         5.70659403e-02, 2.56988594e-02, 7.02185279e-03],
@@ -2069,7 +2055,7 @@ Data variables:
        [2.33189580e-04, 7.74893471e-04, 1.56234113e-03, 1.91122022e-03,
         1.41855638e-03, 6.38827305e-04, 1.74550599e-04],
        [3.86862337e-05, 1.28555101e-04, 2.59192945e-04, 3.17072110e-04,
-        2.35339004e-04, 1.05981676e-04, 2.89580060e-05]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-361852a9-d584-405b-b7ac-9e18a1e80c41' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-361852a9-d584-405b-b7ac-9e18a1e80c41' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+        2.35339004e-04, 1.05981676e-04, 2.89580060e-05]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2ce29848-4783-4893-8562-f1318e6f8953' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-2ce29848-4783-4893-8562-f1318e6f8953' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2078,7 +2064,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trait-space-joint-pdf_11_0.png" src="_images/trait-space-joint-pdf_11_0.png" />
+<img alt="_images/trait-space-joint-pdf_8_0.png" src="_images/trait-space-joint-pdf_8_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2088,7 +2074,485 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trait-space-joint-pdf_12_0.png" src="_images/trait-space-joint-pdf_12_0.png" />
+<img alt="_images/trait-space-joint-pdf_9_0.png" src="_images/trait-space-joint-pdf_9_0.png" />
+</div>
+</div>
+<div class="section" id="generate-a-higher-resolution-version-of-trait-space">
+<h2>Generate a higher resolution version of trait space<a class="headerlink" href="#generate-a-higher-resolution-version-of-trait-space" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso_hires</span> <span class="o">=</span> <span class="n">gen_trait_space</span><span class="p">(</span>
+    <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+    <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+    <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">dso_hires</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:            (Ac: 30, Eo: 30, Ao: 30)
+Coordinates:
+  * Ac                 (Ac) float64 0.0278 0.0308 0.034 ... 0.4269 0.4723 0.5226
+  * Eo                 (Eo) float64 -0.1718 -0.1238 -0.0759 ... 1.124 1.172 1.22
+  * Ao                 (Ao) float64 0.0635 0.0706 0.0784 ... 1.093 1.215 1.35
+Data variables:
+    trait_spc_active   (Ac, Eo) float64 0.0001804 0.0002477 ... 1.053e-07
+    trait_spc_resting  (Ao, Eo) float64 0.0002042 0.0002803 ... 2.886e-07</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e2807232-4d74-4bd3-8fdb-65dfc1e3d4bd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e2807232-4d74-4bd3-8fdb-65dfc1e3d4bd' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 30</li><li><span class='xr-has-index'>Eo</span>: 30</li><li><span class='xr-has-index'>Ao</span>: 30</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-a1ab274b-1143-4543-bdd4-44ead11e49cf' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a1ab274b-1143-4543-bdd4-44ead11e49cf' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0278 0.0308 ... 0.4723 0.5226</div><input id='attrs-20dc55d3-fce0-4071-b717-0c8195e27d52' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-20dc55d3-fce0-4071-b717-0c8195e27d52' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ddefec6d-d2dd-47ff-a691-29d7aadf80d1' class='xr-var-data-in' type='checkbox'><label for='data-ddefec6d-d2dd-47ff-a691-29d7aadf80d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0278, 0.0308, 0.034 , 0.0377, 0.0417, 0.0461, 0.051 , 0.0564, 0.0624,
+       0.0691, 0.0764, 0.0846, 0.0936, 0.1036, 0.1146, 0.1268, 0.1403, 0.1552,
+       0.1717, 0.19  , 0.2102, 0.2326, 0.2574, 0.2848, 0.3151, 0.3487, 0.3858,
+       0.4269, 0.4723, 0.5226])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.1718 -0.1238 ... 1.172 1.22</div><input id='attrs-ec0eadf4-9e81-46b5-b655-501ff69b7e1a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ec0eadf4-9e81-46b5-b655-501ff69b7e1a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eb77fbc6-c52b-4be8-a99c-a0fd4c01a686' class='xr-var-data-in' type='checkbox'><label for='data-eb77fbc6-c52b-4be8-a99c-a0fd4c01a686' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.1718, -0.1238, -0.0759, -0.0279,  0.0201,  0.0681,  0.1161,  0.1641,
+        0.2121,  0.26  ,  0.308 ,  0.356 ,  0.404 ,  0.452 ,  0.5   ,  0.548 ,
+        0.5959,  0.6439,  0.6919,  0.7399,  0.7879,  0.8359,  0.8839,  0.9318,
+        0.9798,  1.0278,  1.0758,  1.1238,  1.1718,  1.2198])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ao</span></div><div class='xr-var-dims'>(Ao)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0635 0.0706 0.0784 ... 1.215 1.35</div><input id='attrs-5bcc641a-2409-46de-81b7-bb123c8859ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5bcc641a-2409-46de-81b7-bb123c8859ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-37772b8a-60fc-4719-9cbe-2a05171cdd0c' class='xr-var-data-in' type='checkbox'><label for='data-37772b8a-60fc-4719-9cbe-2a05171cdd0c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0635, 0.0706, 0.0784, 0.0871, 0.0968, 0.1076, 0.1195, 0.1328, 0.1476,
+       0.164 , 0.1822, 0.2024, 0.2249, 0.2499, 0.2777, 0.3086, 0.3429, 0.381 ,
+       0.4234, 0.4704, 0.5227, 0.5808, 0.6454, 0.7171, 0.7968, 0.8854, 0.9838,
+       1.0931, 1.2146, 1.3496])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0abe44d0-683d-4f45-b257-56b3fd3f938a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0abe44d0-683d-4f45-b257-56b3fd3f938a' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0001804 0.0002477 ... 1.053e-07</div><input id='attrs-a2741591-6698-4bc0-acdc-283d7625f331' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2741591-6698-4bc0-acdc-283d7625f331' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dc54dbbd-3fc7-4bec-bc70-bd5fe85cd829' class='xr-var-data-in' type='checkbox'><label for='data-dc54dbbd-3fc7-4bec-bc70-bd5fe85cd829' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>900</dd></dl></div><div class='xr-var-data'><pre>array([[1.80434279e-04, 2.47704558e-04, 3.30219063e-04, 4.28001060e-04,
+        5.38999556e-04, 6.59527376e-04, 7.84112009e-04, 9.05783157e-04,
+        1.01664946e-03, 1.10854581e-03, 1.17470385e-03, 1.20949478e-03,
+        1.20998633e-03, 1.17613666e-03, 1.11080024e-03, 1.01933046e-03,
+        9.09100051e-04, 7.87623154e-04, 6.63019231e-04, 5.42293792e-04,
+        4.30966982e-04, 3.32777705e-04, 2.49669392e-04, 1.82127804e-04,
+        1.29007538e-04, 8.87881041e-05, 5.93738669e-05, 3.85777366e-05,
+        2.43544884e-05, 1.49390210e-05],
+       [3.35594569e-04, 4.60712370e-04, 6.14183317e-04, 7.96050684e-04,
+        1.00249977e-03, 1.22667271e-03, 1.45839102e-03, 1.68469046e-03,
+        1.89089368e-03, 2.06181417e-03, 2.18486330e-03, 2.24957188e-03,
+        2.25048612e-03, 2.18752820e-03, 2.06600725e-03, 1.89588014e-03,
+        1.69085964e-03, 1.46492149e-03, 1.23316730e-03, 1.00862681e-03,
+        8.01567083e-04, 6.18942204e-04, 4.64366817e-04, 3.38744402e-04,
+        2.39944591e-04, 1.65139383e-04, 1.10431052e-04, 7.17517701e-05,
+        4.52975681e-05, 2.77854869e-05],
+       [4.98560545e-04, 6.84436018e-04, 9.12433029e-04, 1.18261587e-03,
+        1.48931741e-03, 1.82234956e-03, 2.16659114e-03, 2.50278244e-03,
+        2.80911871e-03, 3.06303883e-03, 3.24584107e-03, 3.34197239e-03,
+        3.34333059e-03, 3.24980007e-03, 3.06926808e-03, 2.81652662e-03,
+...
+        1.71222005e-05, 1.48342765e-05, 1.24874574e-05, 1.02136866e-05,
+        8.11693174e-06, 6.26761220e-06, 4.70233103e-06, 3.43023716e-06,
+        2.42975779e-06, 1.67225567e-06, 1.11826113e-06, 7.26582008e-07,
+        4.58698063e-07, 2.81364973e-07],
+       [2.09812686e-06, 2.88035948e-06, 3.83985508e-06, 4.97688424e-06,
+        6.26759754e-06, 7.66911980e-06, 9.11781549e-06, 1.05326326e-05,
+        1.18218087e-05, 1.28903984e-05, 1.36596977e-05, 1.40642538e-05,
+        1.40699696e-05, 1.36763586e-05, 1.29166134e-05, 1.18529840e-05,
+        1.05712021e-05, 9.15864381e-06, 7.70972379e-06, 6.30590360e-06,
+        5.01137259e-06, 3.86960750e-06, 2.90320697e-06, 2.11781952e-06,
+        1.50012615e-06, 1.03244631e-06, 6.90411519e-07, 4.48589845e-07,
+        2.83198994e-07, 1.73714004e-07],
+       [1.27157390e-06, 1.74564751e-06, 2.32715171e-06, 3.01625045e-06,
+        3.79848978e-06, 4.64788510e-06, 5.52586996e-06, 6.38332264e-06,
+        7.16463037e-06, 7.81225122e-06, 8.27848658e-06, 8.52366859e-06,
+        8.52713266e-06, 8.28858397e-06, 7.82813886e-06, 7.18352418e-06,
+        6.40669778e-06, 5.55061405e-06, 4.67249323e-06, 3.82170525e-06,
+        3.03715219e-06, 2.34518322e-06, 1.75949428e-06, 1.28350867e-06,
+        9.09154398e-07, 6.25716112e-07, 4.18425255e-07, 2.71868756e-07,
+        1.71633306e-07, 1.05279713e-07]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0002042 0.0002803 ... 2.886e-07</div><input id='attrs-431d5e4d-568b-4d90-b177-47e7b4020ecc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-431d5e4d-568b-4d90-b177-47e7b4020ecc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-216c8e38-d713-4864-a606-43238d08be45' class='xr-var-data-in' type='checkbox'><label for='data-216c8e38-d713-4864-a606-43238d08be45' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (resting)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>900</dd></dl></div><div class='xr-var-data'><pre>array([[2.04165039e-04, 2.80282721e-04, 3.73649553e-04, 4.84291863e-04,
+        6.09888907e-04, 7.46268576e-04, 8.87238609e-04, 1.02491198e-03,
+        1.15035944e-03, 1.25434202e-03, 1.32920119e-03, 1.36856783e-03,
+        1.36912402e-03, 1.33082243e-03, 1.25689296e-03, 1.15339305e-03,
+        1.02866511e-03, 8.91211541e-04, 7.50219680e-04, 6.13616403e-04,
+        4.87647864e-04, 3.76544709e-04, 2.82505970e-04, 2.06081297e-04,
+        1.45974641e-04, 1.00465537e-04, 6.71827322e-05, 4.36514899e-05,
+        2.75575966e-05, 1.69038046e-05],
+       [3.24375039e-04, 4.45309927e-04, 5.93650063e-04, 7.69437278e-04,
+        9.68984401e-04, 1.18566283e-03, 1.40963438e-03, 1.62836823e-03,
+        1.82767770e-03, 1.99288401e-03, 2.11181938e-03, 2.17436465e-03,
+        2.17524832e-03, 2.11439520e-03, 1.99693691e-03, 1.83249746e-03,
+        1.63433116e-03, 1.41594653e-03, 1.19194030e-03, 9.74906602e-04,
+        7.74769253e-04, 5.98249853e-04, 4.48842199e-04, 3.27419567e-04,
+        2.31922811e-04, 1.59618476e-04, 1.06739143e-04, 6.93529793e-05,
+        4.37831889e-05, 2.68565681e-05],
+       [4.49241761e-04, 6.16729994e-04, 8.22173003e-04, 1.06562872e-03,
+        1.34199062e-03, 1.64207844e-03, 1.95226684e-03, 2.25520130e-03,
+        2.53123406e-03, 2.76003581e-03, 2.92475482e-03, 3.01137661e-03,
+        3.01260045e-03, 2.92832219e-03, 2.76564885e-03, 2.53790917e-03,
+...
+        4.15973417e-05, 3.60389700e-05, 3.03375162e-05, 2.48135287e-05,
+        1.97195906e-05, 1.52267816e-05, 1.14240264e-05, 8.33355196e-06,
+        5.90294836e-06, 4.06264316e-06, 2.71674721e-06, 1.76518667e-06,
+        1.11437897e-06, 6.83559042e-07],
+       [5.41113052e-06, 7.42853132e-06, 9.90309855e-06, 1.28355300e-05,
+        1.61643173e-05, 1.97788842e-05, 2.35151128e-05, 2.71639675e-05,
+        3.04887904e-05, 3.32447144e-05, 3.52287598e-05, 3.62721218e-05,
+        3.62868630e-05, 3.52717288e-05, 3.33123236e-05, 3.05691923e-05,
+        2.72634394e-05, 2.36204102e-05, 1.98836031e-05, 1.62631098e-05,
+        1.29244765e-05, 9.97983091e-06, 7.48745567e-06, 5.46191846e-06,
+        3.86886922e-06, 2.66270923e-06, 1.78059150e-06, 1.15692633e-06,
+        7.30378486e-07, 4.48013496e-07],
+       [3.48632338e-06, 4.78610936e-06, 6.38044191e-06, 8.26977063e-06,
+        1.04144665e-05, 1.27432865e-05, 1.51504916e-05, 1.75014028e-05,
+        1.96435444e-05, 2.14191516e-05, 2.26974471e-05, 2.33696721e-05,
+        2.33791697e-05, 2.27251315e-05, 2.14627113e-05, 1.96953463e-05,
+        1.75654913e-05, 1.52183334e-05, 1.28107556e-05, 1.04781172e-05,
+        8.32707772e-06, 6.42987961e-06, 4.82407357e-06, 3.51904541e-06,
+        2.49266380e-06, 1.71555008e-06, 1.14721272e-06, 7.45393091e-07,
+        4.70573678e-07, 2.88649464e-07]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9e152eee-e7ba-419b-88d2-47fdfc62ddcb' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-9e152eee-e7ba-419b-88d2-47fdfc62ddcb' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso_hires</span><span class="o">.</span><span class="n">trait_spc_active</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2ad01cdfed10&gt;
+</pre></div>
+</div>
+<img alt="_images/trait-space-joint-pdf_12_1.png" src="_images/trait-space-joint-pdf_12_1.png" />
+</div>
 </div>
 </div>
 <div class="section" id="use-root-finding-technique-to-solve-to-atmax">
@@ -2137,13 +2601,14 @@ Data variables:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PO2_atm</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">XiO2</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">kPa_per_atm</span>
 
-<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">,</span> <span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]:</span>
-    <span class="n">trait_space</span> <span class="o">=</span> <span class="n">dso</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">solve_ATmax_over_trait_space</span><span class="p">(</span><span class="n">trait_space</span><span class="p">):</span>
+
     <span class="n">metabolic_baseline</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;metabolic_baseline&#39;</span><span class="p">]</span>
     <span class="n">hypoxic_tol</span><span class="p">,</span> <span class="n">temp_sens</span> <span class="o">=</span> <span class="n">trait_space</span><span class="o">.</span><span class="n">dims</span>
 
     <span class="n">ATmax</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">trait_space</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ATmax_</span><span class="si">{</span><span class="n">metabolic_baseline</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">ATmax</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;ATmax_</span><span class="si">{</span><span class="n">metabolic_baseline</span><span class="si">}</span><span class="s1">&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;AT$_</span><span class="si">{max}</span><span class="s1">$&#39;</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39; (</span><span class="si">{</span><span class="n">metabolic_baseline</span><span class="si">}</span><span class="s1">)&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;°C&#39;</span>
     <span class="n">ATmax</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;note&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;computed using dEodT = </span><span class="si">{</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="si">}</span><span class="s1">&#39;</span>
@@ -2153,7 +2618,15 @@ Data variables:
             <span class="n">ATmax_ij</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">compute_ATmax</span><span class="p">(</span><span class="n">PO2_atm</span><span class="p">,</span> <span class="n">Ac</span><span class="o">=</span><span class="n">A_parm</span><span class="p">,</span> <span class="n">Eo</span><span class="o">=</span><span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">mi</span><span class="o">.</span><span class="n">dEodT_bar</span><span class="p">)</span>
             <span class="n">ATmax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax_ij</span>
 
-    <span class="n">dso</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax</span>
+    <span class="k">return</span> <span class="n">ATmax</span>
+
+
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;trait_spc_active&#39;</span><span class="p">,</span> <span class="s1">&#39;trait_spc_resting&#39;</span><span class="p">]:</span>
+    <span class="n">ATmax</span> <span class="o">=</span> <span class="n">solve_ATmax_over_trait_space</span><span class="p">(</span><span class="n">dso</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+    <span class="n">dso</span><span class="p">[</span><span class="n">ATmax</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax</span>
+
+    <span class="n">ATmax</span> <span class="o">=</span> <span class="n">solve_ATmax_over_trait_space</span><span class="p">(</span><span class="n">dso_hires</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
+    <span class="n">dso_hires</span><span class="p">[</span><span class="n">ATmax</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ATmax</span>
 
 <span class="n">dso</span>
 </pre></div>
@@ -2521,7 +2994,7 @@ Data variables:
     trait_spc_active   (Ac, Eo) float64 0.001347 0.004475 ... 1.041e-05
     trait_spc_resting  (Ao, Eo) float64 0.002386 0.007927 ... 0.000106 2.896e-05
     ATmax_active       (Ac, Eo) float64 nan nan nan nan ... 33.55 31.08 29.07
-    ATmax_resting      (Ao, Eo) float64 30.02 24.35 20.8 ... 38.56 35.77 33.43</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-50726e90-a517-424f-b7cb-211505a07af9' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-50726e90-a517-424f-b7cb-211505a07af9' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 8</li><li><span class='xr-has-index'>Eo</span>: 7</li><li><span class='xr-has-index'>Ao</span>: 8</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-ebe48055-f7b1-4b0f-a1ee-4fbe5eff4d41' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ebe48055-f7b1-4b0f-a1ee-4fbe5eff4d41' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0258 0.0399 ... 0.3568 0.5528</div><input id='attrs-77be653c-8683-4464-bae5-044bac68bced' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-77be653c-8683-4464-bae5-044bac68bced' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f48d8008-3a9e-4149-a588-a7c23377d205' class='xr-var-data-in' type='checkbox'><label for='data-f48d8008-3a9e-4149-a588-a7c23377d205' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</div><input id='attrs-b7ad9c31-c67d-4a57-9907-64458057e6b6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7ad9c31-c67d-4a57-9907-64458057e6b6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3956ba8a-1ac2-469a-be20-11a8bbb58a15' class='xr-var-data-in' type='checkbox'><label for='data-3956ba8a-1ac2-469a-be20-11a8bbb58a15' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ao</span></div><div class='xr-var-dims'>(Ao)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0613 0.0962 ... 0.9114 1.429</div><input id='attrs-c916ab47-46c5-489a-a085-1132f09cc358' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c916ab47-46c5-489a-a085-1132f09cc358' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-84b49daf-3dc9-4374-838a-3b97b46aea8c' class='xr-var-data-in' type='checkbox'><label for='data-84b49daf-3dc9-4374-838a-3b97b46aea8c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-637f0e15-416f-4978-accc-27b4d2e5b657' class='xr-section-summary-in' type='checkbox'  checked><label for='section-637f0e15-416f-4978-accc-27b4d2e5b657' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.001347 0.004475 ... 1.041e-05</div><input id='attrs-7741b55b-aa6c-4140-88d9-0a50392b0c76' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7741b55b-aa6c-4140-88d9-0a50392b0c76' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d2e4dded-f177-4dbc-91fa-12d60a7d1a72' class='xr-var-data-in' type='checkbox'><label for='data-d2e4dded-f177-4dbc-91fa-12d60a7d1a72' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
+    ATmax_resting      (Ao, Eo) float64 30.02 24.35 20.8 ... 38.56 35.77 33.43</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-06529ed0-1cac-49cb-a371-df4030338b01' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-06529ed0-1cac-49cb-a371-df4030338b01' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 8</li><li><span class='xr-has-index'>Eo</span>: 7</li><li><span class='xr-has-index'>Ao</span>: 8</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-aa5c6d83-72bb-4169-b5a9-7a21e65da695' class='xr-section-summary-in' type='checkbox'  checked><label for='section-aa5c6d83-72bb-4169-b5a9-7a21e65da695' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0258 0.0399 ... 0.3568 0.5528</div><input id='attrs-93f48b46-5426-4008-9e2f-43877db1c8f7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-93f48b46-5426-4008-9e2f-43877db1c8f7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-21953e59-36b4-4916-bb4a-8b1e2a3338a7' class='xr-var-data-in' type='checkbox'><label for='data-21953e59-36b4-4916-bb4a-8b1e2a3338a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</div><input id='attrs-5e47f2d1-f061-47fe-8bd3-baa536a3bd15' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e47f2d1-f061-47fe-8bd3-baa536a3bd15' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ffbc5f97-f6bf-49eb-91e0-c05e81664a08' class='xr-var-data-in' type='checkbox'><label for='data-ffbc5f97-f6bf-49eb-91e0-c05e81664a08' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ao</span></div><div class='xr-var-dims'>(Ao)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0613 0.0962 ... 0.9114 1.429</div><input id='attrs-790dcc77-f84c-404c-bbc7-693fb278360e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-790dcc77-f84c-404c-bbc7-693fb278360e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27b2d8b9-c47c-4df4-af87-15bc8291ec26' class='xr-var-data-in' type='checkbox'><label for='data-27b2d8b9-c47c-4df4-af87-15bc8291ec26' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0613, 0.0962, 0.1508, 0.2364, 0.3707, 0.5813, 0.9114, 1.4291])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-caa22db2-898a-406d-a04e-c191d8540972' class='xr-section-summary-in' type='checkbox'  checked><label for='section-caa22db2-898a-406d-a04e-c191d8540972' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.001347 0.004475 ... 1.041e-05</div><input id='attrs-452a63fd-5a29-494b-aeeb-e46f3eabfedc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-452a63fd-5a29-494b-aeeb-e46f3eabfedc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e72842e6-e74f-49a7-b269-dc012af4aa04' class='xr-var-data-in' type='checkbox'><label for='data-e72842e6-e74f-49a7-b269-dc012af4aa04' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
         8.19298555e-03, 3.68959807e-03, 1.00813091e-03],
        [1.06140909e-02, 3.52708287e-02, 7.11130864e-02, 8.69930173e-02,
         6.45684353e-02, 2.90775046e-02, 7.94502019e-03],
@@ -2536,7 +3009,7 @@ Data variables:
        [1.11418788e-04, 3.70246781e-04, 7.46491996e-04, 9.13187634e-04,
         6.77791144e-04, 3.05233896e-04, 8.34008799e-05],
        [1.39113912e-05, 4.62278214e-05, 9.32045879e-05, 1.14017669e-04,
-        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.002386 0.007927 ... 2.896e-05</div><input id='attrs-d1766475-d595-4211-a558-b2052c388008' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d1766475-d595-4211-a558-b2052c388008' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0b171e08-4311-484c-a6bd-f86c99380134' class='xr-var-data-in' type='checkbox'><label for='data-0b171e08-4311-484c-a6bd-f86c99380134' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (resting)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[2.38554272e-03, 7.92720445e-03, 1.59828390e-02, 1.95518920e-02,
+        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>trait_spc_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.002386 0.007927 ... 2.896e-05</div><input id='attrs-b30616f3-eaba-4417-ba4b-6387ed823462' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b30616f3-eaba-4417-ba4b-6387ed823462' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb20d892-cfc1-4b7a-9098-5285ceaa738a' class='xr-var-data-in' type='checkbox'><label for='data-bb20d892-cfc1-4b7a-9098-5285ceaa738a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Trait density (resting)</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd></dl></div><div class='xr-var-data'><pre>array([[2.38554272e-03, 7.92720445e-03, 1.59828390e-02, 1.95518920e-02,
         1.45119127e-02, 6.53523980e-03, 1.78566259e-03],
        [9.38079224e-03, 3.11725535e-02, 6.28501391e-02, 7.68849099e-02,
         5.70659403e-02, 2.56988594e-02, 7.02185279e-03],
@@ -2551,7 +3024,7 @@ Data variables:
        [2.33189580e-04, 7.74893471e-04, 1.56234113e-03, 1.91122022e-03,
         1.41855638e-03, 6.38827305e-04, 1.74550599e-04],
        [3.86862337e-05, 1.28555101e-04, 2.59192945e-04, 3.17072110e-04,
-        2.35339004e-04, 1.05981676e-04, 2.89580060e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ATmax_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>nan nan nan ... 33.55 31.08 29.07</div><input id='attrs-94a72763-c5d7-4ca5-8133-6aee05ea41cf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-94a72763-c5d7-4ca5-8133-6aee05ea41cf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7622a7dc-5f33-4d69-889c-ad73e55b5c9e' class='xr-var-data-in' type='checkbox'><label for='data-7622a7dc-5f33-4d69-889c-ad73e55b5c9e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>AT$_{max}$ (active)</dd><dt><span>units :</span></dt><dd>°C</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd><dt><span>note :</span></dt><dd>computed using dEodT = 0.022</dd></dl></div><div class='xr-var-data'><pre>array([[        nan,         nan,         nan,         nan,         nan,
+        2.35339004e-04, 1.05981676e-04, 2.89580060e-05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ATmax_active</span></div><div class='xr-var-dims'>(Ac, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>nan nan nan ... 33.55 31.08 29.07</div><input id='attrs-3cd97d79-42a8-4830-b296-bf8eca218ac7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3cd97d79-42a8-4830-b296-bf8eca218ac7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c2989788-900f-4ced-8686-5dd4b4c18e27' class='xr-var-data-in' type='checkbox'><label for='data-c2989788-900f-4ced-8686-5dd4b4c18e27' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>AT$_{max}$ (active)</dd><dt><span>units :</span></dt><dd>°C</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>N_traits :</span></dt><dd>56</dd><dt><span>note :</span></dt><dd>computed using dEodT = 0.022</dd></dl></div><div class='xr-var-data'><pre>array([[        nan,         nan,         nan,         nan,         nan,
          8.59712875, 10.26054055],
        [        nan,         nan,         nan, 11.26387796, 12.8388557 ,
         13.4373032 , 13.76883614],
@@ -2566,7 +3039,7 @@ Data variables:
        [46.92768764, 41.78450184, 37.43921301, 33.87396619, 31.00840642,
         28.72815128, 26.91468975],
        [49.80449098, 44.67726276, 40.27398609, 36.58412019, 33.54826733,
-        31.07644863, 29.06971552]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ATmax_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>30.02 24.35 20.8 ... 35.77 33.43</div><input id='attrs-11e78813-2a23-432f-b97e-23f04b90064c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11e78813-2a23-432f-b97e-23f04b90064c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2c4c999b-4300-4bbf-9784-851eec0f4017' class='xr-var-data-in' type='checkbox'><label for='data-2c4c999b-4300-4bbf-9784-851eec0f4017' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>AT$_{max}$ (resting)</dd><dt><span>units :</span></dt><dd>°C</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd><dt><span>note :</span></dt><dd>computed using dEodT = 0.022</dd></dl></div><div class='xr-var-data'><pre>array([[30.02255936, 24.35102069, 20.80150002, 18.88910821, 17.84023642,
+        31.07644863, 29.06971552]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>ATmax_resting</span></div><div class='xr-var-dims'>(Ao, Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>30.02 24.35 20.8 ... 35.77 33.43</div><input id='attrs-7c2a82c8-74e9-4616-a1f8-01b72700a166' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7c2a82c8-74e9-4616-a1f8-01b72700a166' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-48d7c719-fae1-43e8-8d19-b2c77fda44a0' class='xr-var-data-in' type='checkbox'><label for='data-48d7c719-fae1-43e8-8d19-b2c77fda44a0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>AT$_{max}$ (resting)</dd><dt><span>units :</span></dt><dd>°C</dd><dt><span>metabolic_baseline :</span></dt><dd>resting</dd><dt><span>N_traits :</span></dt><dd>56</dd><dt><span>note :</span></dt><dd>computed using dEodT = 0.022</dd></dl></div><div class='xr-var-data'><pre>array([[30.02255936, 24.35102069, 20.80150002, 18.88910821, 17.84023642,
         17.21234517, 16.8033633 ],
        [35.92830891, 30.60348463, 26.60778668, 23.81644464, 21.91739391,
         20.60971175, 19.68154618],
@@ -2581,7 +3054,7 @@ Data variables:
        [52.82556832, 47.70845059, 43.25154494, 39.4493493 , 36.25795703,
         33.60679284, 31.41402167],
        [55.35680568, 50.2442091 , 45.74676543, 41.86187131, 38.55512774,
-        35.76855984, 33.43227937]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-59bd9b63-8405-444c-86ae-5b0cbc0b871b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-59bd9b63-8405-444c-86ae-5b0cbc0b871b' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+        35.76855984, 33.43227937]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-121a5442-3446-4b08-bf98-9a769a7f9fe9' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-121a5442-3446-4b08-bf98-9a769a7f9fe9' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2590,10 +3063,7 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2b04d1dec0d0&gt;
-</pre></div>
-</div>
-<img alt="_images/trait-space-joint-pdf_18_1.png" src="_images/trait-space-joint-pdf_18_1.png" />
+<img alt="_images/trait-space-joint-pdf_18_0.png" src="_images/trait-space-joint-pdf_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2603,10 +3073,20 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2b04d1ee5110&gt;
+<img alt="_images/trait-space-joint-pdf_19_0.png" src="_images/trait-space-joint-pdf_19_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso_hires</span><span class="o">.</span><span class="n">ATmax_resting</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="_images/trait-space-joint-pdf_19_1.png" src="_images/trait-space-joint-pdf_19_1.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2ad00b7a7ad0&gt;
+</pre></div>
+</div>
+<img alt="_images/trait-space-joint-pdf_20_1.png" src="_images/trait-space-joint-pdf_20_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2630,17 +3110,43 @@ Data variables:
         <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span>
 
+    <span class="n">cache_file</span> <span class="o">=</span> <span class="s1">&#39;data/cache/idealized-trait-space-hires.zarr&#39;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">cache_file</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dso_hires</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">cache_file</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">curator</span><span class="o">.</span><span class="n">add_source</span><span class="p">(</span>
+        <span class="n">key</span><span class="o">=</span><span class="s1">&#39;trait-space-hires&#39;</span><span class="p">,</span>
+        <span class="n">urlpath</span><span class="o">=</span><span class="n">cache_file</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Idealized trait space generated by </span><span class="si">{</span><span class="n">this_notebook</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;zarr&#39;</span><span class="p">,</span>
+        <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
 <span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>
 <span class="n">ds_cache</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;trait-space&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
 <span class="n">xr</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_identical</span><span class="p">(</span><span class="n">dso</span><span class="p">,</span> <span class="n">ds_cache</span><span class="p">)</span>
 
-<span class="n">dso</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>
+<span class="n">ds_cache</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;trait-space-hires&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span>
+<span class="n">xr</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_identical</span><span class="p">(</span><span class="n">dso_hires</span><span class="p">,</span> <span class="n">ds_cache</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>overwriting &quot;trait-space&quot; key in &quot;sources&quot;
-xarray.Dataset {
+overwriting &quot;trait-space-hires&quot; key in &quot;sources&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>xarray.Dataset {
 dimensions:
 	Ac = 8 ;
 	Eo = 7 ;
@@ -2667,16 +3173,68 @@ variables:
 		trait_spc_resting:metabolic_baseline = resting ;
 		trait_spc_resting:N_traits = 56 ;
 	float64 ATmax_active(Ac, Eo) ;
-		ATmax_active:long_name = AT$_{max}$(active) ;
+		ATmax_active:long_name = AT$_{max}$ (active) ;
 		ATmax_active:units = °C ;
 		ATmax_active:metabolic_baseline = active ;
 		ATmax_active:N_traits = 56 ;
 		ATmax_active:note = computed using dEodT = 0.022 ;
 	float64 ATmax_resting(Ao, Eo) ;
-		ATmax_resting:long_name = AT$_{max}$(resting) ;
+		ATmax_resting:long_name = AT$_{max}$ (resting) ;
 		ATmax_resting:units = °C ;
 		ATmax_resting:metabolic_baseline = resting ;
 		ATmax_resting:N_traits = 56 ;
+		ATmax_resting:note = computed using dEodT = 0.022 ;
+
+// global attributes:
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dso_hires</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>xarray.Dataset {
+dimensions:
+	Ac = 30 ;
+	Eo = 30 ;
+	Ao = 30 ;
+
+variables:
+	float64 Ac(Ac) ;
+		Ac:long_name = Hypoxic tolerance (normalized by critical MI) ;
+		Ac:units = 1/kPa ;
+	float64 Eo(Eo) ;
+		Eo:long_name = Temperature sensitivity of MI ;
+		Eo:units = eV ;
+	float64 trait_spc_active(Ac, Eo) ;
+		trait_spc_active:long_name = Trait density (active) ;
+		trait_spc_active:units = eV 1/kPa ;
+		trait_spc_active:metabolic_baseline = active ;
+		trait_spc_active:N_traits = 900 ;
+	float64 Ao(Ao) ;
+		Ao:long_name = Hypoxic tolerance ;
+		Ao:units = 1/kPa ;
+	float64 trait_spc_resting(Ao, Eo) ;
+		trait_spc_resting:long_name = Trait density (resting) ;
+		trait_spc_resting:units = eV 1/kPa ;
+		trait_spc_resting:metabolic_baseline = resting ;
+		trait_spc_resting:N_traits = 900 ;
+	float64 ATmax_active(Ac, Eo) ;
+		ATmax_active:long_name = AT$_{max}$ (active) ;
+		ATmax_active:units = °C ;
+		ATmax_active:metabolic_baseline = active ;
+		ATmax_active:N_traits = 900 ;
+		ATmax_active:note = computed using dEodT = 0.022 ;
+	float64 ATmax_resting(Ao, Eo) ;
+		ATmax_resting:long_name = AT$_{max}$ (resting) ;
+		ATmax_resting:units = °C ;
+		ATmax_resting:metabolic_baseline = resting ;
+		ATmax_resting:N_traits = 900 ;
 		ATmax_resting:note = computed using dEodT = 0.022 ;
 
 // global attributes:
@@ -2723,7 +3281,7 @@ variables:
     <a class='right-next' id="next-link" href="trait-space-obs-habitat-vol.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Habitat volume in trait space</p>
+        <p class="prev-next-title">Defining the Aerobic Safety Margin</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
