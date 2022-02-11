@@ -4,7 +4,7 @@
         "Ao",
         "Eo"
     ],
-    "long_name": "AT$_{max}$(resting)",
+    "long_name": "AT$_{max}$ (resting)",
     "metabolic_baseline": "resting",
     "note": "computed using dEodT = 0.022",
     "units": "\u00b0C"

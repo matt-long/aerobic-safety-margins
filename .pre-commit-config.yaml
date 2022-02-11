@@ -3,41 +3,54 @@ repos:
     rev: v4.0.1
     hooks:
       - id: trailing-whitespace
+        exclude: notebooks/data
       - id: end-of-file-fixer
+        exclude: notebooks/data
       - id: check-docstring-first
+        exclude: notebooks/data
       - id: check-json
+        exclude: notebooks/data
       - id: check-yaml
+        exclude: notebooks/data
       - id: double-quote-string-fixer
+        exclude: notebooks/data
 
   - repo: https://github.com/psf/black
     rev: 21.9b0
     hooks:
       - id: black-jupyter
+        exclude: notebooks/data
 
   - repo: https://github.com/keewis/blackdoc
     rev: v0.3.4
     hooks:
       - id: blackdoc
+        exclude: notebooks/data
 
   - repo: https://github.com/PyCQA/flake8
     rev: 3.9.2
     hooks:
       - id: flake8
+        exclude: notebooks/data
 
   - repo: https://github.com/PyCQA/isort
     rev: 5.9.3
     hooks:
       - id: isort
+        exclude: notebooks/data
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v2.4.1
     hooks:
       - id: prettier
+        exclude: notebooks/data
 
   - repo: https://github.com/nbQA-dev/nbQA
     rev: 1.1.1
     hooks:
       - id: nbqa-pyupgrade
+        exclude: notebooks/data
         additional_dependencies: [pyupgrade==2.7.3]
       - id: nbqa-isort
+        exclude: notebooks/data
         additional_dependencies: [isort==5.8.0]

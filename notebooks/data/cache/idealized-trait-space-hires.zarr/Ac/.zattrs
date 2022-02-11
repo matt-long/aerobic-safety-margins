@@ -1,0 +1,7 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "Ac"
+    ],
+    "long_name": "Hypoxic tolerance (normalized by critical MI)",
+    "units": "1/kPa"
+}
