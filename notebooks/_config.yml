@@ -48,6 +48,9 @@ repository:
   path_to_book: notebooks
   branch: main
 
+launch_buttons:
+  jupyterhub_url: 'https://jupyterhub.hpc.ucar.edu/dev'
+
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
