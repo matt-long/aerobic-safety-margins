@@ -32,11 +32,11 @@ sphinx:
   config:
     bibtex_reference_style: author_year
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-    mathjax_config:
+    mathjax3_config:
       TeX:
         Macros:
           'PO2atm': P_{\\mathrm{O}_2}^{atm}
-          'PO2': P_{\\mathrm{O}_2}
+          'PO': P_{\\mathrm{O}_2}
           'O2': \\mathrm{O}_2}
 
   local_extensions:
@@ -61,7 +61,7 @@ launch_buttons:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  #favicon: favicon.ico
+  favicon: favicon.ico
   use_issues_button: false
   use_repository_button: true
   home_page_in_navbar: false

@@ -75,7 +75,13 @@ class trait_pdf(object):
             self.pdf_func = scistats.lognorm
             coord_data = np.round(np.logspace(np.log10(bounds[0]), np.log10(bounds[1]), N), 4)
 
-        self.coord = xr.DataArray(coord_data, dims=(trait), name=trait, attrs=df[trait].attrs)
+        self.coord = xr.DataArray(
+            coord_data,
+            dims=(trait),
+            name=trait,
+            attrs=df[trait].attrs,
+            coords={trait: coord_data},
+        )
         self.beta = self.pdf_func.fit(df[trait].values)
 
     def fitted(self):
