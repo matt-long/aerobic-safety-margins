@@ -53,8 +53,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Generate a PDF describing occurence frequency in trait space" href="trait-space-joint-pdf.html" />
-    <link rel="prev" title="Aerobic Saftey Margins for Marine Ecotherms" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,9 +89,9 @@
   Metabolic Index Traits
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="metabolic-index-defining.html">
    The Metabolic Index
   </a>
  </li>
@@ -210,7 +208,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/metabolic-index-defining.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/trait-space-description.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -248,14 +246,14 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/metabolic-index-defining.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/trait-space-description.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/metabolic-index-defining.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/trait-space-description.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="_static/images/logo_jupyterhub.svg"
@@ -327,7 +325,13 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-metabolic-index">
 <h1>The Metabolic Index<a class="headerlink" href="#the-metabolic-index" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<p>The Metabolic Index <span id="id1">[<a class="reference internal" href="references.html#id3">Deutsch <em>et al.</em>, 2015</a>]</span> is defined as the ratio of oxygen supply to the oxygen demand necessary to sustain respiratory metabolism. Ignoring dependence on body size (mass), the Metabolic Index (<span class="math notranslate nohighlight">\(\Phi\)</span>) is defined as follows.</p>
+<div class="math notranslate nohighlight">
+\[\Phi = A_o\frac{\PO2{}}{\mathrm{exp}\left[\frac{E_o}{k_B}\left(\frac{1}{T} - \frac{1}{T_{ref}\right)\right]\]</div>
+<p>Oxygen supply depends on the availability of oxygen in the environment, quantified by partial pressure of \PO2{}, as well as physiological acquisition and transport capacities. These comprise traits that vary across marine organisms and are represented by the parameter <span class="math notranslate nohighlight">\(A_o\)</span>.</p>
+<p>Oxygen demand scales as a function of temperature-dependent metabolic rate, represented by the <a class="reference external" href="https://en.wikipedia.org/wiki/Arrhenius_equation">Arrhenius Equation</a>. The temperature sensitivity of metabolic rate is specified by the parameter <span class="math notranslate nohighlight">\(E_o\)</span>, which is a trait that varies across species.</p>
+<p>Here we provide a illustration of how <span class="math notranslate nohighlight">\(\Phi\)</span> enables quanitification of habitability in the context of constraints imposed by the requirements of aerobic metabolism.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
@@ -335,7 +339,7 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cmocean</span>
 <span class="kn">import</span> <span class="nn">constants</span>
@@ -357,7 +361,7 @@
 </div>
 <div class="section" id="load-traits-database">
 <h2>Load traits database<a class="headerlink" href="#load-traits-database" title="Permalink to this headline">¶</a></h2>
-<p>Trait data from <span id="id1">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>; <code class="docutils literal notranslate"><span class="pre">open_traits_df</span></code> defined in the <span class="xref myst">metabolic</span> modules makes these available via a <a class="reference external" href="https://pandas.pydata.org/">pandas</a> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p>Trait data from <span id="id2">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>; <code class="docutils literal notranslate"><span class="pre">open_traits_df</span></code> defined in the <a class="reference external" href="https://github.com/matt-long/aerobic-safety-margins/blob/main/notebooks/metabolic.py">metabolic</a> module makes these data available via a <a class="reference external" href="https://pandas.pydata.org/">pandas</a> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">open_traits_df</span><span class="p">()</span>
@@ -521,12 +525,42 @@
 <p>61 rows × 8 columns</p>
 </div></div></div>
 </div>
-<p>Pull out some median traits for illustration purposes.</p>
+<p>Pull out some median traits for illustration purposes. <a class="reference internal" href="trait-space-joint-pdf.html"><span class="doc std std-doc">This notebook</span></a> presents a full exploration of trait PDFs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ac_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-<span class="n">Ao_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-<span class="n">Eo_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Median Ac = </span><span class="si">{</span><span class="n">Ac_med</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> 1/kPa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.078 1/kPa
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ao_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Median Ao = </span><span class="si">{</span><span class="n">Ao_med</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> 1/kPa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.217 1/kPa
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Eo_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Median Eo = </span><span class="si">{</span><span class="n">Eo_med</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.381 eV
 </pre></div>
 </div>
 </div>
@@ -534,6 +568,7 @@
 </div>
 <div class="section" id="explaining-the-metabolic-index">
 <h2>Explaining the Metabolic Index<a class="headerlink" href="#explaining-the-metabolic-index" title="Permalink to this headline">¶</a></h2>
+<p>In the cell below, we define a function that plots curves of constant <span class="math notranslate nohighlight">\(\Phi\)</span> in in \PO2{}-temperature space (click “+” at right to see the code).</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_MI_illustration</span><span class="p">(</span><span class="n">which</span><span class="p">):</span>
@@ -685,7 +720,7 @@
 </div>
 </div>
 </div>
-<p>Here is rendition of Fig 1 from <span id="id2">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>, showing curves of constant <span class="math notranslate nohighlight">\(\Phi\)</span> in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space.</p>
+<p>Using this function, we can produce a figure similar to Fig 1 of <span id="id3">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>, showing curves of constant <span class="math notranslate nohighlight">\(\Phi\)</span> in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space.</p>
 <p>This plot illustrates how the paramters control the shape of the curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +729,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/metabolic-index-defining_10_0.png" src="_images/metabolic-index-defining_10_0.png" />
+<img alt="_images/trait-space-description_12_0.png" src="_images/trait-space-description_12_0.png" />
 </div>
 </div>
 <p>The <span class="math notranslate nohighlight">\(\Phi = 1\)</span> line delineates the region in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space that is habitable from that that is too warm with insufficient oxygen. The intersection of this line with <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}^{atm}\)</span> defines the maximum temperature at which metabolism can be sustained.</p>
@@ -705,7 +740,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/metabolic-index-defining_12_0.png" src="_images/metabolic-index-defining_12_0.png" />
+<img alt="_images/trait-space-description_14_0.png" src="_images/trait-space-description_14_0.png" />
 </div>
 </div>
 <p>Ecological requirements to sustain metabolic rates above those of resting metabolism impose further restrictions on habiability.</p>
@@ -717,7 +752,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/metabolic-index-defining_14_0.png" src="_images/metabolic-index-defining_14_0.png" />
+<img alt="_images/trait-space-description_16_0.png" src="_images/trait-space-description_16_0.png" />
 </div>
 </div>
 </div>
@@ -747,21 +782,7 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Aerobic Saftey Margins for Marine Ecotherms</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="trait-space-joint-pdf.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generate a PDF describing occurence frequency in trait space</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>
