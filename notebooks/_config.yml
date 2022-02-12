@@ -8,7 +8,7 @@
 title: Aerobic Saftey Margins for Marine Ectotherms
 author: Matthew C. Long, Curtis Deutsch, Precious Mongwe, Takamitsu Ito
 copyright: '2022'
-#logo: new-logo.png
+logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
