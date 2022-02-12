@@ -4,22 +4,22 @@
 format: jb-book
 root: intro
 parts:
-- caption: Metabolic Index Traits
-  chapters:
-  - file: trait-space-description
-  - file: trait-space-joint-pdf
-  - file: trait-space-obs-habitat-vol
-- caption: Earth System Model Data
-  chapters:
-  - file: data-assets-preprocessing
-    sections:
-    - file: compute-drift-corr-cesm-le
-    #- file: compute-MI-cesm-le
-    - file: compute-pO2-cesm-le
-    - file: compute-habitat-cesm-le
-- caption: Habitat Change
-  chapters:
-  - file: aerobic-habitat-change
-- caption: References
-  chapters:
-  - file: references
+  - caption: Metabolic Index Traits
+    chapters:
+      - file: metabolic-index-defining
+      - file: trait-space-joint-pdf
+      - file: trait-space-obs-habitat-vol
+  - caption: Earth System Model Data
+    chapters:
+      - file: data-assets-preprocessing
+        sections:
+          - file: compute-drift-corr-cesm-le
+          #- file: compute-MI-cesm-le
+          - file: compute-pO2-cesm-le
+          - file: compute-habitat-cesm-le
+  - caption: Habitat Change
+    chapters:
+      - file: aerobic-habitat-change
+  - caption: References
+    chapters:
+      - file: references

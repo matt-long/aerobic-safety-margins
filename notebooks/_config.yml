@@ -50,6 +50,7 @@ repository:
 
 launch_buttons:
   jupyterhub_url: 'https://jupyterhub.hpc.ucar.edu/dev'
+  notebook_interface: 'jupyterlab'
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository

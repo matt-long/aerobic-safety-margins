@@ -3,6 +3,7 @@ from functools import partial
 
 import constants
 import intake
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import xarray as xr
@@ -65,7 +66,7 @@ class trait_pdf(object):
     def __init__(self, df, trait, N, bounds=None):
 
         if bounds is None:
-            bounds = np.percentile(df[trait].values, [0.5, 99.5])
+            bounds = df[trait].min(), df[trait].max()
 
         if trait in self.normal_traits:
             self.pdf_func = scistats.norm
@@ -77,8 +78,8 @@ class trait_pdf(object):
         self.coord = xr.DataArray(coord_data, dims=(trait), name=trait, attrs=df[trait].attrs)
         self.beta = self.pdf_func.fit(df[trait].values)
 
-    def fitted(self, bins):
-        return self.pdf_func.pdf(bins, *self.beta)
+    def fitted(self):
+        return self.pdf_func.pdf(self.coord, *self.beta)
 
     def median(self):
         return self.pdf_func.median(*self.beta)
