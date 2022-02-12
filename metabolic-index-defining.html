@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metabolic Index trait space &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    <title>The Metabolic Index &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -94,7 +94,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Metabolic Index trait space
+   The Metabolic Index
   </a>
  </li>
  <li class="toctree-l1">
@@ -210,7 +210,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/trait-space-description.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/metabolic-index-defining.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -248,14 +248,14 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=tree/notebooks/trait-space-description.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/metabolic-index-defining.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
                     alt="Interact on binder">Binder</button></a>
         
         
-        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=tree/aerobic-safety-margins/notebooks/trait-space-description.ipynb&branch=main"><button type="button"
+        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/metabolic-index-defining.ipynb&branch=main"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
                 data-placement="left"><img class="jupyterhub-button-logo"
                     src="_static/images/logo_jupyterhub.svg"
@@ -282,8 +282,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trait-distributions">
-   Trait distributions
+  <a class="reference internal nav-link" href="#explaining-the-metabolic-index">
+   Explaining the Metabolic Index
   </a>
  </li>
 </ul>
@@ -296,7 +296,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Metabolic Index trait space</h1>
+                <h1>The Metabolic Index</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -312,8 +312,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trait-distributions">
-   Trait distributions
+  <a class="reference internal nav-link" href="#explaining-the-metabolic-index">
+   Explaining the Metabolic Index
   </a>
  </li>
 </ul>
@@ -325,8 +325,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="metabolic-index-trait-space">
-<h1>Metabolic Index trait space<a class="headerlink" href="#metabolic-index-trait-space" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="the-metabolic-index">
+<h1>The Metabolic Index<a class="headerlink" href="#the-metabolic-index" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
@@ -337,7 +337,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">constants</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cmocean</span>
+<span class="kn">import</span> <span class="nn">constants</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">metabolic</span> <span class="k">as</span> <span class="nn">mi</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -347,9 +348,16 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/mclong/miniconda3/envs/metabolic/lib/python3.7/site-packages/dask_jobqueue/core.py:20: FutureWarning: tmpfile is deprecated and will be removed in a future release. Please use dask.utils.tmpfile instead.
+  from distributed.utils import tmpfile
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="load-traits-database">
 <h2>Load traits database<a class="headerlink" href="#load-traits-database" title="Permalink to this headline">¶</a></h2>
+<p>Trait data from <span id="id1">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>; <code class="docutils literal notranslate"><span class="pre">open_traits_df</span></code> defined in the <span class="xref myst">metabolic</span> modules makes these available via a <a class="reference external" href="https://pandas.pydata.org/">pandas</a> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">open_traits_df</span><span class="p">()</span>
@@ -513,62 +521,26 @@
 <p>61 rows × 8 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="trait-distributions">
-<h2>Trait distributions<a class="headerlink" href="#trait-distributions" title="Permalink to this headline">¶</a></h2>
-<p>Fit normal distribution to <span class="math notranslate nohighlight">\(E_o\)</span> and lognormal distribution to <span class="math notranslate nohighlight">\(A_o\)</span> (<span class="math notranslate nohighlight">\(A_c\)</span>).</p>
+<p>Pull out some median traits for illustration purposes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_trait_hist</span><span class="p">(</span><span class="n">trait</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-    <span class="n">pdf</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">trait</span><span class="p">)</span>
-    <span class="n">beta</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">beta</span>
-    <span class="n">trait_median</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-
-    <span class="n">trait_values</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">trait</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="k">if</span> <span class="n">trait</span> <span class="ow">in</span> <span class="n">pdf</span><span class="o">.</span><span class="n">normal_traits</span><span class="p">:</span>
-        <span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">trait_values</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">log10_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">trait_values</span><span class="p">)</span>
-        <span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span>
-            <span class="n">trait_values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">log10_values</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">log10_values</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span>
-        <span class="p">)</span>
-
-    <span class="n">pdf_fitted</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">fitted</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">pdf_fitted</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">trait</span><span class="si">}</span><span class="s1"> distribution&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">trait</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">trait_median</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;median (</span><span class="si">{</span><span class="n">trait_median</span><span class="si">:</span><span class="s1">0.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">trait_median</span><span class="p">,</span> <span class="n">beta</span>
-
-
-<span class="n">Eo_med</span><span class="p">,</span> <span class="n">Eo_beta</span> <span class="o">=</span> <span class="n">plot_trait_hist</span><span class="p">(</span><span class="s1">&#39;Eo&#39;</span><span class="p">)</span>
-<span class="n">Ao_med</span><span class="p">,</span> <span class="n">Ao_beta</span> <span class="o">=</span> <span class="n">plot_trait_hist</span><span class="p">(</span><span class="s1">&#39;Ao&#39;</span><span class="p">)</span>
-<span class="n">Ac_med</span><span class="p">,</span> <span class="n">Ac_beta</span> <span class="o">=</span> <span class="n">plot_trait_hist</span><span class="p">(</span><span class="s1">&#39;Ac&#39;</span><span class="p">)</span>
-<span class="n">Phi_crit_med</span><span class="p">,</span> <span class="n">Phi_crit_beta</span> <span class="o">=</span> <span class="n">plot_trait_hist</span><span class="p">(</span><span class="s1">&#39;Phi_crit&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ac_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ac&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">Ao_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Ao&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">Eo_med</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">trait_pdf</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s1">&#39;Eo&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/trait-space-description_6_0.png" src="_images/trait-space-description_6_0.png" />
-<img alt="_images/trait-space-description_6_1.png" src="_images/trait-space-description_6_1.png" />
-<img alt="_images/trait-space-description_6_2.png" src="_images/trait-space-description_6_2.png" />
-<img alt="_images/trait-space-description_6_3.png" src="_images/trait-space-description_6_3.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="section" id="explaining-the-metabolic-index">
+<h2>Explaining the Metabolic Index<a class="headerlink" href="#explaining-the-metabolic-index" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">PO2_atm</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">XiO2</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">kPa_per_atm</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">make_figure</span><span class="p">(</span><span class="n">which</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_MI_illustration</span><span class="p">(</span><span class="n">which</span><span class="p">):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+    <span class="n">PO2_atm</span> <span class="o">=</span> <span class="n">constants</span><span class="o">.</span><span class="n">XiO2</span> <span class="o">*</span> <span class="n">constants</span><span class="o">.</span><span class="n">kPa_per_atm</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 
     <span class="n">pO2_at_Phi_crit</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">pO2_at_Phi_one</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ac_med</span><span class="p">,</span> <span class="n">Eo_med</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">pO2_at_Phi_one</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">pO2_at_Phi_one</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ao_med</span><span class="p">,</span> <span class="n">Eo_med</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
@@ -709,82 +681,43 @@
         <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;figures/misc/phi-explain-</span><span class="si">{</span><span class="n">which</span><span class="si">}</span><span class="s1">.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-
-
-<span class="n">make_figure</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">)</span>
-<span class="n">make_figure</span><span class="p">(</span><span class="s1">&#39;resting&#39;</span><span class="p">)</span>
-<span class="n">make_figure</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/trait-space-description_7_0.png" src="_images/trait-space-description_7_0.png" />
-<img alt="_images/trait-space-description_7_1.png" src="_images/trait-space-description_7_1.png" />
-<img alt="_images/trait-space-description_7_2.png" src="_images/trait-space-description_7_2.png" />
 </div>
-</div>
+<p>Here is rendition of Fig 1 from <span id="id2">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>, showing curves of constant <span class="math notranslate nohighlight">\(\Phi\)</span> in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space.</p>
+<p>This plot illustrates how the paramters control the shape of the curve.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Phyla</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Phylum</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">Phyla</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_MI_illustration</span><span class="p">(</span><span class="s1">&#39;base&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Crustacea&#39;, &#39;Chordata&#39;, &#39;Mollusca&#39;, &#39;Cnidaria&#39;, &#39;Tunicata&#39;]
-</pre></div>
+<img alt="_images/metabolic-index-defining_10_0.png" src="_images/metabolic-index-defining_10_0.png" />
 </div>
 </div>
-</div>
+<p>The <span class="math notranslate nohighlight">\(\Phi = 1\)</span> line delineates the region in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space that is habitable from that that is too warm with insufficient oxygen. The intersection of this line with <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}^{atm}\)</span> defines the maximum temperature at which metabolism can be sustained.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cmocean</span>
-
-<span class="n">markerorder</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">]</span>
-
-<span class="n">Eo_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-<span class="n">Ac_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">50</span><span class="p">)</span>
-
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">Eo_bins</span><span class="p">,</span> <span class="n">Ac_bins</span><span class="p">)</span>
-<span class="n">Z1</span><span class="p">,</span> <span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">scistats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">Eo_bins</span><span class="p">,</span> <span class="o">*</span><span class="n">Eo_beta</span><span class="p">),</span> <span class="n">scistats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">Ac_bins</span><span class="p">,</span> <span class="o">*</span><span class="n">Ac_beta</span><span class="p">))</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>  <span class="c1"># figsize=(6, 6))</span>
-
-<span class="n">mx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Z1</span> <span class="o">*</span> <span class="n">Z2</span><span class="p">)</span>
-<span class="n">cf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span>
-    <span class="n">X</span><span class="p">,</span>
-    <span class="n">Y</span><span class="p">,</span>
-    <span class="n">Z1</span> <span class="o">*</span> <span class="n">Z2</span> <span class="o">/</span> <span class="n">mx</span><span class="p">,</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="n">cmocean</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">tempo</span><span class="p">,</span>
-    <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span>
-<span class="p">)</span>
-<span class="c1"># plt.colorbar(cf)</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">phylum</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Phyla</span><span class="p">):</span>
-    <span class="n">ndx</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Phylum</span> <span class="o">==</span> <span class="n">phylum</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ndx</span><span class="p">],</span>
-        <span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ndx</span><span class="p">],</span>
-        <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
-        <span class="n">marker</span><span class="o">=</span><span class="n">markerorder</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-        <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="n">phylum</span><span class="p">,</span>
-    <span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">attrs_label</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">attrs</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="c1"># ax.set_ylim((0, 0.4));</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;figures/misc/trait-space-idealized.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_MI_illustration</span><span class="p">(</span><span class="s1">&#39;resting&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/trait-space-description_9_0.png" src="_images/trait-space-description_9_0.png" />
+<img alt="_images/metabolic-index-defining_12_0.png" src="_images/metabolic-index-defining_12_0.png" />
+</div>
+</div>
+<p>Ecological requirements to sustain metabolic rates above those of resting metabolism impose further restrictions on habiability.</p>
+<p>The <span class="math notranslate nohighlight">\(\Phi = \Phi_{crit}\)</span> line inscribes a smaller region of habitability in <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span>-temperature space than that corresponding to resting metabolism (<span class="math notranslate nohighlight">\(\Phi = 1\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_MI_illustration</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/metabolic-index-defining_14_0.png" src="_images/metabolic-index-defining_14_0.png" />
 </div>
 </div>
 </div>
