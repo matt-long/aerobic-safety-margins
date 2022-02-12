@@ -49,6 +49,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Compute \(P_{\mathrm{O}_2}\) from drift corrected fields" href="compute-pO2-cesm-le.html" />
@@ -97,7 +98,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="trait-space-joint-pdf.html">
-   Generate a PDF describing occurence frequency in trait space
+   Defining trait space
   </a>
  </li>
  <li class="toctree-l1">
@@ -327,18 +328,15 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
-<span class="kn">import</span> <span class="nn">cftime</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-
-<span class="kn">import</span> <span class="nn">pop_tools</span>
-
-<span class="kn">import</span> <span class="nn">metabolic</span>
-<span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">cftime</span>
 <span class="kn">import</span> <span class="nn">data_collections</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">metabolic</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pop_tools</span>
+<span class="kn">import</span> <span class="nn">util</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 </pre></div>
 </div>
 </div>
@@ -351,7 +349,7 @@
 <span class="k">except</span><span class="p">:</span>
     <span class="n">cluster</span><span class="p">,</span> <span class="n">client</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">get_ClusterClient</span><span class="p">(</span><span class="n">memory</span><span class="o">=</span><span class="s1">&#39;100GB&#39;</span><span class="p">)</span>
     <span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">34</span><span class="p">)</span>
-<span class="n">client</span>    
+<span class="n">client</span>
 </pre></div>
 </div>
 </div>
@@ -555,12 +553,18 @@ Wall time: 713 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;SALT&#39;</span><span class="p">,</span> <span class="s1">&#39;O2_CONSUMPTION&#39;</span><span class="p">,</span> <span class="s1">&#39;O2_PRODUCTION&#39;</span><span class="p">]</span> <span class="c1">#&#39;Jint_100m_DIC&#39;, &#39;photoC_sp&#39;, &#39;photoC_diat&#39;, &#39;photoC_diaz&#39;]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;O2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SALT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;O2_CONSUMPTION&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;O2_PRODUCTION&#39;</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1">#&#39;Jint_100m_DIC&#39;, &#39;photoC_sp&#39;, &#39;photoC_diat&#39;, &#39;photoC_diaz&#39;]</span>
 <span class="n">experiments</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;20C&#39;</span><span class="p">,</span> <span class="s1">&#39;RCP85&#39;</span><span class="p">]</span>
 <span class="n">stream</span> <span class="o">=</span> <span class="s1">&#39;pop.h&#39;</span>
 <span class="n">drft_corr</span> <span class="o">=</span> <span class="n">data_collections</span><span class="o">.</span><span class="n">drift_corrected_ens</span><span class="p">(</span>
-    <span class="n">experiment</span><span class="o">=</span><span class="n">experiments</span><span class="p">,</span> 
-    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> 
+    <span class="n">experiment</span><span class="o">=</span><span class="n">experiments</span><span class="p">,</span>
+    <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">drft_corr</span>
 </pre></div>
@@ -583,6 +587,7 @@ Wall time: 713 ms
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yaml</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">drft_corr</span><span class="o">.</span><span class="n">_cache_files</span><span class="p">))</span>
 </pre></div>
 </div>

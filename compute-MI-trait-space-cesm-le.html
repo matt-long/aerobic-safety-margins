@@ -49,6 +49,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -95,7 +96,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="trait-space-joint-pdf.html">
-   Generate a PDF describing occurence frequency in trait space
+   Defining trait space
   </a>
  </li>
  <li class="toctree-l1">
@@ -297,23 +298,21 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
-<span class="kn">import</span> <span class="nn">intake</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="kn">import</span> <span class="nn">funnel</span>
 <span class="kn">import</span> <span class="nn">data_collections</span> <span class="k">as</span> <span class="nn">dc</span>
+<span class="kn">import</span> <span class="nn">funnel</span>
+<span class="kn">import</span> <span class="nn">intake</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">metabolic</span> <span class="k">as</span> <span class="nn">mi</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">operators</span> <span class="k">as</span> <span class="nn">ops</span>
 <span class="kn">import</span> <span class="nn">util</span>
-
-<span class="kn">import</span> <span class="nn">metabolic</span> <span class="k">as</span> <span class="nn">mi</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
 </pre></div>
 </div>
 </div>
@@ -327,7 +326,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">curator</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">curator_local_assets</span><span class="p">()</span>
-<span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>  
+<span class="n">cat</span> <span class="o">=</span> <span class="n">curator</span><span class="o">.</span><span class="n">open_catalog</span><span class="p">()</span>
 <span class="n">ds_ts</span> <span class="o">=</span> <span class="n">cat</span><span class="p">[</span><span class="s1">&#39;trait-space&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 <span class="n">trait_spc_wgt</span> <span class="o">=</span> <span class="n">ds_ts</span><span class="o">.</span><span class="n">trait_spc_wgt</span>
 </pre></div>
@@ -359,7 +358,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="n">catalog_json_file</span> <span class="o">=</span> <span class="n">funnel</span><span class="o">.</span><span class="n">to_intake_esm</span><span class="p">(</span><span class="n">agg_member_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog_json_file</span> <span class="o">=</span> <span class="n">funnel</span><span class="o">.</span><span class="n">to_intake_esm</span><span class="p">(</span><span class="n">agg_member_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">sub_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;drift-corrected&#39;</span><span class="p">,</span>
@@ -490,6 +489,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s1">&#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache&#39;</span>
 
+
 <span class="k">def</span> <span class="nf">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_dir</span><span class="si">}</span><span class="s1">/glade-cesm1-le.</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s1">.drift-corrected.zarr&#39;</span>
 
@@ -497,7 +497,7 @@
 <span class="k">def</span> <span class="nf">_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Manually generate funnel catalog entry</span>
-<span class="sd">    </span>
+
 <span class="sd">    I.e.:</span>
 <span class="sd">    asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.TEMP.drift-corrected.zarr</span>
 <span class="sd">    esm_collection: data/catalogs/glade-cesm1-le.json</span>
@@ -514,10 +514,10 @@
 <span class="sd">    preprocess: _preprocess_pop_h_upper_1km</span>
 <span class="sd">    variable: TEMP</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">cache_id_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">asset</span><span class="o">=</span><span class="n">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">),</span>
-        <span class="n">esm_collection</span><span class="o">=</span><span class="s1">&#39;data/catalogs/glade-cesm1-le.json&#39;</span><span class="p">,</span>        
+        <span class="n">esm_collection</span><span class="o">=</span><span class="s1">&#39;data/catalogs/glade-cesm1-le.json&#39;</span><span class="p">,</span>
         <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
         <span class="n">name</span><span class="o">=</span><span class="s1">&#39;drift-corrected&#39;</span><span class="p">,</span>
         <span class="n">operator_kwargs</span><span class="o">=</span><span class="p">[{},</span> <span class="p">{},</span> <span class="p">{}],</span>
@@ -527,8 +527,7 @@
     <span class="p">)</span>
     <span class="n">cache_id_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;data/funnel-catalog/glade-cesm1-le.</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s1">.drift-corrected.yml&#39;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cache_id_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
-        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cache_id_dict</span><span class="p">,</span> <span class="n">fid</span><span class="p">)</span>    
-        
+        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cache_id_dict</span><span class="p">,</span> <span class="n">fid</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -541,7 +540,7 @@
 <span class="k">except</span><span class="p">:</span>
     <span class="n">cluster</span><span class="p">,</span> <span class="n">client</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">get_ClusterClient</span><span class="p">(</span><span class="n">memory</span><span class="o">=</span><span class="s1">&#39;6GB&#39;</span><span class="p">)</span>
     <span class="n">cluster</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">client</span>    
+<span class="n">client</span>
 </pre></div>
 </div>
 </div>
@@ -683,12 +682,12 @@ Hosting the HTTP server on port 45093 instead
 
 <span class="n">stream</span> <span class="o">=</span> <span class="s1">&#39;pop.h&#39;</span>
 <span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;ocn&#39;</span>
-    
+
 <span class="n">variable</span> <span class="o">=</span> <span class="s1">&#39;vol_habitat_trait_spc&#39;</span>
 
 <span class="c1"># compute Phi over trait space</span>
 <span class="k">for</span> <span class="n">experiment</span><span class="p">,</span> <span class="n">member_id</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">experiment_list</span><span class="p">,</span> <span class="n">member_id_list</span><span class="p">):</span>
-    <span class="c1"># check for existing cache file        </span>
+    <span class="c1"># check for existing cache file</span>
 
     <span class="n">asset</span> <span class="o">=</span> <span class="n">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
 
@@ -698,21 +697,20 @@ Hosting the HTTP server on port 45093 instead
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">asset</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;exists: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="k">continue</span>    
+        <span class="k">continue</span>
 
-        
-    <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">timer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>    
-        
+    <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">timer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+
         <span class="n">cat</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-            <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">,</span> 
-            <span class="n">member_id</span><span class="o">=</span><span class="n">member_id</span><span class="p">,</span>         
-            <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span> 
+            <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">,</span>
+            <span class="n">member_id</span><span class="o">=</span><span class="n">member_id</span><span class="p">,</span>
+            <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
             <span class="n">component</span><span class="o">=</span><span class="n">component</span><span class="p">,</span>
             <span class="n">variable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;pO2&#39;</span><span class="p">],</span>
         <span class="p">)</span>
 
         <span class="n">dset</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">()</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dset</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span>    
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">dset</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
 
         <span class="n">dso</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -725,31 +723,30 @@ Hosting the HTTP server on port 45093 instead
         <span class="n">da_list_outer</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">Ac</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
 
-            <span class="n">da_list_inner</span> <span class="o">=</span> <span class="p">[]</span>        
+            <span class="n">da_list_inner</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">Eo</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Eo</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
 
                 <span class="k">if</span> <span class="n">do_apply_ufunc</span><span class="p">:</span>
                     <span class="n">Phi</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span>
-                        <span class="n">mi</span><span class="o">.</span><span class="n">Phi</span><span class="p">,</span> 
-                        <span class="n">ds</span><span class="o">.</span><span class="n">pO2</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span> 
+                        <span class="n">mi</span><span class="o">.</span><span class="n">Phi</span><span class="p">,</span>
+                        <span class="n">ds</span><span class="o">.</span><span class="n">pO2</span><span class="p">,</span>
+                        <span class="n">ds</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span>
                         <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">Ac</span><span class="o">=</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="o">=</span><span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">dEodT_bar</span><span class="p">),</span>
                         <span class="n">dask</span><span class="o">=</span><span class="s1">&#39;parallelized&#39;</span><span class="p">,</span>
                     <span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>            
+                <span class="k">else</span><span class="p">:</span>
                     <span class="n">Phi</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">Phi</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">pO2</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">dEodT_bar</span><span class="p">)</span>
 
-                <span class="n">viability_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Phi</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
+                <span class="n">viability_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Phi</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 
-                <span class="n">da_list_inner</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="p">(</span><span class="n">vol</span> <span class="o">*</span> <span class="n">viability_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;z_t&#39;</span><span class="p">,</span> <span class="s1">&#39;nlat&#39;</span><span class="p">,</span> <span class="s1">&#39;nlon&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span>
-                <span class="p">)</span>
+                <span class="n">da_list_inner</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">vol</span> <span class="o">*</span> <span class="n">viability_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;z_t&#39;</span><span class="p">,</span> <span class="s1">&#39;nlat&#39;</span><span class="p">,</span> <span class="s1">&#39;nlon&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">compute</span><span class="p">())</span>
 
             <span class="n">da_list_outer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">da_list_inner</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Eo</span><span class="p">))</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;writing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>    
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;writing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">dso</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">da_list_outer</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span><span class="p">)</span>
 
-        <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+        <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
 </pre></div>
 </div>
