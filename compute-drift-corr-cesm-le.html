@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apply linear drift correction to upper ocean fields in CESM1-LE &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    <title>Compute and apply linear drift correction to CESM1-LE &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Compute \(P_{\mathrm{O}_2}\) from drift corrected fields" href="compute-pO2-cesm-le.html" />
+    <link rel="next" title="Compute oxygen partial pressure" href="compute-pO2-cesm-le.html" />
     <link rel="prev" title="Overview" href="data-assets-preprocessing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -130,21 +130,17 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Apply linear drift correction to upper ocean fields in CESM1-LE
+     Compute and apply linear drift correction to CESM1-LE
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-pO2-cesm-le.html">
-     Compute
-     <span class="math notranslate nohighlight">
-      \(P_{\mathrm{O}_2}\)
-     </span>
-     from drift corrected fields
+     Compute oxygen partial pressure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-habitat-cesm-le.html">
-     Examine changes in viable habitat
+     Compute viable habitat in geographic space
     </a>
    </li>
   </ul>
@@ -295,7 +291,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Apply linear drift correction to upper ocean fields in CESM1-LE</h1>
+                <h1>Compute and apply linear drift correction to CESM1-LE</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -319,8 +315,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="apply-linear-drift-correction-to-upper-ocean-fields-in-cesm1-le">
-<h1>Apply linear drift correction to upper ocean fields in CESM1-LE<a class="headerlink" href="#apply-linear-drift-correction-to-upper-ocean-fields-in-cesm1-le" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="compute-and-apply-linear-drift-correction-to-cesm1-le">
+<h1>Compute and apply linear drift correction to CESM1-LE<a class="headerlink" href="#compute-and-apply-linear-drift-correction-to-cesm1-le" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
@@ -1039,7 +1035,7 @@ Wall time: 2min 4s
     <a class='right-next' id="next-link" href="compute-pO2-cesm-le.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Compute <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span> from drift corrected fields</p>
+        <p class="prev-next-title">Compute oxygen partial pressure</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

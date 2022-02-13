@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Compute \(P_{\mathrm{O}_2}\) from drift corrected fields &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    <title>Compute oxygen partial pressure &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"PO2atm": "P_{\\\\mathrm{O}_2}^{atm}", "PO": "P_{\\\\mathrm{O}_2}", "O2": "\\\\mathrm{O}_2}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -54,8 +52,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examine changes in viable habitat" href="compute-habitat-cesm-le.html" />
-    <link rel="prev" title="Apply linear drift correction to upper ocean fields in CESM1-LE" href="compute-drift-corr-cesm-le.html" />
+    <link rel="next" title="Compute viable habitat in geographic space" href="compute-habitat-cesm-le.html" />
+    <link rel="prev" title="Compute and apply linear drift correction to CESM1-LE" href="compute-drift-corr-cesm-le.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -132,21 +130,17 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="compute-drift-corr-cesm-le.html">
-     Apply linear drift correction to upper ocean fields in CESM1-LE
+     Compute and apply linear drift correction to CESM1-LE
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Compute
-     <span class="math notranslate nohighlight">
-      \(P_{\mathrm{O}_2}\)
-     </span>
-     from drift corrected fields
+     Compute oxygen partial pressure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-habitat-cesm-le.html">
-     Examine changes in viable habitat
+     Compute viable habitat in geographic space
     </a>
    </li>
   </ul>
@@ -284,7 +278,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Compute P_{\mathrm{O}_2} from drift corrected fields</h1>
+                <h1>Compute oxygen partial pressure</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -295,8 +289,8 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="compute-p-mathrm-o-2-from-drift-corrected-fields">
-<h1>Compute <span class="math notranslate nohighlight">\(P_{\mathrm{O}_2}\)</span> from drift corrected fields<a class="headerlink" href="#compute-p-mathrm-o-2-from-drift-corrected-fields" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="compute-oxygen-partial-pressure">
+<h1>Compute oxygen partial pressure<a class="headerlink" href="#compute-oxygen-partial-pressure" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
@@ -321,6 +315,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/mclong/miniconda3/envs/metabolic/lib/python3.7/site-packages/dask_jobqueue/core.py:20: FutureWarning: tmpfile is deprecated and will be removed in a future release. Please use dask.utils.tmpfile instead.
+  from distributed.utils import tmpfile
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -335,24 +335,30 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/mclong/miniconda3/envs/metabolic/lib/python3.7/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
+Perhaps you already have a cluster running?
+Hosting the HTTP server on port 46615 instead
+  f&quot;Port {expected} is already in use.\n&quot;
+</pre></div>
+</div>
 <div class="output text_html"><div>
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-03d1b7b6-787c-11ec-8466-3cecef1b11f8</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-24a34918-8c3c-11ec-9e83-3cecef1acc42</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
 
             <td style="text-align: left;"><strong>Connection method:</strong> Cluster object</td>
-            <td style="text-align: left;"><strong>Cluster type:</strong> PBSCluster</td>
+            <td style="text-align: left;"><strong>Cluster type:</strong> dask_jobqueue.PBSCluster</td>
 
         </tr>
 
 
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                    <strong>Dashboard: </strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -368,11 +374,11 @@
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">PBSCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">48e8616c</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">c17dd519</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                    <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 0
@@ -399,11 +405,11 @@
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-883a4f2b-0d13-493b-ae7f-7b632929e75b</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-085fb69d-f975-49c3-89bc-cf14e41e965e</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://10.12.206.35:44434
+                        <strong>Comm:</strong> tcp://10.12.206.15:42196
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 0
@@ -411,7 +417,7 @@
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/8787/status</a>
+                        <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/46615/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 0
@@ -495,18 +501,18 @@
       <td>20C</td>
       <td>ocn</td>
       <td>pop.h</td>
-      <td>32</td>
-      <td>SALT</td>
+      <td>26</td>
+      <td>O2_PRODUCTION</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>RCP85</td>
+      <td>20C</td>
       <td>ocn</td>
       <td>pop.h</td>
-      <td>2</td>
-      <td>TEMP</td>
+      <td>32</td>
+      <td>SALT</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
@@ -516,17 +522,17 @@
       <td>ocn</td>
       <td>pop.h</td>
       <td>30</td>
-      <td>TEMP</td>
+      <td>O2_CONSUMPTION</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>RCP85</td>
+      <td>20C</td>
       <td>ocn</td>
       <td>pop.h</td>
-      <td>35</td>
-      <td>TEMP</td>
+      <td>10</td>
+      <td>O2_PRODUCTION</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
@@ -535,7 +541,7 @@
       <td>20C</td>
       <td>ocn</td>
       <td>pop.h</td>
-      <td>102</td>
+      <td>30</td>
       <td>TEMP</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
@@ -551,37 +557,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>259</th>
-      <td>RCP85</td>
-      <td>ocn</td>
-      <td>pop.h</td>
-      <td>101</td>
-      <td>pO2</td>
-      <td>drift-corrected</td>
-      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
-    </tr>
-    <tr>
-      <th>260</th>
-      <td>RCP85</td>
-      <td>ocn</td>
-      <td>pop.h</td>
-      <td>102</td>
-      <td>pO2</td>
-      <td>drift-corrected</td>
-      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
-    </tr>
-    <tr>
-      <th>261</th>
-      <td>RCP85</td>
-      <td>ocn</td>
-      <td>pop.h</td>
-      <td>103</td>
-      <td>pO2</td>
-      <td>drift-corrected</td>
-      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
-    </tr>
-    <tr>
-      <th>262</th>
+      <th>445</th>
       <td>RCP85</td>
       <td>ocn</td>
       <td>pop.h</td>
@@ -591,7 +567,27 @@
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
     <tr>
-      <th>263</th>
+      <th>446</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>104</td>
+      <td>vol_habitat_trait_spc</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
+    <tr>
+      <th>447</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>105</td>
+      <td>depth_habitat_trait_wgt</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
+    <tr>
+      <th>448</th>
       <td>RCP85</td>
       <td>ocn</td>
       <td>pop.h</td>
@@ -600,9 +596,19 @@
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
+    <tr>
+      <th>449</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>105</td>
+      <td>vol_habitat_trait_spc</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
   </tbody>
 </table>
-<p>264 rows × 7 columns</p>
+<p>450 rows × 7 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -656,7 +662,7 @@
       <td>ocn</td>
       <td>pop.h</td>
       <td>10</td>
-      <td>SALT</td>
+      <td>O2_CONSUMPTION</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
@@ -666,7 +672,7 @@
       <td>ocn</td>
       <td>pop.h</td>
       <td>10</td>
-      <td>O2</td>
+      <td>SALT</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
@@ -676,60 +682,43 @@
       <td>ocn</td>
       <td>pop.h</td>
       <td>10</td>
+      <td>O2</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>10</td>
+      <td>depth_habitat_trait_wgt</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>10</td>
       <td>pO2</td>
+      <td>drift-corrected</td>
+      <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>RCP85</td>
+      <td>ocn</td>
+      <td>pop.h</td>
+      <td>10</td>
+      <td>vol_habitat_trait_spc</td>
       <td>drift-corrected</td>
       <td>/glade/scratch/mclong/ocean-metabolism/funnel-...</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cache_dir</span> <span class="o">=</span> <span class="s1">&#39;/glade/scratch/mclong/ocean-metabolism/funnel-cache&#39;</span>
-
-
-<span class="k">def</span> <span class="nf">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cache_dir</span><span class="si">}</span><span class="s1">/glade-cesm1-le.</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s1">.drift-corrected.zarr&#39;</span>
-
-
-<span class="k">def</span> <span class="nf">_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Manually generate funnel catalog entry</span>
-
-<span class="sd">    I.e.:</span>
-<span class="sd">    asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.TEMP.drift-corrected.zarr</span>
-<span class="sd">    esm_collection: data/catalogs/glade-cesm1-le.json</span>
-<span class="sd">    key: 20C.ocn.pop.h.101</span>
-<span class="sd">    name: drift-corrected</span>
-<span class="sd">    operator_kwargs:</span>
-<span class="sd">    - {}</span>
-<span class="sd">    - {}</span>
-<span class="sd">    - {}</span>
-<span class="sd">    operators:</span>
-<span class="sd">    - compute_time</span>
-<span class="sd">    - sel_time_slice</span>
-<span class="sd">    - compute_drift_correction</span>
-<span class="sd">    preprocess: _preprocess_pop_h_upper_1km</span>
-<span class="sd">    variable: TEMP</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">cache_id_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">asset</span><span class="o">=</span><span class="n">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">),</span>
-        <span class="n">esm_collection</span><span class="o">=</span><span class="s1">&#39;data/catalogs/glade-cesm1-le.json&#39;</span><span class="p">,</span>
-        <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
-        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;drift-corrected&#39;</span><span class="p">,</span>
-        <span class="n">operator_kwargs</span><span class="o">=</span><span class="p">[{},</span> <span class="p">{},</span> <span class="p">{}],</span>
-        <span class="n">operators</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;compute_time&#39;</span><span class="p">,</span> <span class="s1">&#39;sel_time_slice&#39;</span><span class="p">,</span> <span class="s1">&#39;compute_drift_correction&#39;</span><span class="p">],</span>
-        <span class="n">preprocess</span><span class="o">=</span><span class="s1">&#39;_preprocess_pop_h_upper_1km&#39;</span><span class="p">,</span>
-        <span class="n">variable</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">cache_id_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;data/funnel-catalog/glade-cesm1-le.</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">component</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">stream</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">member_id</span><span class="p">)</span><span class="si">:</span><span class="s1">03d</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s1">.drift-corrected.yml&#39;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cache_id_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fid</span><span class="p">:</span>
-        <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">cache_id_dict</span><span class="p">,</span> <span class="n">fid</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +750,7 @@
 
     <span class="c1"># check for existing cache file</span>
     <span class="n">variable</span> <span class="o">=</span> <span class="s1">&#39;pO2&#39;</span>
-    <span class="n">asset</span> <span class="o">=</span> <span class="n">_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+    <span class="n">asset</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">fnl_gen_cache_file_name</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">clobber</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">asset</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;removing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -780,12 +769,42 @@
     <span class="n">ds</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">compute_pO2</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
     <span class="n">ds</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
+    <span class="n">dc</span><span class="o">.</span><span class="n">fnl_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.002.pO2.drift-corrected.zarr
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.pO2.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.pO2.drift-corrected.zarr
@@ -810,7 +829,6 @@ exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.o
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.033.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.pO2.drift-corrected.zarr
@@ -818,39 +836,6 @@ exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.o
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.pO2.drift-corrected.zarr
 exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.002.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.033.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.pO2.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.pO2.drift-corrected.zarr
 </pre></div>
 </div>
 </div>
@@ -894,13 +879,13 @@ exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Apply linear drift correction to upper ocean fields in CESM1-LE</p>
+            <p class="prev-next-title">Compute and apply linear drift correction to CESM1-LE</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="compute-habitat-cesm-le.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Examine changes in viable habitat</p>
+        <p class="prev-next-title">Compute viable habitat in geographic space</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

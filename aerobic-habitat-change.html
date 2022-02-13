@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="References" href="references.html" />
-    <link rel="prev" title="Examine changes in viable habitat" href="compute-habitat-cesm-le.html" />
+    <link rel="prev" title="Compute viable habitat in geographic space" href="compute-habitat-cesm-le.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -130,21 +130,17 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-drift-corr-cesm-le.html">
-     Apply linear drift correction to upper ocean fields in CESM1-LE
+     Compute and apply linear drift correction to CESM1-LE
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-pO2-cesm-le.html">
-     Compute
-     <span class="math notranslate nohighlight">
-      \(P_{\mathrm{O}_2}\)
-     </span>
-     from drift corrected fields
+     Compute oxygen partial pressure
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="compute-habitat-cesm-le.html">
-     Examine changes in viable habitat
+     Compute viable habitat in geographic space
     </a>
    </li>
   </ul>
@@ -453,9 +449,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">catalog_json_file</span> <span class="o">=</span> <span class="n">funnel</span><span class="o">.</span><span class="n">to_intake_esm</span><span class="p">(</span><span class="n">agg_member_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">sub_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sub_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;drift-corrected&#39;</span><span class="p">,</span>
     <span class="n">experiment</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;20C&#39;</span><span class="p">,</span> <span class="s1">&#39;RCP85&#39;</span><span class="p">],</span>
     <span class="n">member_id</span><span class="o">=</span><span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">dc</span><span class="o">.</span><span class="n">ocean_bgc_member_ids</span> <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">103</span><span class="p">]],</span>
@@ -3816,7 +3810,7 @@ Data variables:
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Examine changes in viable habitat</p>
+            <p class="prev-next-title">Compute viable habitat in geographic space</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="references.html" title="next page">
