@@ -1,4 +1,5 @@
 import os
+import yaml
 
 import numpy as np
 import xarray as xr
@@ -151,12 +152,53 @@ def compute_drift(ds_ctrl):
     return ds_drift
 
 
-@fn.register_derived_var(
-    varname='pO2',
-    dependent_vars=['TEMP', 'SALT', 'O2'],
-)
 def compute_pO2(ds):
     """Compute the partial pressure of O2 and drop dependent variables.
     """
     ds['pO2'] = thermodyn.compute_pO2(ds.O2, ds.TEMP, ds.SALT, ds.z_t * 1e-2, isPOP=True)    
     return ds.drop(['TEMP', 'SALT', 'O2'])
+
+
+def fnl_gen_cache_file_name(experiment, component, stream, member_id, variable, operation):
+    return f'{cache_dir}/glade-cesm1-le.{experiment}.{component}.{stream}.{int(member_id):03d}.{variable}.{operation}.zarr'
+
+
+def fnl_make_cache(experiment, component, stream, member_id, variable, operation, add_ops=[]):
+    """
+    Manually generate funnel catalog entry
+
+    I.e.:
+    asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.TEMP.drift-corrected.zarr
+    esm_collection: data/catalogs/glade-cesm1-le.json
+    key: 20C.ocn.pop.h.101
+    name: drift-corrected
+    operator_kwargs:
+    - {}
+    - {}
+    - {}
+    operators:
+    - compute_time
+    - sel_time_slice
+    - compute_drift_correction
+    preprocess: _preprocess_pop_h_upper_1km
+    variable: TEMP
+    """
+
+    if 'drift-corrected' in operation:
+        operators = ['compute_time', 'sel_time_slice', 'compute_drift_correction']
+    
+    operators += add_ops
+    
+    cache_id_dict = dict(
+        asset=fnl_gen_cache_file_name(experiment, component, stream, member_id, variable, operation),
+        esm_collection=catalog_json,
+        key=f'{experiment}.{component}.{stream}.{member_id}',
+        name=operation,
+        operator_kwargs=[{}, {}, {}],
+        operators=operators,
+        preprocess='_preprocess_pop_h_upper_1km',
+        variable=variable,
+    )
+    cache_id_file = f'data/funnel-catalog/glade-cesm1-le.{experiment}.{component}.{stream}.{int(member_id):03d}.{variable}.{operation}.yml'
+    with open(cache_id_file, 'w') as fid:
+        yaml.dump(cache_id_dict, fid)

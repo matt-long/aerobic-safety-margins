@@ -1,0 +1,16 @@
+asset: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.TEMP.drift-corrected.ann-ts-glb.zarr
+esm_collection: data/catalogs/glade-cesm1-le.json
+key: RCP85.ocn.pop.h.103
+name: drift-corrected.ann-ts-glb
+operator_kwargs:
+- {}
+- {}
+- {}
+operators:
+- compute_time
+- sel_time_slice
+- compute_drift_correction
+- resample_ann
+- vol-weighted-mean
+preprocess: _preprocess_pop_h_upper_1km
+variable: TEMP

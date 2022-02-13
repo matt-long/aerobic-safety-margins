@@ -2,6 +2,7 @@ import traceback
 import warnings
 
 import cftime
+import dask
 import numpy as np
 import pop_tools
 import xarray as xr
@@ -9,9 +10,16 @@ import xarray as xr
 
 def _get_tb_name_and_tb_dim(ds):
     """return the name of the time 'bounds' variable and its second dimension"""
-    assert 'bounds' in ds.time.attrs, 'missing "bounds" attr on time'
-    tb_name = ds.time.attrs['bounds']
-    assert tb_name in ds, f'missing "{tb_name}"'
+    if 'bounds' in ds.time.attrs:
+        tb_name = ds.time.attrs['bounds']
+        assert tb_name in ds, f'missing "{tb_name}"'
+    elif 'time_bound' in ds:
+        tb_name = 'time_bound'
+    elif 'time_bnds' in ds:
+        tb_name = 'time_bnds'
+    else:
+        raise ValueError('cannot determine "bounds" attr')
+
     tb_dim = ds[tb_name].dims[-1]
     return tb_name, tb_dim
 
@@ -70,29 +78,29 @@ def resample_ann(ds):
     compute the annual mean of an xarray.Dataset
     assumes time has been centered
     """
+    with dask.config.set(**{'array.slicing.split_large_chunks': True}):
+        weights = _gen_time_weights(ds)
+        weights = weights.groupby('time.year') / weights.groupby('time.year').sum()
 
-    weights = _gen_time_weights(ds)
-    weights = weights.groupby('time.year') / weights.groupby('time.year').sum()
+        # ensure they all add to one
+        # TODO: build support for situations when they don't,
+        # i.e. define min coverage threshold
+        nyr = len(weights.groupby('time.year'))
+        np.testing.assert_allclose(weights.groupby('time.year').sum().values, np.ones(nyr))
 
-    # ensure they all add to one
-    # TODO: build support for situations when they don't,
-    # i.e. define min coverage threshold
-    nyr = len(weights.groupby('time.year'))
-    np.testing.assert_allclose(weights.groupby('time.year').sum().values, np.ones(nyr))
+        # ascertain which variables have time and which don't
+        tb_name, tb_dim = _get_tb_name_and_tb_dim(ds)
+        time_vars = [v for v in ds.data_vars if 'time' in ds[v].dims and v != tb_name]
+        other_vars = list(set(ds.variables) - set(time_vars) - {tb_name, 'time'})
 
-    # ascertain which variables have time and which don't
-    tb_name, tb_dim = _get_tb_name_and_tb_dim(ds)
-    time_vars = [v for v in ds.data_vars if 'time' in ds[v].dims and v != tb_name]
-    other_vars = list(set(ds.variables) - set(time_vars) - {tb_name, 'time'})
-
-    # compute
-    with xr.set_options(keep_attrs=True):
-        return xr.merge(
-            (
-                ds[other_vars],
-                (ds[time_vars] * weights).groupby('time.year').sum(dim='time'),
-            )
-        ).rename({'year': 'time'})
+        # compute
+        with xr.set_options(keep_attrs=True):
+            return xr.merge(
+                (
+                    ds[other_vars],
+                    (ds[time_vars] * weights).groupby('time.year').sum(dim='time'),
+                )
+            ).rename({'year': 'time'})
 
 
 def mean_time(ds, sel_dict):
@@ -114,12 +122,55 @@ def mean_time(ds, sel_dict):
         return xr.merge([dso, ds[other_vars]])
 
 
-def pop_mean_z(ds, max_depth_m=2000.0):
-    """compute vertical mean"""
-    sel_dict = dict(z_t=slice(0, max_depth_m * 1e2))
-    dz_wgts = ds.dz.sel(sel_dict) / ds.dz.sel(sel_dict).sum()
+def pop_ocean_volume(ds, include_ms=False):
+    nk, nj, ni = tuple([ds.sizes[k] for k in ['z_t', 'nlat', 'nlon']])
+
+    mask = xr.DataArray(np.arange(0, nk), dims=('z_t')) * xr.DataArray(
+        np.ones((nk, nj, ni)), dims=('z_t', 'nlat', 'nlon'), coords={'z_t': ds.z_t}
+    )
+    mask = mask.where(mask <= ds.KMT - 1)
+    mask = xr.where(mask.notnull(), 1.0, np.nan)
+
+    if include_ms:
+        vol_mask = ds.dz * ds.TAREA * mask
+    else:
+        vol_mask = ds.dz * ds.TAREA.where(ds.REGION_MASK > 0) * mask
+
+    vol_mask = vol_mask.reset_coords(
+        [c for c in vol_mask.coords if c not in ['z_t', 'dz', 'TLAT', 'TLONG']], drop=True
+    )
+    vol_mask.attrs['units'] = 'cm^3'
+    vol_mask.attrs['long_name'] = 'Volume'
+    return vol_mask.fillna(0.0)
+
+
+def global_mean(ds, normalize=True, include_ms=False):
+    """
+    Compute the global mean on a POP dataset.
+    Return computed quantity in conventional units.
+    """
+
+    compute_vars = [v for v in ds if 'time' in ds[v].dims and ('nlat', 'nlon') == ds[v].dims[-2:]]
+    other_vars = list(set(ds.variables) - set(compute_vars))
+
+    if include_ms:
+        surface_mask = ds.TAREA.where(ds.KMT > 0).fillna(0.0)
+    else:
+        surface_mask = ds.TAREA.where(ds.REGION_MASK > 0).fillna(0.0)
+
+    masked_area = {v: surface_mask.where(ds[v].notnull()).fillna(0.0) for v in compute_vars}
+
     with xr.set_options(keep_attrs=True):
-        return (ds.sel(sel_dict) * dz_wgts).sum('z_t')
+
+        dso = xr.Dataset({v: (ds[v] * masked_area[v]).sum(['nlat', 'nlon']) for v in compute_vars})
+        if normalize:
+            dso = xr.Dataset(
+                {v: dso[v] / masked_area[v].sum(['nlat', 'nlon']) for v in compute_vars}
+            )
+
+        return xr.merge([dso, ds[other_vars]]).drop(
+            [c for c in ds.coords if ds[c].dims == ('nlat', 'nlon')]
+        )
 
 
 def linear_trend(da, x=None, dim='time'):
