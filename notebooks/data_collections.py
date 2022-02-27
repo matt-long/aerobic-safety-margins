@@ -11,8 +11,8 @@ import thermodyn
 
 USER = os.environ['USER']    
 catalog_json = 'data/catalogs/glade-cesm1-le.json'
-cache_dir = f'/glade/scratch/{USER}/ocean-metabolism/funnel-cache'
-
+cache_dir_funnel = f'/glade/scratch/{USER}/ocean-metabolism/funnel-cache'
+cache_dir = f'/glade/scratch/{USER}/ocean-metabolism'
 
 use_only_ocean_bgc_member_ids = True
 ocean_bgc_member_ids = [
@@ -59,7 +59,7 @@ def drift(**query):
         preprocess=_preprocess_pop_h_upper_1km,
         postproccess=postproccess,  
         query=query,
-        cache_dir=cache_dir,
+        cache_dir_funnel=cache_dir_funnel,
         persist=True,        
         cdf_kwargs=get_cdf_kwargs(query['stream']), 
     )
@@ -83,7 +83,7 @@ def drift_corrected_ens(**query):
         preprocess=_preprocess_pop_h_upper_1km,
         postproccess=postproccess,  
         query=query,
-        cache_dir=cache_dir,
+        cache_dir_funnel=cache_dir_funnel,
         persist=True,        
         cdf_kwargs=get_cdf_kwargs(query['stream']), 
     )
@@ -160,7 +160,7 @@ def compute_pO2(ds):
 
 
 def fnl_gen_cache_file_name(experiment, component, stream, member_id, variable, operation):
-    return f'{cache_dir}/glade-cesm1-le.{experiment}.{component}.{stream}.{int(member_id):03d}.{variable}.{operation}.zarr'
+    return f'{cache_dir_funnel}/glade-cesm1-le.{experiment}.{component}.{stream}.{int(member_id):03d}.{variable}.{operation}.zarr'
 
 
 def fnl_make_cache(experiment, component, stream, member_id, variable, operation, add_ops=[]):

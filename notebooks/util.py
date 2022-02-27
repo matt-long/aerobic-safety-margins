@@ -31,6 +31,15 @@ def attrs_label(attrs):
     return name + units
 
 
+def label_plots(fig, axs, xoff=-0.04, yoff=0.02):
+    alp = [chr(i).upper() for i in range(97, 97 + 26)]
+    for i, ax in enumerate(axs):
+        p = ax.get_position()
+        x = p.x0 + xoff
+        y = p.y1 + yoff
+        fig.text(x, y, f'{alp[i]}', fontsize=14, fontweight='semibold')
+
+
 def get_ClusterClient(memory='25GB'):
     """get cluster and client"""
     cluster = PBSCluster(

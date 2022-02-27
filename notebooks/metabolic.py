@@ -3,9 +3,9 @@ from functools import partial
 
 import constants
 import intake
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import scipy.io as sio
 import xarray as xr
 from scipy import stats as scistats
 from scipy.optimize import newton
@@ -16,12 +16,14 @@ Tref_K = Tref + constants.T0_Kelvin
 dEodT_bar = 0.022  # eV/°C
 
 
-def open_traits_df(pressure_kPa=True):
+def open_traits_df(pressure_kPa=True, add_ATmax=False, pull_remote=False):
     """Open the MI traits dataset from Deutsh et al. (2020); return a pandas.DataFrame"""
 
     path_to_here = os.path.dirname(os.path.realpath(__file__))
     cache_file = f'{path_to_here}/data/MI-traits-data/MI-traits-Deutsch-etal-2020.json'
-    os.rename(cache_file, f'{cache_file}.old')
+
+    if pull_remote:
+        os.rename(cache_file, f'{cache_file}.old')
 
     try:
         cat = intake.open_catalog('data/MI-traits-data/catalog-metabolic-index-traits.yml')
@@ -49,12 +51,27 @@ def open_traits_df(pressure_kPa=True):
 
             df[key] = values
             df[key].attrs = attrs
-        os.remove(f'{cache_file}.old')
+        if pull_remote:
+            os.remove(f'{cache_file}.old')
     except:
         print('trait db access failed')
-        os.rename(f'{cache_file}.old', cache_file)
+        if pull_remote:
+            os.rename(f'{cache_file}.old', cache_file)
         raise
 
+    if add_ATmax:
+        PO2_atm = constants.XiO2 * constants.kPa_per_atm
+        ATmax_active = []
+        ATmax_resting = []
+        for i, rowdata in df.iterrows():
+            ATmax_active.append(
+                compute_ATmax(PO2_atm, rowdata['Ac'], rowdata['Eo'], dEodT=dEodT_bar)
+            )
+            ATmax_resting.append(
+                compute_ATmax(PO2_atm, rowdata['Ao'], rowdata['Eo'], dEodT=dEodT_bar)
+            )
+        df['ATmax_active'] = ATmax_active
+        df['ATmax_resting'] = ATmax_resting
     return df
 
 
@@ -89,6 +106,69 @@ class trait_pdf(object):
 
     def median(self):
         return self.pdf_func.median(*self.beta)
+
+
+def open_CTmax_data():
+    """Return an xarray.Dataset with CTmax data from OBIS.
+    TODO: improve provenance!
+    """
+    matdata = sio.loadmat(
+        'data/MI-traits-data/obis_Tmax.mat', struct_as_record=False, squeeze_me=True
+    )
+    data = matdata['obis']
+
+    return xr.Dataset(
+        dict(
+            lat=xr.DataArray(
+                data.Ymed,
+                dims=('N'),
+                attrs={
+                    'long_name': 'Median latitude of observed occurrence',
+                    'units': 'degrees_north',
+                },
+            ),
+            lat_dist=xr.DataArray(
+                data.Yprct,
+                dims=('N', 'percentile'),
+                attrs={
+                    'long_name': 'Latitude distribution of observed occurence',
+                    'units': 'degrees_north',
+                },
+                coords={'percentile': data.prct},
+            ),
+            Thabitat_dist=xr.DataArray(
+                data.Tprct,
+                dims=('N', 'percentile'),
+                attrs={
+                    'long_name': 'Distribution of inhabited temperature',
+                    'units': '°C',
+                },
+                coords={'percentile': data.prct},
+            ),
+            CTmax=xr.DataArray(
+                data.CTmax,
+                dims=('N'),
+                attrs={
+                    'long_name': 'CTmax',
+                    'units': '°C',
+                },
+            ),
+            Species=xr.DataArray(
+                data.species,
+                dims=('N'),
+                attrs={
+                    'long_name': 'Species',
+                },
+            ),
+            Phylum=xr.DataArray(
+                data.phylum,
+                dims=('N'),
+                attrs={
+                    'long_name': 'Phylum',
+                },
+            ),
+        )
+    )
 
 
 def compute_ATmax(pO2, Ac, Eo, dEodT=0.0):
@@ -139,6 +219,82 @@ def compute_ATmax(pO2, Ac, Eo, dEodT=0.0):
         return np.nan
 
     return newton(Phi_opt, trange[ndx[-1]])
+
+
+def compute_ASM_Tmax(pO2_v_T_slope, pO2_v_T_intercept, Ac, Eo, dEodT=0.0):
+    """
+    Compute the maximum temperature at which resting or active (sustained)
+    metabolic rate can be realized at a given po2.
+
+    Parameters
+    ----------
+    pO2_v_T_slope : float
+        Slope of pO2 versus T relationship (kPa/°C)
+
+    pO2_v_T_intercept : float
+        Intercept of pO2 versus T relationship (kPa)
+
+    Ac : float
+        Hypoxia tolerance at Tref (1/kPa)
+        Can be either at rest (Ao) or at an active state.
+        For active thermal tolerance, argument should be
+           Ac = Ao / Phi_crit
+
+    Eo : float
+        Temperature sensitivity of hypoxia tolerance (eV)
+
+    dEdT: float
+        Rate of change of Eo with temperature
+
+    Returns
+    -------
+    ASM_Tmax : float
+        The maximum temperature for sustained respiration presuming correlative
+        relationship between pO2 and T.
+
+        If there is no intersection between the pO2-T relationship and the
+        pO2 at Phi = 1 (or pO2 at Phi = Phi_crit) line, the function returns
+        ATmax.
+    """
+    if np.isnan(pO2_v_T_slope) or np.isnan(pO2_v_T_intercept):
+        return np.nan
+
+    PO2_atm = constants.XiO2 * constants.kPa_per_atm
+    ATmax = compute_ATmax(PO2_atm, Ac, Eo, dEodT)
+
+    def func_opt(T):
+        return pO2_v_T_slope * T + pO2_v_T_intercept - pO2_at_Phi_one(T, Ac, Eo, dEodT)
+
+    # make a good initial guess for Tmax
+    # - evaluate function over large temperature range
+    # - find the zero crossings
+    # - pick the highest
+    trange = np.arange(-200.0, 201.0, 1.0)
+    fvalue = func_opt(trange)
+    fvalue[fvalue == 0.0] = np.nan
+    sign = fvalue / np.abs(fvalue)
+    ndx = np.where(sign[:-1] != sign[1:])[0]
+
+    # no solution
+    if len(ndx) == 0:
+        return ATmax
+
+    try:
+        ASM_Tmax = newton(func_opt, trange[ndx[-1]])
+    except:
+        print('ASM_Tmax convergence failed:')
+        print(f'pO2_v_T_slope={pO2_v_T_slope}', end=',')
+        print(f'pO2_v_T_intercept={pO2_v_T_intercept}', end=',')
+        print(f'Ac={Ac}', end=',')
+        print(f'Eo={Eo}', end=',')
+        print(f'dEodT={dEodT}', end=',')
+        print()
+        ASM_Tmax = ATmax
+
+    if ASM_Tmax > ATmax:
+        return ATmax
+    else:
+        return ASM_Tmax
 
 
 def Phi(pO2, T, Ac, Eo, dEodT=0.0):

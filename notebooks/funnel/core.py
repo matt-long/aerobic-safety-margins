@@ -513,7 +513,21 @@ def to_intake_esm(agg_member_id=True, include_add_coords=True):
 
     lines = []
     for f in files:
-        column_data = dict(**groupby_attrs_values[data[f]['key']])
+        key = data[f]['key']
+        experiment = None
+
+        # if there is a "+" in the key, assume that the experiment
+        # is of the form 20C+RCP85 or similar
+        if '+' in key:
+            assert key.count('+') == 1
+            assert 'experiment' in columns
+            experiment = key.split('.')[0]
+            key = key.split('+')[1]
+
+        column_data = dict(**groupby_attrs_values[key])
+        if experiment is not None:
+            column_data['experiment'] = experiment
+
         column_data['variable'] = data[f]['variable']
         column_data['name'] = data[f]['name']
         column_data['path'] = data[f]['asset']

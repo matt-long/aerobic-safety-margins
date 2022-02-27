@@ -17,7 +17,9 @@ parts:
           #- file: compute-MI-cesm-le
           - file: compute-pO2-cesm-le
           - file: compute-habitat-cesm-le
-  - caption: Habitat Change
+          - file: compute-trends-cesm-le
+          - file: compute-viable-traits
+  - caption: Aerobic Safety Margin
     chapters:
       - file: aerobic-habitat-change
   - caption: References

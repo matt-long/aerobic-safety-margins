@@ -136,9 +136,7 @@ def pop_ocean_volume(ds, include_ms=False):
     else:
         vol_mask = ds.dz * ds.TAREA.where(ds.REGION_MASK > 0) * mask
 
-    vol_mask = vol_mask.reset_coords(
-        [c for c in vol_mask.coords if c not in ['z_t', 'dz', 'TLAT', 'TLONG']], drop=True
-    )
+    vol_mask = vol_mask.reset_coords([c for c in vol_mask.coords if c not in ds.indexes], drop=True)
     vol_mask.attrs['units'] = 'cm^3'
     vol_mask.attrs['long_name'] = 'Volume'
     return vol_mask.fillna(0.0)
