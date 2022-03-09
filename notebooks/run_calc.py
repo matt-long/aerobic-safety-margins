@@ -95,15 +95,18 @@ def nb_execute(notebook_filename, output_dir='.', kernel_name='python3'):
 
 def install_conda_kernel(kernel_name):
     """install a conda kernel in a location findable by `nbconvert` etc."""
-    path = get_conda_kernel_cwd(kernel_name) / pathlib.Path('share/jupyter/kernels')
-    _kernels = jupyter_client.kernelspec._list_kernels_in(path)
-    if len(_kernels) > 1:
-        raise ValueError(f'expecting to find 1 kernel; found: {_kernels}')
-    k, kernel_path = _kernels.popitem()
+    path = get_conda_kernel_cwd(kernel_name)
+    if path is None:
+        raise ValueError(f'conda kernel "{kernel_name}" not found')
+    path = path / pathlib.Path('share/jupyter/kernels')
+    kernels_in_conda_env = jupyter_client.kernelspec._list_kernels_in(path)
+    if len(kernels_in_conda_env) > 1:
+        raise ValueError(f'expecting to find 1 kernel; found: {kernels_in_conda_env}')
+    k, kernel_path = kernels_in_conda_env.popitem()
     jupyter_client.kernelspec.install_kernel_spec(
         kernel_path, kernel_name=kernel_name, user=True, replace=True
     )
-    jupyter_client.kernelspec.find_kernel_specs()
+    assert kernel_name in jupyter_client.kernelspec.find_kernel_specs()
 
 
 def run(notebooks, kernel, stop_on_fail=True):
