@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aerobic Saftey Margins for Marine Ecotherms &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    <title>&lt;no title&gt; &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Metabolic Index" href="metabolic-index-defining.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -213,9 +212,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/main.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -246,11 +245,42 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/main.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/main.ipynb&branch=main"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -258,27 +288,62 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Aerobic Saftey Margins for Marine Ecotherms</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="aerobic-saftey-margins-for-marine-ecotherms">
-<h1>Aerobic Saftey Margins for Marine Ecotherms<a class="headerlink" href="#aerobic-saftey-margins-for-marine-ecotherms" title="Permalink to this headline">¶</a></h1>
-<p>This book documents the computation of “Aerobic Safety Margins”, applying metabolic theory originally defined by <span id="id1">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id3" title="Curtis Deutsch, Aaron Ferrel, Brad Seibel, Hans-Otto Pörtner, and Raymond B. Huey. Climate change tightens a metabolic constraint on marine habitats. Science, 348(6239):1132–1135, 2015. doi:10.1126/science.aaa1605.">2015</a>]</span> and trait data in <span id="id2">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2" title="Curtis Deutsch, Justin L. Penn, and Brad Seibel. Metabolic trait diversity shapes marine biogeography. Nature, 585(7826):557–562, 2020. doi:10.1038/s41586-020-2721-y.">2020</a>]</span>.</p>
-<div class="toctree-wrapper compound">
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">jupyter_client</span>
+<span class="kn">import</span> <span class="nn">run_calc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">project_kernel</span> <span class="o">=</span> <span class="s1">&#39;metabolic&#39;</span>
+<span class="n">run_calc</span><span class="o">.</span><span class="n">install_conda_kernel</span><span class="p">(</span><span class="n">project_kernel</span><span class="p">)</span>  <span class="c1"># unsure how updates propogate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1_nbs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;trait-space-joint-pdf.ipynb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;compute-viable-traits.ipynb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;compute-aerobic-safety-margin.ipynb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;compute-zonal-safety-margin-metrics.ipynb&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">ok</span> <span class="o">=</span> <span class="n">run_calc</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fig1_nbs</span><span class="p">,</span> <span class="n">kernel</span><span class="o">=</span><span class="n">project_kernel</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -291,29 +356,22 @@ const thebe_selector_output = ".output, .cell_output"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-miniconda3-metabolic-py"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "conda-env-miniconda3-metabolic-py",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-miniconda3-metabolic-py'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="metabolic-index-defining.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Metabolic Index</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             
         </div>

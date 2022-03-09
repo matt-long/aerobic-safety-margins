@@ -42,15 +42,14 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"PO2atm": "P_{\\\\mathrm{O}_2}^{atm}", "PO": "P_{\\\\mathrm{O}_2}", "O2": "\\\\mathrm{O}_2}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"PO2atm": "P_{\\\\mathrm{O}_2}^{atm}", "PO": "P_{\\\\mathrm{O}_2}", "O2": "\\\\mathrm{O}_2}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -145,12 +144,17 @@
      Compute viable habitat in geographic space
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-viable-traits.html">
+     Viable traits
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Habitat Change
+  Aerobic Safety Margin
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -424,11 +428,11 @@
 </div>
 <div class="section" id="load-traits-database">
 <h2>Load traits database<a class="headerlink" href="#load-traits-database" title="Permalink to this headline">¶</a></h2>
-<p>A subset of the trait data from <span id="id1">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2">2020</a>]</span>, including only the marine organisms for which temerature-dependent hypoxia metabolic traits have been determined.</p>
+<p>A subset of the trait data from <span id="id1">Deutsch <em>et al.</em> [<a class="reference internal" href="references.html#id2" title="Curtis Deutsch, Justin L. Penn, and Brad Seibel. Metabolic trait diversity shapes marine biogeography. Nature, 585(7826):557–562, 2020. doi:10.1038/s41586-020-2721-y.">2020</a>]</span>, including only the marine organisms for which temerature-dependent hypoxia metabolic traits have been determined.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">open_traits_df</span></code> function is defined in the <a class="reference external" href="https://github.com/matt-long/aerobic-safety-margins/blob/main/notebooks/metabolic.py">metabolic</a> module and  makes the trait data available via a <a class="reference external" href="https://pandas.pydata.org/">pandas</a> <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">open_traits_df</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">open_traits_df</span><span class="p">(</span><span class="n">add_ATmax</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -460,6 +464,8 @@
       <th>Ao</th>
       <th>Ac</th>
       <th>Phi_crit</th>
+      <th>ATmax_active</th>
+      <th>ATmax_resting</th>
     </tr>
   </thead>
   <tbody>
@@ -473,6 +479,8 @@
       <td>0.264715</td>
       <td>0.131959</td>
       <td>2.006040</td>
+      <td>34.514806</td>
+      <td>40.311588</td>
     </tr>
     <tr>
       <th>1</th>
@@ -484,6 +492,8 @@
       <td>0.252578</td>
       <td>0.141861</td>
       <td>1.780456</td>
+      <td>33.652163</td>
+      <td>38.409878</td>
     </tr>
     <tr>
       <th>2</th>
@@ -495,6 +505,8 @@
       <td>0.230068</td>
       <td>0.073638</td>
       <td>3.124330</td>
+      <td>24.570359</td>
+      <td>35.661192</td>
     </tr>
     <tr>
       <th>3</th>
@@ -506,6 +518,8 @@
       <td>0.286307</td>
       <td>0.174423</td>
       <td>1.641453</td>
+      <td>37.061791</td>
+      <td>40.943719</td>
     </tr>
     <tr>
       <th>4</th>
@@ -517,9 +531,13 @@
       <td>0.218524</td>
       <td>0.048415</td>
       <td>4.513525</td>
+      <td>15.478736</td>
+      <td>31.110696</td>
     </tr>
     <tr>
       <th>...</th>
+      <td>...</td>
+      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -539,6 +557,8 @@
       <td>0.061336</td>
       <td>0.043505</td>
       <td>1.409863</td>
+      <td>NaN</td>
+      <td>29.736384</td>
     </tr>
     <tr>
       <th>57</th>
@@ -550,6 +570,8 @@
       <td>0.219289</td>
       <td>0.096003</td>
       <td>2.284196</td>
+      <td>26.145349</td>
+      <td>33.440377</td>
     </tr>
     <tr>
       <th>58</th>
@@ -561,6 +583,8 @@
       <td>0.203696</td>
       <td>0.051780</td>
       <td>3.933876</td>
+      <td>17.478188</td>
+      <td>33.126090</td>
     </tr>
     <tr>
       <th>59</th>
@@ -572,6 +596,8 @@
       <td>0.170886</td>
       <td>0.051204</td>
       <td>3.337395</td>
+      <td>17.015458</td>
+      <td>31.162552</td>
     </tr>
     <tr>
       <th>60</th>
@@ -583,10 +609,12 @@
       <td>0.177870</td>
       <td>0.062111</td>
       <td>2.863717</td>
+      <td>17.345987</td>
+      <td>24.751697</td>
     </tr>
   </tbody>
 </table>
-<p>61 rows × 8 columns</p>
+<p>61 rows × 10 columns</p>
 </div></div></div>
 </div>
 </div>

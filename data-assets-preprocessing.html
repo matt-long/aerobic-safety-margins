@@ -42,12 +42,11 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -143,12 +142,17 @@
      Compute viable habitat in geographic space
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="compute-viable-traits.html">
+     Viable traits
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Habitat Change
+  Aerobic Safety Margin
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -268,7 +272,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<p>This calculation relies on data from the Community Earth System Model (version 1) Large Ensemble <span id="id1">[<a class="reference internal" href="references.html#id4">Kay <em>et al.</em>, 2015</a>]</span>. More information about this experiment is available <a class="reference external" href="https://www.cesm.ucar.edu/projects/community-projects/LENS/">here</a>.</p>
+<p>This calculation relies on data from the Community Earth System Model (version 1) Large Ensemble <span id="id1">[<a class="reference internal" href="references.html#id4" title="JE Kay, C Deser, A Phillips, A Mai, C Hannay, G Strand, JM Arblaster, SC Bates, G Danabasoglu, and J Edwards. The Community Earth System Model (CESM) large ensemble project: A community resource for studying climate change in the presence of internal climate variability. Bulletin of the American Meteorological Society, 96(8):1333–1349, 2015. doi:10.1175/BAMS-D-13-00255.1.">Kay <em>et al.</em>, 2015</a>]</span>. More information about this experiment is available <a class="reference external" href="https://www.cesm.ucar.edu/projects/community-projects/LENS/">here</a>.</p>
 <p>We rely on <a class="reference external" href="https://intake-esm.readthedocs.io/en/stable/">intake-esm</a> to manage data access.</p>
 <div class="toctree-wrapper compound">
 </div>
