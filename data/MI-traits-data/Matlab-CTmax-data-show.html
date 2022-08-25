@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Aerobic Saftey Margins for Marine Ectotherms</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Metabolic Index Traits
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../metabolic-index-defining.html">
+   The Metabolic Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../trait-space-joint-pdf.html">
+   Defining trait space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../trait-space-obs-habitat-vol.html">
+   Defining the Aerobic Safety Margin
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Earth System Data
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../data-assets-preprocessing.html">
+   Overview
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../obs-woa2018.html">
+     World Ocean Atlas Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../compute-drift-corr-cesm-le.html">
+     Compute and apply linear drift correction to CESM1-LE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../compute-pO2-cesm-le.html">
+     Compute oxygen partial pressure
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../compute-viable-traits.html">
+     Viable traits
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../compute-aerobic-safety-margin.html">
+     Compute the Aerobic Safety Margin
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Aerobic Safety Margin
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../aerobic-habitat-change.html">
+   Changes in aerobic habitat
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/data/MI-traits-data/Matlab-CTmax-data-show.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://jupyterhub.hpc.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/data/MI-traits-data/Matlab-CTmax-data-show.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/matt-long/aerobic-safety-margins"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/data/MI-traits-data/Matlab-CTmax-data-show.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1><no title></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">load</span><span class="w"> </span><span class="n">obis_Tmax</span><span class="p">.</span><span class="n">mat</span><span class="w"></span>
+<span class="n">obis</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>obis = 
+
+  struct with fields:
+
+        TObin: [108x40x25 double]
+       TObinA: [108x40x25 double]
+         Obin: [108x25 double]
+        ObinA: [108x25 double]
+         Tbin: [108x40 double]
+        TbinA: [108x40 double]
+       XYZbin: [108x72x36x33 double]
+         prct: [0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100]
+        Tprct: [108x21 double]
+        Pprct: [108x21 double]
+    fileindex: [108x1 double]
+         nobs: [108x1 double]
+         tmed: [108x1 double]
+          p1c: [108x2 double]
+          p1s: [108x2 double]
+      p1c_err: [108x2 double]
+          p1r: [108x1 double]
+           f1: [108x1 double]
+          p2c: [108x5 double]
+          p2s: [108x5 double]
+      p2c_err: [108x5 double]
+          p2r: [108x1 double]
+           f2: [108x1 double]
+       phylum: {1x108 cell}
+       classt: {1x108 cell}
+       family: {1x108 cell}
+      species: {1x108 cell}
+         Ybin: [108x36 double]
+         Ymed: [108x1 double]
+        Yprct: [108x21 double]
+       TOnorm: [108x40x25 double]
+      TOnormA: [108x40x25 double]
+       TOprab: [108x40x25 double]
+      TOprabA: [108x40x25 double]
+        CTmax: [108x1 double]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="n">clf</span><span class="w"> </span><span class="s">reset</span><span class="p">;</span><span class="w"></span>
+
+<span class="c">% Ymed is median inhabited latitude</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">obis</span><span class="p">.</span><span class="n">Ymed</span><span class="p">,</span><span class="w"> </span><span class="n">obis</span><span class="p">.</span><span class="n">CTmax</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;r*&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span><span class="w"> </span>
+
+<span class="c">% choose Thab at Imax of inhabited Temp percentiles</span><span class="w"></span>
+<span class="n">Imax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">obis</span><span class="p">.</span><span class="n">prct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">95</span><span class="p">);</span><span class="w"> </span><span class="c">% Index for 95th percentile</span><span class="w"></span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">obis</span><span class="p">.</span><span class="n">Ymed</span><span class="p">,</span><span class="w"> </span><span class="n">obis</span><span class="p">.</span><span class="n">Tprct</span><span class="p">(:,</span><span class="w"> </span><span class="n">Imax</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;b*&#39;</span><span class="p">);</span><span class="w"> </span>
+
+<span class="nb">plot</span><span class="p">(</span><span class="n">obis</span><span class="p">.</span><span class="n">Ymed</span><span class="p">,</span><span class="w"> </span><span class="n">obis</span><span class="p">.</span><span class="n">CTmax</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">obis</span><span class="p">.</span><span class="n">Tprct</span><span class="p">(:,</span><span class="w"> </span><span class="n">Imax</span><span class="p">),</span><span class="w"> </span><span class="s">&#39;g*&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="nb">legend</span><span class="p">(</span><span class="s">&#39;CTmax&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Thab (95%)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;TSM&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="nb">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">80</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="s">&#39;k:&#39;</span><span class="p">)</span><span class="w"></span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s">&#39;Latitude&#39;</span><span class="p">);</span><span class="w"></span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s">&#39;Temperature [C]&#39;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/Matlab-CTmax-data-show_1_0.png" src="../../_images/Matlab-CTmax-data-show_1_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">obis</span><span class="p">.</span><span class="n">Tprct</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  Columns 1 through 7
+
+   19.4451   20.4091   22.8641   23.6603   23.7986   23.9759   24.0883
+   -0.4999   18.9479   20.2208   20.3030   21.0915   22.2269   22.3131
+   -2.0941   -1.7571   -1.5884   -1.3762   -1.1310   -0.8260   -0.5466
+   -1.8477    2.0888    3.2454    4.5829    5.5127    6.1087    6.8783
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -1.8813   -1.6502   -1.5971   -1.5346   -1.4512   -1.0712   -0.6993
+    7.2488    7.9236    8.8454   11.6542   12.6081   12.7378   13.2739
+    7.0534    7.2164    7.2738    7.6287    7.8621    8.4371    8.5045
+   -1.5388    4.7058    5.9640    6.5065    6.8069    7.9664    8.4372
+   -1.2370    4.0239    4.5756    5.0617    5.5577    6.6379    7.1683
+   11.5733   13.8741   13.9462   14.0730   14.1909   14.2551   14.3329
+    8.3810   12.2095   14.3906   15.9063   16.1504   16.3773   16.7922
+   14.3081   15.6836   16.0587   16.3456   17.0366   17.2800   17.4806
+    5.3653   19.9160   20.3030   21.3155   22.2269   22.8268   24.4780
+   14.7502   21.8404   23.4166   24.2989   25.2830   25.9563   26.3163
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   15.9063   19.3860   21.1595   23.2641   24.2441   25.4420   26.1953
+   15.4946   20.2809   21.2244   22.3138   23.4022   24.0204   24.6036
+   15.9063   22.7948   24.5272   25.8608   26.5175   26.8715   27.0465
+   16.7922   19.4078   21.1366   22.3308   23.5647   24.1064   24.7241
+   13.8031   18.0581   19.1923   19.9973   20.8925   21.9709   23.2162
+   14.4358   19.8210   20.9896   21.4426   22.3277   22.8097   23.4855
+   16.1318   19.9628   20.6694   21.6532   22.4080   23.1981   23.6645
+   13.5572   19.9182   23.2013   25.0760   26.1992   26.4634   26.5175
+   17.3718   21.8723   23.4957   24.5413   25.4420   25.8942   26.2177
+   -1.2632   19.6237   20.3030   21.3155   22.3131   23.0084   24.4780
+   15.4843   20.6694   21.4899   22.2717   23.0127   23.6284   24.0006
+   17.3718   24.7231   26.2584   26.3433   26.5118   26.5175   26.7771
+   15.9063   20.4054   21.1595   22.0134   22.9285   23.6387   24.0884
+    5.0329   23.8926   24.1641   24.3838   24.6188   24.9775   25.3155
+   21.5003   24.3530   25.2022   25.4331   25.7192   26.1376   26.7080
+    2.5823   24.1219   24.1853   24.6121   25.0003   25.3328   25.6355
+    2.5823   23.8733   24.0912   24.2770   24.6188   25.0003   25.3155
+   11.9053   14.7385   15.8927   16.4468   16.8354   16.9880   17.1114
+   10.5557   10.6222   11.5107   11.7182   12.5154   13.1717   14.1340
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   10.3227   10.5557   10.6507   11.4701   11.6116   11.9510   12.2815
+   -0.5147    3.4360    5.4705    6.4855    7.8709   10.6133   11.3697
+   -0.5153    5.2815    6.1724    7.7758   10.6133   12.9601   14.8066
+   -1.7813    2.7247    3.7877    4.4908    5.0849    5.6106    6.3648
+   -1.2968   -0.4387   -0.2384    0.2786    0.8846    4.0940    5.0044
+   -1.7830    0.2454    1.9697    3.0021    3.8242    4.5192    5.2301
+   -1.2632    6.3251    9.7060   11.5001   13.7462   16.2695   18.8709
+   -1.9087   -1.3332   -0.5153   -0.3551   -0.2384    0.2786    0.5673
+    0.2071    7.5326    8.6967   10.0437   10.4304   12.5307   13.8564
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+    5.9617   11.9042   12.1613   12.5790   12.9605   13.0117   13.6535
+   11.9053   12.2333   12.5416   13.0177   13.3525   13.6492   13.9337
+    9.8469   10.2189   10.6032   11.0806   11.4678   11.6600   12.0258
+    6.0318    8.8759   10.5557   11.4751   11.6600   12.1613   12.5495
+   -1.5731   -0.2384    0.4806    1.8958    2.8761    3.7534    4.4140
+   -2.1000   -1.8866   -1.8866   -1.8865   -1.8795   -1.8767   -1.8767
+   -2.1000   -1.9573   -1.9059   -1.8911   -1.8877   -1.8856   -1.8833
+   -2.1000   -1.9064   -1.8911   -1.8861   -1.8760   -1.8384   -1.7551
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   18.8735   20.0106   21.4625   22.8741   24.0052   25.3244   25.9555
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -1.9003    0.5043    0.8848    1.3057    1.6796    2.0193    2.3644
+   -2.1000   -2.0550   -1.8846   -1.8642   -1.7350   -1.6028   -1.3258
+   -2.1000   -1.8797   -1.7151   -1.5137   -1.2588   -0.9762   -0.7010
+   -2.1000   -1.9446   -1.8867   -1.8394   -1.7697   -1.6972   -1.5582
+   18.9479   22.7157   24.4395   25.1286   25.6266   25.8910   26.1714
+    2.8256   23.3691   23.8926   24.0222   24.1687   24.5817   24.9775
+   16.0057   20.2727   22.3626   23.2773   23.7963   24.2078   24.4450
+   18.1522   24.7068   25.6936   25.9005   26.2621   26.5345   26.8497
+    3.8406   19.9745   20.9407   21.7444   22.5187   23.3415   24.1834
+   17.9154   18.1308   18.4022   18.4754   18.6480   18.7541   18.8431
+   -1.5402    5.0246    5.5740    6.3648    6.8356    7.3371    8.0603
+    1.1522    5.0246    5.4927    6.3095    7.3111    7.3111    9.0320
+   15.3798   16.6299   17.4142   17.5985   17.6080   17.6753   17.9256
+    6.3648   13.7912   14.4979   15.1491   15.6019   15.7910   16.7899
+   11.3903   13.3452   13.6577   13.8223   14.1689   14.4102   14.9454
+   -0.0208    4.1518    5.4833    6.8586    8.1814    8.9486    9.6018
+    3.9363    6.3648    6.8356    7.3371    7.4827    8.0603    9.1551
+   12.4541   13.3620   13.3705   13.4954   14.3366   14.4732   14.8937
+    2.6189    6.3095    9.0320   10.8418   11.5249   11.8663   11.9895
+    3.9541    5.4927    6.3648    7.3211    9.0320   10.5011   10.9605
+    4.2251    8.1333    8.3676    8.7978    9.5186    9.9893   10.7241
+   15.4759   16.2834   16.9831   17.9133   18.6575   18.7788   19.0593
+   13.6690   13.6690   13.8564   14.0100   14.0100   14.1666   14.2780
+   17.4981   17.5379   17.7766   17.9323   18.0050   18.2410   18.5035
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   14.9041   21.7845   22.7452   23.4583   24.0973   24.6539   25.1878
+    9.4189   22.4157   23.8539   24.6353   25.1421   25.6677   26.0391
+   18.9498   23.6476   24.7209   25.1421   25.6677   26.1344   26.6425
+   16.9514   24.0978   25.0876   25.5478   25.9799   26.5121   26.9550
+    2.9229    6.3626    9.5562   11.0163   13.9417   15.9655   17.3475
+    1.2490   11.3144   12.2951   13.2533   14.4067   15.1682   15.7178
+   -2.0964   -1.9081   -1.8994   -1.8913   -1.8851   -1.8779   -1.8729
+   -2.0985   -1.8895   -1.8827   -1.8795   -1.8760   -1.8584   -1.8400
+   -2.0993   -1.9429   -1.9171   -1.9058   -1.9016   -1.8936   -1.8875
+   -1.9023   -1.8772   -1.7841   -1.5762   -1.2723   -1.0532   -0.9099
+   -2.0993   -1.8884   -1.8760   -1.8566   -1.8002   -1.7235   -1.5686
+   -2.1000   -1.9913   -1.9322   -1.9018   -1.8855   -1.8653   -1.8205
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -2.1000   -1.9594   -1.9187   -1.8967   -1.8870   -1.8758   -1.8368
+   -2.0567   -1.9040   -1.8770   -1.8617   -1.8186   -1.7474   -1.6326
+   -1.9560   -1.8807   -1.8760   -1.8734   -1.8566   -1.8371   -1.8002
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -1.9840    8.0268    9.2511    9.8751   10.6998   11.9464   12.7744
+   -2.1000    3.5444    5.1660    7.8202    8.2683    8.4304    8.5035
+   -1.8878    6.0849    7.4172    7.7479    7.9251    8.2503    8.5056
+    7.4172   12.6046   14.2446   15.6076   15.8315   15.9500   16.1271
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -2.1000   -2.0510   -1.9277   -1.8973   -1.8673   -1.8034   -1.7255
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -2.0061   -1.7490   -1.4017   -1.2143   -1.0181   -0.8379   -0.6887
+   -1.4376    3.5269    4.8060    5.5974    6.1978    7.0279    8.2781
+
+  Columns 8 through 14
+
+   24.3079   24.4209   24.7631   25.0603   25.2514   25.3818   25.5213
+   22.8268   24.4780   24.6378   25.0281   25.1636   26.4740   26.7571
+   -0.2603    0.0004    0.3099    0.6332    0.9333    1.2648    1.6029
+    7.8639    8.6708    9.1721    9.9287   10.6922   11.4301   12.3939
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -0.3670    0.0663    0.4676    0.7776    1.1263    1.3741    1.9137
+   14.0605   14.3036   14.7676   15.0810   15.1223   15.4579   15.7988
+    9.2735    9.4800   10.1427   11.4669   12.0848   13.2885   13.9697
+    9.0667   10.6630   10.8998   10.9361   11.0114   11.7102   11.7702
+    7.6249    7.9608    8.3577    8.5360    8.7918    9.0338    9.4279
+   14.7408   14.9782   15.1916   15.3512   15.8558   16.2300   16.5094
+   17.1938   17.4529   17.7035   18.3244   18.6441   19.2265   19.7157
+   17.6210   18.0581   18.4255   18.6441   19.3736   19.7157   20.2375
+   24.6955   24.9878   25.1401   25.6594   26.6786   26.7571   27.5508
+   26.7106   26.9301   27.2384   27.4215   27.5128   27.6228   27.7678
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   26.5210   26.9301   27.2384   27.4433   27.5480   27.6626   27.8748
+   25.4561   26.1610   26.4500   26.7771   26.8756   27.0162   27.4513
+   27.2243   27.4433   27.5640   27.6321   27.7100   27.8514   28.1355
+   25.7110   26.1810   26.5118   26.8481   27.0491   27.4433   27.5536
+   23.9308   24.7307   25.7764   26.3940   26.9245   27.4374   27.6394
+   24.3409   25.0922   25.8869   26.3433   26.6031   26.8756   27.2427
+   24.0825   24.4216   25.0628   25.8495   26.1610   26.4770   27.0381
+   26.8360   26.8715   26.9301   27.0723   27.3967   27.4645   27.5565
+   26.6927   27.2384   27.4215   27.5212   27.6626   27.8229   27.9356
+   24.8420   25.0245   25.1636   25.7403   26.7365   26.7571   27.8290
+   24.3716   24.7581   25.7110   26.1545   26.4315   26.7771   26.9301
+   26.8481   26.8481   26.8715   26.8756   26.9301   26.9848   27.0201
+   24.6036   25.3618   26.1118   26.4132   26.7679   26.9301   27.1912
+   25.5977   25.8202   26.5705   26.7512   26.7987   27.9183   28.0547
+   26.8411   27.0999   27.3207   27.5006   27.6626   27.8740   28.0661
+   26.0941   26.5886   26.7512   26.7987   27.3856   27.9585   28.0547
+   25.6355   26.1180   26.5532   26.7512   26.8711   27.7761   28.0183
+   17.4702   17.6415   18.2618   18.5498   18.6437   18.9533   19.6159
+   14.5459   15.2841   15.6180   16.1274   16.7807   17.3534   17.7491
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   13.0204   13.1790   14.1437   14.2702   14.5305   14.5467   15.2590
+   12.3830   13.3838   14.1769   15.7565   18.5311   20.9135   21.6673
+   17.1895   19.6583   20.3030   21.2193   22.0648   22.6959   23.8004
+    7.3371    8.1525    8.6900    9.2748   10.4195   11.4140   11.8967
+    5.4821    5.9500    6.8680    8.5801    9.9235   10.9239   11.5517
+    5.7739    6.1753    6.7640    7.2811    7.9411    8.6495    9.6161
+   20.5382   21.2796   22.0301   22.5099   22.8660   23.5974   24.2764
+    1.2746    3.2136    4.0940    4.4289    5.3008    6.3648    8.0603
+   14.0390   14.2780   14.5027   14.7757   15.0405   15.3379   15.6760
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   13.7936   14.4230   15.3870   15.3968   15.4824   15.6529   16.1061
+   14.1951   14.5232   14.8541   15.2236   15.8022   16.4274   16.9366
+   12.7012   13.0117   13.1900   13.9719   14.3518   14.5426   14.8317
+   12.9739   13.1533   13.5387   14.3898   14.5220   14.6073   15.3230
+    5.0807    5.8010    6.4593    7.1256    7.9083    8.5648    9.5689
+   -1.8720   -1.8176   -1.7844   -1.7571   -1.4438   -1.3747   -1.3747
+   -1.8740   -1.8395   -1.7929   -1.6075   -1.3889   -1.1116   -0.7649
+   -1.6482   -1.5522   -1.3280   -1.0665   -0.9277   -0.7726   -0.6050
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   26.4480   26.5144   26.6293   26.9055   27.0475   27.4595   27.6041
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+    2.6697    2.9076    3.3314    3.6028    3.9900    4.6158    5.0900
+   -1.0261   -0.7442   -0.5017   -0.3651   -0.1073    0.0384    0.2029
+   -0.4679   -0.1397    0.1225    0.3391    0.4739    0.6912    0.9538
+   -1.3385   -1.0401   -0.8018   -0.5091   -0.1437    0.2643    0.5427
+   26.4655   26.6828   26.9105   27.1226   27.4028   27.4736   27.6478
+   25.2140   25.4208   26.5122   26.5532   26.6708   27.3063   27.9468
+   24.6654   24.9335   25.2812   25.7507   26.1880   26.5723   26.8063
+   27.0250   27.1695   27.3207   27.4735   27.6623   27.8098   27.9644
+   24.8248   25.7111   26.1033   26.5951   26.8672   27.1226   27.4182
+   19.1142   19.2727   19.4405   19.6376   19.9555   20.2388   20.7643
+    9.0320    9.6018   10.6530   10.8512   11.8274   12.7236   13.2903
+    9.0320   10.6922   10.8418   11.5249   11.6515   13.2500   13.4335
+   18.0800   18.2178   18.2816   18.6410   19.0888   20.0075   20.3910
+   17.3462   17.9428   18.6141   18.8739   19.2494   19.9450   20.8785
+   15.5016   16.1377   16.6134   17.5375   18.2250   18.8010   19.3930
+   10.5256   11.8274   12.6361   13.1746   13.4763   13.8093   14.5103
+    9.6018   10.4443   10.8418   11.7308   11.8928   13.2376   13.2500
+   16.1024   16.7321   17.1501   17.3446   18.8228   19.6360   19.9623
+   12.3035   13.1113   13.5427   14.2024   15.0283   15.2184   16.0845
+   11.4432   12.2591   12.9527   13.4783   14.3852   15.1253   15.6958
+   11.3871   11.8203   12.5192   13.0921   13.7804   15.1933   16.0953
+   19.2476   19.7479   19.9457   20.6425   21.3420   21.4331   21.6948
+   14.2780   14.7757   15.0405   15.0405   15.5117   15.5156   15.6823
+   18.7352   18.8874   18.9602   19.4052   19.8945   20.2328   20.5756
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   25.6446   25.9752   26.4236   26.7322   27.1542   27.5183   27.8792
+   26.4728   26.9390   27.3067   27.6289   27.9075   28.2208   28.4626
+   27.1332   27.4723   27.6289   27.8380   28.0525   28.2796   28.4139
+   27.3502   27.6741   27.9622   28.2215   28.4352   28.6386   28.7952
+   18.5679   19.3919   19.9485   20.5472   21.5192   22.3503   23.1802
+   16.1624   16.5748   17.1760   17.6874   18.3560   18.8113   19.2414
+   -1.8400   -1.8002   -1.7571   -1.6197   -1.5231   -1.4505   -1.3561
+   -1.8324   -1.8002   -1.7818   -1.7571   -1.6583   -1.5022   -1.3747
+   -1.8560   -1.7925   -1.7441   -1.6197   -1.5404   -1.4917   -1.3888
+   -0.4987   -0.0485    0.2666    0.6572    1.0524    1.2136    1.4647
+   -1.3990   -1.1553   -0.9733   -0.8168   -0.3993    0.2241    0.6752
+   -1.7677   -1.6949   -1.5749   -1.4592   -1.2977   -1.1200   -0.9546
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -1.7929   -1.7437   -1.6444   -1.5414   -1.4099   -1.2736   -1.0991
+   -1.5185   -1.4095   -1.2299   -1.1179   -1.0189   -0.9226   -0.7468
+   -1.7932   -1.7191   -1.5022   -1.4660   -1.1876   -0.9768   -0.9449
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   13.5544   14.5003   14.9601   15.5240   15.9819   16.5503   17.4118
+    8.5544    8.6408    8.7733    9.1982    9.5691   10.1792   10.7165
+    8.8511    9.1341    9.4446    9.7266   10.0434   10.4004   10.7728
+   16.4401   16.6423   17.3720   17.5982   17.9076   18.3805   18.5722
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -1.5609   -1.3936   -1.2201   -1.0158   -0.8597   -0.6422   -0.3993
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -0.5565   -0.3783   -0.1906   -0.0183    0.1691    0.3992    0.6336
+    8.7829   10.3004   11.2376   12.3070   13.0543   13.1826   13.3620
+
+  Columns 15 through 21
+
+   25.7908   25.9619   26.0969   26.2453   26.4290   26.7613   27.0098
+   27.8290   28.0266   28.7659   28.8898   29.0304   29.2332   32.5941
+    1.9808    2.3398    2.7637    3.1561    3.6397    4.7099   19.3459
+   13.2903   14.1107   15.0283   15.6782   16.3178   17.1586   24.2226
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+    2.3185    2.5781    2.9297    3.5052    4.3343    5.2519   13.9687
+   16.1540   16.8287   17.6063   18.2040   19.1815   20.2375   20.2796
+   17.6749   21.1072   21.3499   22.2272   23.7554   24.9297   28.9615
+   12.1611   12.4952   12.7439   12.8000   13.3993   14.4885   19.4202
+    9.4750   10.3784   11.1025   12.5559   13.2223   14.3910   15.7631
+   17.0195   17.2807   17.7874   17.7989   18.3241   18.5286   32.5941
+   20.5371   20.8173   21.8236   22.1453   23.9308   26.0244   31.0072
+   20.7588   21.5931   22.0733   23.0240   23.9308   25.7763   29.9070
+   28.0816   28.2077   28.7659   28.8898   29.1386   29.2453   29.6802
+   27.8984   28.0627   28.2644   28.4428   28.7034   29.0008   31.1078
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   28.0629   28.3129   28.4220   28.6563   28.8331   29.2145   32.5941
+   27.5480   27.7073   27.9473   28.3260   28.7787   29.4159   32.5941
+   28.3218   28.3926   28.5525   28.6435   28.7013   29.0110   32.5941
+   27.7919   27.9473   28.2225   28.5630   28.9995   29.4636   32.5941
+   27.9023   28.2295   28.4948   28.8551   29.2567   29.5780   32.5941
+   27.4513   27.7425   27.9866   28.2620   28.5601   29.1418   31.1078
+   27.3967   27.5565   27.8255   28.1651   28.5800   29.1418   32.5941
+   27.6803   27.9460   28.2458   28.5037   28.8598   29.2723   32.5941
+   28.1076   28.2644   28.4428   28.6563   28.9801   29.2896   31.0072
+   28.1645   28.2315   28.7659   28.8898   29.1386   29.2332   32.5941
+   27.0604   27.4639   27.6679   27.9356   28.4199   29.0894   32.1780
+   27.4513   27.4513   27.4645   27.6803   27.6803   28.3147   32.1780
+   27.4645   27.6626   27.9147   28.3147   28.7712   29.4389   32.5941
+   28.1726   28.3215   28.8571   29.0427   29.1961   29.3677   32.9111
+   28.1167   28.3894   28.5266   28.6505   28.8049   29.0026   30.0016
+   28.2084   28.3863   28.7861   28.9543   29.1247   29.3300   30.1624
+   28.1495   28.3322   28.7425   28.9336   29.1029   29.3197   30.1401
+   19.9567   20.3752   21.5839   21.6216   21.8582   23.9738   26.1610
+   18.2505   19.0728   20.0243   20.4640   21.9666   23.0192   23.0509
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   15.5100   15.6658   15.8701   16.4782   18.2308   19.8012   21.8017
+   22.6687   23.6343   24.5841   25.9688   27.1027   28.2955   29.8447
+   24.6344   25.3972   26.6496   27.6033   28.4272   29.0562   30.0470
+   13.0689   13.7822   15.0283   15.4323   16.3178   17.0325   28.6201
+   13.5923   14.4633   15.4076   16.2124   17.3584   20.2664   29.4878
+   10.6165   11.4372   12.7254   13.7880   15.4984   17.5558   28.2892
+   24.7626   25.6164   26.5057   26.9128   27.8312   28.1405   30.1171
+    9.9235   10.9239   12.6277   15.1585   15.4076   16.4461   30.2279
+   15.9799   16.3109   16.8185   17.2186   17.6466   18.3244   23.7883
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   17.8257   18.2311   18.2368   18.3719   18.7723   19.0495   19.4777
+   17.3089   17.8285   18.3719   19.2682   20.4640   22.6592   23.0509
+   15.2840   15.5100   21.0239   26.3082   26.4282   26.8089   27.3296
+   15.4926   15.6757   16.1093   18.0284   18.3266   18.7723   19.4777
+   10.6133   11.8413   13.3344   14.5161   15.5587   17.0046   27.7153
+   -0.9322   -0.9294   -0.8617   -0.7939   -0.3782    0.5024    4.2697
+   -0.5983   -0.3635    0.0994    0.3924    0.5826    1.0525    1.9489
+   -0.3973   -0.0307    0.2241    0.5176    1.0524    2.6188   12.6807
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   27.7544   28.0463   28.1940   28.4704   28.5955   28.8724   29.4163
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+    5.7384    6.9961    7.8492    9.3565   11.6063   13.9516   18.4753
+    0.3760    0.4868    0.5427    0.7627    1.2270    1.4752    1.9758
+    1.0627    1.1957    1.3199    1.4633    2.5149    4.7894   10.7618
+    1.0838    2.0163    4.0862    5.1422    6.0574    7.2936   13.2182
+   27.8699   28.0073   28.1893   28.4220   28.6098   29.0078   29.8113
+   28.0429   28.1836   28.8438   28.9862   29.1218   29.3677   30.0470
+   27.2177   27.7014   28.0546   28.4287   28.8669   29.1905   30.0823
+   28.0979   28.2957   28.3779   28.5266   28.6563   28.8584   30.3009
+   27.7173   27.9441   28.1566   28.3385   28.5502   28.8023   30.3009
+   23.3892   24.0357   24.4202   24.8005   25.2747   26.7084   27.6953
+   14.2370   15.3682   16.0536   16.4429   17.4243   17.5186   28.3597
+   15.0283   15.2279   16.4429   17.4243   17.4243   17.7651   26.9922
+   20.8955   21.8302   22.0328   22.2806   22.7006   25.4077   28.8838
+   21.2875   21.8295   22.4100   22.9299   23.3638   24.6733   29.0590
+   20.1203   21.0930   21.7975   22.3709   23.1511   24.5855   28.4175
+   14.8854   15.3682   15.9218   16.6773   17.6330   21.4672   28.2492
+   14.8820   15.3682   16.1714   16.5458   17.4350   17.5186   28.2066
+   20.2849   21.8247   22.2059   22.9788   23.1642   23.5923   27.8110
+   16.6908   17.3127   17.4243   17.8693   20.0919   24.4195   28.2066
+   16.4429   17.1918   17.4485   17.7651   18.7265   19.4493   23.6701
+   17.0233   22.8812   26.0363   27.2643   28.1524   28.6148   29.7329
+   21.9326   22.3552   22.6207   23.0868   24.1800   24.9101   25.6115
+   15.8220   15.8220   15.9799   16.8417   16.8957   18.2670   22.5169
+   20.9231   21.5041   22.0556   22.2257   22.3726   22.4963   22.5169
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   28.1378   28.4139   28.7055   28.9567   29.1960   29.5334   32.3176
+   28.7456   28.9464   29.1012   29.2776   29.4542   29.7483   32.3176
+   28.5835   28.7546   28.9024   29.0190   29.1556   29.3763   32.4977
+   28.9250   29.0564   29.1690   29.2679   29.3568   29.4776   30.9968
+   23.7883   24.6870   25.6446   26.4193   27.5828   28.5738   29.7621
+   19.9142   20.3665   21.0244   21.6497   23.0498   24.1777   32.5941
+   -1.1876   -1.0234   -0.9275   -0.8326   -0.5899    0.2241   22.6982
+   -1.1417   -0.9322   -0.7730   -0.3682   -0.1351    0.2241    2.2978
+   -1.2813   -1.1438   -0.9275   -0.7944   -0.4448    0.2266   11.5448
+    1.7874    1.9738    2.5109    3.2296    3.3258    3.5852    4.5657
+    1.4678    2.9304    5.7589    7.0800   11.9149   17.8531   25.7257
+   -0.7089   -0.5326   -0.2176    0.0433    0.3679    0.7841    7.0690
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -0.9389   -0.6994   -0.5391   -0.2232    0.2337    0.6967    1.8605
+   -0.5655   -0.3683    0.0082    0.4021    0.6827    1.3824    4.4593
+   -0.6916   -0.5899    0.2241    0.6752    1.3787    2.8505    4.4593
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   17.9529   18.4921   19.0956   20.0128   20.5156   21.1367   23.1839
+   11.1685   11.6249   12.0764   12.6775   13.4630   14.4502   21.1669
+   11.4028   11.9124   12.3938   13.2190   14.3437   15.6876   23.1187
+   19.0754   19.8224   20.1564   20.4912   20.8021   21.0064   21.7551
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+   -0.2267    0.0718    0.3120    0.6324    0.8903    1.2707    8.2066
+       NaN       NaN       NaN       NaN       NaN       NaN       NaN
+    0.8565    1.1121    1.2783    1.5448    1.9750    2.7225    4.4593
+   14.0454   14.8937   17.0814   18.9462   21.3792   23.5635   29.0281
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./data/MI-traits-data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew C. Long, Curtis Deutsch, Precious Mongwe, Takamitsu Ito<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

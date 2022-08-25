@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Compute viable habitat in trait space &#8212; Aerobic Saftey Margins for Marine Ectotherms</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,30 +20,30 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -58,7 +60,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -67,9 +83,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -111,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Earth System Model Data
+  Earth System Data
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -126,6 +143,11 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="obs-woa2018.html">
+     World Ocean Atlas Dataset
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="compute-drift-corr-cesm-le.html">
      Compute and apply linear drift correction to CESM1-LE
     </a>
@@ -136,13 +158,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="compute-habitat-cesm-le.html">
-     Compute viable habitat in geographic space
+    <a class="reference internal" href="compute-viable-traits.html">
+     Viable traits
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="compute-viable-traits.html">
-     Viable traits
+    <a class="reference internal" href="compute-aerobic-safety-margin.html">
+     Compute the Aerobic Safety Margin
     </a>
    </li>
   </ul>
@@ -174,12 +196,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -187,97 +214,165 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/compute-MI-trait-space-cesm-le.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/compute-MI-trait-space-cesm-le.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://jupyterhub.hpc.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/compute-MI-trait-space-cesm-le.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/matt-long/aerobic-safety-margins"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/compute-MI-trait-space-cesm-le.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/matt-long/aerobic-safety-margins"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
 </div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/matt-long/aerobic-safety-margins/main?urlpath=lab/tree/notebooks/compute-MI-trait-space-cesm-le.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://jupyterhub.hpc.ucar.edu/dev/hub/user-redirect/git-pull?repo=https://github.com/matt-long/aerobic-safety-margins&urlpath=lab/tree/aerobic-safety-margins/notebooks/compute-MI-trait-space-cesm-le.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
     </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Compute viable habitat in trait space</h1>
@@ -288,11 +383,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="compute-viable-habitat-in-trait-space">
-<h1>Compute viable habitat in trait space<a class="headerlink" href="#compute-viable-habitat-in-trait-space" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="compute-viable-habitat-in-trait-space">
+<h1>Compute viable habitat in trait space<a class="headerlink" href="#compute-viable-habitat-in-trait-space" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
@@ -690,46 +786,88 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;trait_spc_active&#x27; (Ac: 8, Eo: 7)&gt;
-array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
-        8.19298555e-03, 3.68959807e-03, 1.00813091e-03],
-       [1.06140909e-02, 3.52708287e-02, 7.11130864e-02, 8.69930173e-02,
-        6.45684353e-02, 2.90775046e-02, 7.94502019e-03],
-       [1.23591079e-02, 4.10695540e-02, 8.28044832e-02, 1.01295165e-01,
-        7.51838542e-02, 3.38580121e-02, 9.25122680e-03],
-       [7.08526930e-03, 2.35444865e-02, 4.74704214e-02, 5.80708193e-02,
-        4.31016426e-02, 1.94102305e-02, 5.30357316e-03],
-       [2.56701395e-03, 8.53023685e-03, 1.71986736e-02, 2.10392290e-02,
-        1.56158521e-02, 7.03238370e-03, 1.92150019e-03],
-       [6.36403263e-04, 2.11478032e-03, 4.26382256e-03, 5.21595685e-03,
-        3.87141615e-03, 1.74343888e-03, 4.76370216e-04],
-       [1.11418788e-04, 3.70246781e-04, 7.46491996e-04, 9.13187634e-04,
-        6.77791144e-04, 3.05233896e-04, 8.34008799e-05],
-       [1.39113912e-05, 4.62278214e-05, 9.32045879e-05, 1.14017669e-04,
-        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;trait_spc_active&#x27; (Ac: 12, Eo: 11)&gt;
+array([[1.00358230e-04, 6.72698399e-04, 2.81408643e-03, 7.33609608e-03,
+        1.19297474e-02, 1.27449962e-02, 1.20953656e-02, 7.64600251e-03,
+        3.01496564e-03, 7.40878515e-04, 1.13620084e-04],
+       [2.15385464e-04, 1.44372273e-03, 6.03949784e-03, 1.57444832e-02,
+        2.56032234e-02, 2.73528831e-02, 2.59586678e-02, 1.64095940e-02,
+        6.47061807e-03, 1.59004860e-03, 2.43847612e-04],
+       [2.90987855e-04, 1.95048344e-03, 8.15942028e-03, 2.12709498e-02,
+        3.45902036e-02, 3.69540110e-02, 3.50704125e-02, 2.21695209e-02,
+        8.74186790e-03, 2.14817112e-03, 3.29440494e-04],
+       [3.03348682e-04, 2.03333771e-03, 8.50602299e-03, 2.21745151e-02,
+        3.60595553e-02, 3.85237745e-02, 3.65601629e-02, 2.31112565e-02,
+        9.11321231e-03, 2.23942293e-03, 3.43434744e-04],
+       [2.65211673e-04, 1.77770641e-03, 7.43664545e-03, 1.93867342e-02,
+        3.15261466e-02, 3.36805640e-02, 3.19638178e-02, 2.02057084e-02,
+        7.96749890e-03, 1.95788259e-03, 3.00258114e-04],
+       [2.02910265e-04, 1.36010182e-03, 5.68968808e-03, 1.48325574e-02,
+        2.41202760e-02, 2.57685949e-02, 2.44551330e-02, 1.54591447e-02,
+        6.09583768e-03, 1.49795245e-03, 2.29723876e-04],
+       [1.38808801e-04, 9.30431502e-04, 3.89225641e-03, 1.01467982e-02,
+        1.65004298e-02, 1.76280276e-02, 1.67295020e-02, 1.05754401e-02,
+        4.17009913e-03, 1.02473368e-03, 1.57151713e-04],
+       [8.60027226e-05, 5.76473839e-04, 2.41155205e-03, 6.28672147e-03,
+        1.02232847e-02, 1.09219182e-02, 1.03652125e-02, 6.55229806e-03,
+        2.58369697e-03, 6.34901290e-04, 9.73675666e-05],
+       [4.88294430e-05, 3.27302387e-04, 1.36919786e-03, 3.56938825e-03,
+        5.80443598e-03, 6.20109650e-03, 5.88501779e-03, 3.72017367e-03,
+        1.46693593e-03, 3.60475522e-04, 5.52820178e-05],
+       [2.54539295e-05, 1.70616976e-04, 7.13738753e-04, 1.86065930e-03,
+        3.02575035e-03, 3.23252251e-03, 3.06775624e-03, 1.93926109e-03,
+        7.64687892e-04, 1.87909548e-04, 2.88175433e-05],
+       [1.22509648e-05, 8.21178736e-05, 3.43522140e-04, 8.95534480e-04,
+        1.45629228e-03, 1.55581163e-03, 1.47650969e-03, 9.33365485e-04,
+        3.68043938e-04, 9.04407805e-05, 1.38698706e-05],
+       [5.43994403e-06, 3.64637924e-05, 1.52538289e-04, 3.97655003e-04,
+        6.46655070e-04, 6.90845848e-04, 6.55632452e-04, 4.14453562e-04,
+        1.63427000e-04, 4.01595133e-05, 6.15880634e-06]])
 Coordinates:
-  * Ac       (Ac) float64 0.0258 0.0399 0.0619 0.0959 ... 0.2303 0.3568 0.5528
-  * Eo       (Eo) float64 -0.2 -0.0 0.2 0.4 0.6 0.8 1.0
+  * Ac       (Ac) float64 0.03 0.037 0.0456 0.0562 ... 0.1601 0.1974 0.2433 0.3
+  * Eo       (Eo) float64 -0.5 -0.3056 -0.1111 0.0833 ... 0.8611 1.056 1.25
 Attributes:
-    N_traits:            56
+    N_traits:            132
     long_name:           Trait density (active)
     metabolic_baseline:  active
-    units:               eV 1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'trait_spc_active'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 8</li><li><span class='xr-has-index'>Eo</span>: 7</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7fd14d23-7256-4be0-8b8f-5e1f526de926' class='xr-array-in' type='checkbox' checked><label for='section-7fd14d23-7256-4be0-8b8f-5e1f526de926' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.001347 0.004475 0.009023 0.01104 ... 8.463e-05 3.811e-05 1.041e-05</span></div><div class='xr-array-data'><pre>array([[1.34680503e-03, 4.47545908e-03, 9.02342586e-03, 1.10384049e-02,
-        8.19298555e-03, 3.68959807e-03, 1.00813091e-03],
-       [1.06140909e-02, 3.52708287e-02, 7.11130864e-02, 8.69930173e-02,
-        6.45684353e-02, 2.90775046e-02, 7.94502019e-03],
-       [1.23591079e-02, 4.10695540e-02, 8.28044832e-02, 1.01295165e-01,
-        7.51838542e-02, 3.38580121e-02, 9.25122680e-03],
-       [7.08526930e-03, 2.35444865e-02, 4.74704214e-02, 5.80708193e-02,
-        4.31016426e-02, 1.94102305e-02, 5.30357316e-03],
-       [2.56701395e-03, 8.53023685e-03, 1.71986736e-02, 2.10392290e-02,
-        1.56158521e-02, 7.03238370e-03, 1.92150019e-03],
-       [6.36403263e-04, 2.11478032e-03, 4.26382256e-03, 5.21595685e-03,
-        3.87141615e-03, 1.74343888e-03, 4.76370216e-04],
-       [1.11418788e-04, 3.70246781e-04, 7.46491996e-04, 9.13187634e-04,
-        6.77791144e-04, 3.05233896e-04, 8.34008799e-05],
-       [1.39113912e-05, 4.62278214e-05, 9.32045879e-05, 1.14017669e-04,
-        8.46268206e-05, 3.81105218e-05, 1.04131654e-05]])</pre></div></div></li><li class='xr-section-item'><input id='section-7f1b3011-0fba-4da6-b951-58b342d6e4ba' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7f1b3011-0fba-4da6-b951-58b342d6e4ba' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0258 0.0399 ... 0.3568 0.5528</div><input id='attrs-b0430b1d-93ab-4009-906f-e8f745b620df' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b0430b1d-93ab-4009-906f-e8f745b620df' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fbd9fea4-1fec-4d87-bb60-c718596af74c' class='xr-var-data-in' type='checkbox'><label for='data-fbd9fea4-1fec-4d87-bb60-c718596af74c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by critical MI)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.0258, 0.0399, 0.0619, 0.0959, 0.1486, 0.2303, 0.3568, 0.5528])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.2 -0.0 0.2 0.4 0.6 0.8 1.0</div><input id='attrs-5e523b67-71bb-4012-8a9c-e7e9d8628c19' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5e523b67-71bb-4012-8a9c-e7e9d8628c19' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-44e2f3e4-bf6c-4b2d-8a0e-7563bd6f0789' class='xr-var-data-in' type='checkbox'><label for='data-44e2f3e4-bf6c-4b2d-8a0e-7563bd6f0789' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity of MI</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.2, -0. ,  0.2,  0.4,  0.6,  0.8,  1. ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9828e050-83a9-4331-b9c9-8e4634bb5baa' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9828e050-83a9-4331-b9c9-8e4634bb5baa' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>N_traits :</span></dt><dd>56</dd><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd></dl></div></li></ul></div></div></div></div>
+    units:               eV 1/kPa</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'trait_spc_active'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>Ac</span>: 12</li><li><span class='xr-has-index'>Eo</span>: 11</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-440d143d-dd73-437f-b29d-44df33a8fd0a' class='xr-array-in' type='checkbox' checked><label for='section-440d143d-dd73-437f-b29d-44df33a8fd0a' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0001004 0.0006727 0.002814 ... 0.0001634 4.016e-05 6.159e-06</span></div><div class='xr-array-data'><pre>array([[1.00358230e-04, 6.72698399e-04, 2.81408643e-03, 7.33609608e-03,
+        1.19297474e-02, 1.27449962e-02, 1.20953656e-02, 7.64600251e-03,
+        3.01496564e-03, 7.40878515e-04, 1.13620084e-04],
+       [2.15385464e-04, 1.44372273e-03, 6.03949784e-03, 1.57444832e-02,
+        2.56032234e-02, 2.73528831e-02, 2.59586678e-02, 1.64095940e-02,
+        6.47061807e-03, 1.59004860e-03, 2.43847612e-04],
+       [2.90987855e-04, 1.95048344e-03, 8.15942028e-03, 2.12709498e-02,
+        3.45902036e-02, 3.69540110e-02, 3.50704125e-02, 2.21695209e-02,
+        8.74186790e-03, 2.14817112e-03, 3.29440494e-04],
+       [3.03348682e-04, 2.03333771e-03, 8.50602299e-03, 2.21745151e-02,
+        3.60595553e-02, 3.85237745e-02, 3.65601629e-02, 2.31112565e-02,
+        9.11321231e-03, 2.23942293e-03, 3.43434744e-04],
+       [2.65211673e-04, 1.77770641e-03, 7.43664545e-03, 1.93867342e-02,
+        3.15261466e-02, 3.36805640e-02, 3.19638178e-02, 2.02057084e-02,
+        7.96749890e-03, 1.95788259e-03, 3.00258114e-04],
+       [2.02910265e-04, 1.36010182e-03, 5.68968808e-03, 1.48325574e-02,
+        2.41202760e-02, 2.57685949e-02, 2.44551330e-02, 1.54591447e-02,
+        6.09583768e-03, 1.49795245e-03, 2.29723876e-04],
+       [1.38808801e-04, 9.30431502e-04, 3.89225641e-03, 1.01467982e-02,
+        1.65004298e-02, 1.76280276e-02, 1.67295020e-02, 1.05754401e-02,
+        4.17009913e-03, 1.02473368e-03, 1.57151713e-04],
+       [8.60027226e-05, 5.76473839e-04, 2.41155205e-03, 6.28672147e-03,
+        1.02232847e-02, 1.09219182e-02, 1.03652125e-02, 6.55229806e-03,
+        2.58369697e-03, 6.34901290e-04, 9.73675666e-05],
+       [4.88294430e-05, 3.27302387e-04, 1.36919786e-03, 3.56938825e-03,
+        5.80443598e-03, 6.20109650e-03, 5.88501779e-03, 3.72017367e-03,
+        1.46693593e-03, 3.60475522e-04, 5.52820178e-05],
+       [2.54539295e-05, 1.70616976e-04, 7.13738753e-04, 1.86065930e-03,
+        3.02575035e-03, 3.23252251e-03, 3.06775624e-03, 1.93926109e-03,
+        7.64687892e-04, 1.87909548e-04, 2.88175433e-05],
+       [1.22509648e-05, 8.21178736e-05, 3.43522140e-04, 8.95534480e-04,
+        1.45629228e-03, 1.55581163e-03, 1.47650969e-03, 9.33365485e-04,
+        3.68043938e-04, 9.04407805e-05, 1.38698706e-05],
+       [5.43994403e-06, 3.64637924e-05, 1.52538289e-04, 3.97655003e-04,
+        6.46655070e-04, 6.90845848e-04, 6.55632452e-04, 4.14453562e-04,
+        1.63427000e-04, 4.01595133e-05, 6.15880634e-06]])</pre></div></div></li><li class='xr-section-item'><input id='section-7f98b9d6-3858-46ec-849b-7a6218de0d4f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7f98b9d6-3858-46ec-849b-7a6218de0d4f' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Ac</span></div><div class='xr-var-dims'>(Ac)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03 0.037 0.0456 ... 0.2433 0.3</div><input id='attrs-c71f82e7-0be8-405f-a408-60ac862e7aea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c71f82e7-0be8-405f-a408-60ac862e7aea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6071736-6fa9-46fd-9ed1-4b10a97895f8' class='xr-var-data-in' type='checkbox'><label for='data-c6071736-6fa9-46fd-9ed1-4b10a97895f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Hypoxic tolerance (normalized by $\Phi_{crit}$)</dd><dt><span>units :</span></dt><dd>1/kPa</dd></dl></div><div class='xr-var-data'><pre>array([0.03  , 0.037 , 0.0456, 0.0562, 0.0693, 0.0854, 0.1053, 0.1299, 0.1601,
+       0.1974, 0.2433, 0.3   ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>Eo</span></div><div class='xr-var-dims'>(Eo)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.5 -0.3056 -0.1111 ... 1.056 1.25</div><input id='attrs-fad51645-d50c-40e8-aeb9-739394d611a1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fad51645-d50c-40e8-aeb9-739394d611a1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-364159d7-07dc-4e1e-a5f0-96e249d03b00' class='xr-var-data-in' type='checkbox'><label for='data-364159d7-07dc-4e1e-a5f0-96e249d03b00' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Temperature sensitivity</dd><dt><span>units :</span></dt><dd>eV</dd></dl></div><div class='xr-var-data'><pre>array([-0.5     , -0.3056  , -0.1111  ,  0.0833  ,  0.2778  ,  0.380678,
+        0.4722  ,  0.6667  ,  0.8611  ,  1.0556  ,  1.25    ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a360cb36-2b74-4667-81ff-738a43bf6328' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a360cb36-2b74-4667-81ff-738a43bf6328' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>N_traits :</span></dt><dd>132</dd><dt><span>long_name :</span></dt><dd>Trait density (active)</dd><dt><span>metabolic_baseline :</span></dt><dd>active</dd><dt><span>units :</span></dt><dd>eV 1/kPa</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,7 +906,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><p><strong>glade-cesm1-le catalog with 2 dataset(s) from 450 asset(s)</strong>:</p> <div>
+<div class="output text_html"><p><strong>glade-cesm1-le catalog with 2 dataset(s) from 451 asset(s)</strong>:</p> <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -816,7 +954,7 @@ Attributes:
     </tr>
     <tr>
       <th>path</th>
-      <td>450</td>
+      <td>451</td>
     </tr>
   </tbody>
 </table>
@@ -894,17 +1032,11 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/glade/work/mclong/miniconda3/envs/metabolic/lib/python3.7/site-packages/distributed/node.py:182: UserWarning: Port 8787 is already in use.
-Perhaps you already have a cluster running?
-Hosting the HTTP server on port 43202 instead
-  f&quot;Port {expected} is already in use.\n&quot;
-</pre></div>
-</div>
 <div class="output text_html"><div>
     <div style="width: 24px; height: 24px; background-color: #e1e1e1; border: 3px solid #9D9D9D; border-radius: 5px; position: absolute;"> </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px;">Client</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-1c9e2ffe-8c51-11ec-99e5-3cecef1b12e0</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">Client-fcff9970-a30d-11ec-8a27-3cecef1b11de</p>
         <table style="width: 100%; text-align: left;">
 
         <tr>
@@ -917,7 +1049,7 @@ Hosting the HTTP server on port 43202 instead
 
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard: </strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status</a>
+                    <strong>Dashboard: </strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status</a>
                 </td>
                 <td style="text-align: left;"></td>
             </tr>
@@ -933,11 +1065,11 @@ Hosting the HTTP server on port 43202 instead
     </div>
     <div style="margin-left: 48px;">
         <h3 style="margin-bottom: 0px; margin-top: 0px;">PBSCluster</h3>
-        <p style="color: #9D9D9D; margin-bottom: 0px;">77463fd1</p>
+        <p style="color: #9D9D9D; margin-bottom: 0px;">3f0db133</p>
         <table style="width: 100%; text-align: left;">
             <tr>
                 <td style="text-align: left;">
-                    <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status</a>
+                    <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status</a>
                 </td>
                 <td style="text-align: left;">
                     <strong>Workers:</strong> 0
@@ -964,11 +1096,11 @@ Hosting the HTTP server on port 43202 instead
         <div style="width: 24px; height: 24px; background-color: #FFF7E5; border: 3px solid #FF6132; border-radius: 5px; position: absolute;"> </div>
         <div style="margin-left: 48px;">
             <h3 style="margin-bottom: 0px;">Scheduler</h3>
-            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-9ac6ccad-1f0e-4636-8c30-f43944edc98d</p>
+            <p style="color: #9D9D9D; margin-bottom: 0px;">Scheduler-7c39b1e1-7de7-49d8-8197-ce9f296e7b07</p>
             <table style="width: 100%; text-align: left;">
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Comm:</strong> tcp://10.12.206.60:46159
+                        <strong>Comm:</strong> tcp://10.12.206.51:43366
                     </td>
                     <td style="text-align: left;">
                         <strong>Workers:</strong> 0
@@ -976,7 +1108,7 @@ Hosting the HTTP server on port 43202 instead
                 </tr>
                 <tr>
                     <td style="text-align: left;">
-                        <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/calcs/proxy/43202/status</a>
+                        <strong>Dashboard:</strong> <a href="https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status" target="_blank">https://jupyterhub.hpc.ucar.edu/stable/user/mclong/asm/proxy/8787/status</a>
                     </td>
                     <td style="text-align: left;">
                         <strong>Total threads:</strong> 0
@@ -1029,35 +1161,37 @@ Hosting the HTTP server on port 43202 instead
 
 <span class="n">do_apply_ufunc</span> <span class="o">=</span> <span class="kc">False</span>
 
-<span class="n">stream</span> <span class="o">=</span> <span class="s1">&#39;pop.h&#39;</span>
-<span class="n">component</span> <span class="o">=</span> <span class="s1">&#39;ocn&#39;</span>
+<span class="n">phi_upper_bound</span> <span class="o">=</span> <span class="mf">2.0</span>
 
-<span class="n">variable</span> <span class="o">=</span> <span class="s1">&#39;vol_habitat_trait_spc&#39;</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="s2">&quot;pop.h&quot;</span>
+<span class="n">component</span> <span class="o">=</span> <span class="s2">&quot;ocn&quot;</span>
+
+<span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;area_habitat_trait_spc&quot;</span>
 
 <span class="c1"># compute Phi over trait space</span>
 <span class="k">for</span> <span class="n">experiment</span><span class="p">,</span> <span class="n">member_id</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">experiment_list</span><span class="p">,</span> <span class="n">member_id_list</span><span class="p">):</span>
     <span class="c1"># check for existing cache file</span>
 
     <span class="n">asset</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">fnl_gen_cache_file_name</span><span class="p">(</span>
-        <span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="s1">&#39;drift-corrected&#39;</span>
+        <span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="s2">&quot;drift-corrected&quot;</span>
     <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">clobber</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">asset</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;removing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;removing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">asset</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;exists: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;exists: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">continue</span>
 
-    <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">timer</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">util</span><span class="o">.</span><span class="n">timer</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">experiment</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">member_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">):</span>
 
         <span class="n">cat</span> <span class="o">=</span> <span class="n">catalog</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
             <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">,</span>
             <span class="n">member_id</span><span class="o">=</span><span class="n">member_id</span><span class="p">,</span>
             <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
             <span class="n">component</span><span class="o">=</span><span class="n">component</span><span class="p">,</span>
-            <span class="n">variable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;pO2&#39;</span><span class="p">],</span>
+            <span class="n">variable</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TEMP&quot;</span><span class="p">,</span> <span class="s2">&quot;pO2&quot;</span><span class="p">],</span>
         <span class="p">)</span>
 
         <span class="n">dset</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">to_dataset_dict</span><span class="p">()</span>
@@ -1065,12 +1199,9 @@ Hosting the HTTP server on port 43202 instead
         <span class="n">_</span><span class="p">,</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">dset</span><span class="o">.</span><span class="n">popitem</span><span class="p">()</span>
 
         <span class="n">dso</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
-        <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;Eo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Eo</span>
-        <span class="n">dso</span><span class="p">[</span><span class="s1">&#39;Ac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span>
+        <span class="c1"># vol = ds.dz * ds.TAREA</span>
 
-        <span class="n">vol</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dz</span> <span class="o">*</span> <span class="n">ds</span><span class="o">.</span><span class="n">TAREA</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;computing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;computing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">da_list_outer</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">Ac</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
 
@@ -1083,34 +1214,85 @@ Hosting the HTTP server on port 43202 instead
                         <span class="n">ds</span><span class="o">.</span><span class="n">pO2</span><span class="p">,</span>
                         <span class="n">ds</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span>
                         <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">Ac</span><span class="o">=</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="o">=</span><span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">dEodT_bar</span><span class="p">),</span>
-                        <span class="n">dask</span><span class="o">=</span><span class="s1">&#39;parallelized&#39;</span><span class="p">,</span>
+                        <span class="n">dask</span><span class="o">=</span><span class="s2">&quot;parallelized&quot;</span><span class="p">,</span>
                     <span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">Phi</span> <span class="o">=</span> <span class="n">mi</span><span class="o">.</span><span class="n">Phi</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">pO2</span><span class="p">,</span> <span class="n">ds</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">Ac</span><span class="p">,</span> <span class="n">Eo</span><span class="p">,</span> <span class="n">dEodT</span><span class="o">=</span><span class="n">dEodT_bar</span><span class="p">)</span>
 
-                <span class="n">viability_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Phi</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-
-                <span class="n">da_list_inner</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">vol</span> <span class="o">*</span> <span class="n">viability_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s1">&#39;z_t&#39;</span><span class="p">,</span> <span class="s1">&#39;nlat&#39;</span><span class="p">,</span> <span class="s1">&#39;nlon&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">compute</span><span class="p">())</span>
+                <span class="n">viability_mask</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">Phi</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">Phi</span> <span class="o">&lt;=</span> <span class="n">phi_upper_bound</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+                <span class="n">da_list_inner</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ds</span><span class="o">.</span><span class="n">TAREA</span> <span class="o">*</span> <span class="n">viability_mask</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="s2">&quot;nlat&quot;</span><span class="p">,</span> <span class="s2">&quot;nlon&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">compute</span><span class="p">())</span>
 
             <span class="n">da_list_outer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">da_list_inner</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Eo</span><span class="p">))</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;writing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;writing: </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">dso</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">da_list_outer</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span><span class="p">)</span>
+        <span class="n">dso</span><span class="p">[</span><span class="s2">&quot;Eo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Eo</span>
+        <span class="n">dso</span><span class="p">[</span><span class="s2">&quot;Ac&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">trait_spc_wgt</span><span class="o">.</span><span class="n">Ac</span>
+        <span class="n">dso</span><span class="p">[</span><span class="s2">&quot;dz&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">dz</span>
 
-        <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">dc</span><span class="o">.</span><span class="n">fnl_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="s1">&#39;drift-corrected&#39;</span><span class="p">)</span>
+        <span class="n">dso</span><span class="o">.</span><span class="n">to_zarr</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">consolidated</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dc</span><span class="o">.</span><span class="n">fnl_make_cache</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">component</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="n">member_id</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="s2">&quot;drift-corrected&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.vol_habitat_trait_spc.drift-corrected.zarr
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.009.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.010.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.011.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.012.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.013.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.014.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.015.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.016.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.area_habitat_trait_spc.drift-corrected.zarr
 
 --&gt; The keys in the returned dictionary of datasets are constructed as follows:
 	&#39;experiment.component.stream.member_id.name&#39;
@@ -1133,30 +1315,12 @@ exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.o
   <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
   100.00% [1/1 00:00<00:00]
 </div>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.vol_habitat_trait_spc.drift-corrected.zarr
-writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.017.vol_habitat_trait_spc.drift-corrected.zarr
-[20C.17]: 315.58123s
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.018.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.019.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.020.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.021.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.022.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.023.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.024.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.025.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.026.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.027.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.028.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.029.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.030.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.031.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.032.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.034.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.035.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.101.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.102.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.103.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.104.vol_habitat_trait_spc.drift-corrected.zarr
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.area_habitat_trait_spc.drift-corrected.zarr
+writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.area_habitat_trait_spc.drift-corrected.zarr
+[RCP85.101]: 810.49779s
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.area_habitat_trait_spc.drift-corrected.zarr
+exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.area_habitat_trait_spc.drift-corrected.zarr
 
 --&gt; The keys in the returned dictionary of datasets are constructed as follows:
 	&#39;experiment.component.stream.member_id.name&#39;
@@ -1179,88 +1343,9 @@ exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.o
   <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
   100.00% [1/1 00:00<00:00]
 </div>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.vol_habitat_trait_spc.drift-corrected.zarr
-writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.20C.ocn.pop.h.105.vol_habitat_trait_spc.drift-corrected.zarr
-[20C.105]: 273.26912s
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.009.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.010.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.011.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.012.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.013.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.014.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.015.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.016.vol_habitat_trait_spc.drift-corrected.zarr
-
---&gt; The keys in the returned dictionary of datasets are constructed as follows:
-	&#39;experiment.component.stream.member_id.name&#39;
-</pre></div>
-</div>
-<div class="output text_html">
-<div>
-    <style>
-        /* Turns off some styling */
-        progress {
-            /* gets rid of default border in Firefox and Opera. */
-            border: none;
-            /* Needs to be in here for Safari polyfill so background images work as expected. */
-            background-size: auto;
-        }
-        .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-            background: #F44336;
-        }
-    </style>
-  <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
-  100.00% [1/1 00:00<00:00]
-</div>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.vol_habitat_trait_spc.drift-corrected.zarr
-writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.017.vol_habitat_trait_spc.drift-corrected.zarr
-[RCP85.17]: 345.95219s
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.018.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.019.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.020.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.021.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.022.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.023.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.024.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.025.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.026.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.027.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.028.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.029.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.030.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.031.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.032.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.034.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.035.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.101.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.102.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.103.vol_habitat_trait_spc.drift-corrected.zarr
-exists: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.104.vol_habitat_trait_spc.drift-corrected.zarr
-
---&gt; The keys in the returned dictionary of datasets are constructed as follows:
-	&#39;experiment.component.stream.member_id.name&#39;
-</pre></div>
-</div>
-<div class="output text_html">
-<div>
-    <style>
-        /* Turns off some styling */
-        progress {
-            /* gets rid of default border in Firefox and Opera. */
-            border: none;
-            /* Needs to be in here for Safari polyfill so background images work as expected. */
-            background-size: auto;
-        }
-        .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
-            background: #F44336;
-        }
-    </style>
-  <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
-  100.00% [1/1 00:00<00:00]
-</div>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.vol_habitat_trait_spc.drift-corrected.zarr
-writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.vol_habitat_trait_spc.drift-corrected.zarr
-[RCP85.105]: 347.68995s
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>computing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.area_habitat_trait_spc.drift-corrected.zarr
+writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP85.ocn.pop.h.105.area_habitat_trait_spc.drift-corrected.zarr
+[RCP85.105]: 765.81336s
 </pre></div>
 </div>
 </div>
@@ -1273,7 +1358,7 @@ writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP8
 </div>
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1297,28 +1382,34 @@ writing: /glade/scratch/mclong/ocean-metabolism/funnel-cache/glade-cesm1-le.RCP8
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Matthew C. Long, Curtis Deutsch, Precious Mongwe, Takamitsu Ito<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Matthew C. Long, Curtis Deutsch, Precious Mongwe, Takamitsu Ito<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
