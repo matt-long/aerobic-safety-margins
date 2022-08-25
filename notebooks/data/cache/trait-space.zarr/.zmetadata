@@ -6,8 +6,8 @@
         },
         "ATmax_active/.zarray": {
             "chunks": [
-                8,
-                7
+                12,
+                11
             ],
             "compressor": {
                 "blocksize": 0,
@@ -21,13 +21,13 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8,
-                7
+                12,
+                11
             ],
             "zarr_format": 2
         },
         "ATmax_active/.zattrs": {
-            "N_traits": 56,
+            "N_traits": 132,
             "_ARRAY_DIMENSIONS": [
                 "Ac",
                 "Eo"
@@ -39,8 +39,8 @@
         },
         "ATmax_resting/.zarray": {
             "chunks": [
-                8,
-                7
+                12,
+                11
             ],
             "compressor": {
                 "blocksize": 0,
@@ -54,13 +54,13 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8,
-                7
+                12,
+                11
             ],
             "zarr_format": 2
         },
         "ATmax_resting/.zattrs": {
-            "N_traits": 56,
+            "N_traits": 132,
             "_ARRAY_DIMENSIONS": [
                 "Ao",
                 "Eo"
@@ -72,7 +72,7 @@
         },
         "Ac/.zarray": {
             "chunks": [
-                8
+                12
             ],
             "compressor": {
                 "blocksize": 0,
@@ -86,7 +86,7 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8
+                12
             ],
             "zarr_format": 2
         },
@@ -94,12 +94,12 @@
             "_ARRAY_DIMENSIONS": [
                 "Ac"
             ],
-            "long_name": "Hypoxic tolerance (normalized by critical MI)",
+            "long_name": "Hypoxic tolerance (normalized by $\\Phi_{crit}$)",
             "units": "1/kPa"
         },
-        "Ao/.zarray": {
+        "Ac_cdf/.zarray": {
             "chunks": [
-                8
+                12
             ],
             "compressor": {
                 "blocksize": 0,
@@ -113,7 +113,57 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8
+                12
+            ],
+            "zarr_format": 2
+        },
+        "Ac_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ac"
+            ]
+        },
+        "Ac_pdf/.zarray": {
+            "chunks": [
+                12
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                12
+            ],
+            "zarr_format": 2
+        },
+        "Ac_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ac"
+            ]
+        },
+        "Ao/.zarray": {
+            "chunks": [
+                12
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                12
             ],
             "zarr_format": 2
         },
@@ -124,9 +174,9 @@
             "long_name": "Hypoxic tolerance",
             "units": "1/kPa"
         },
-        "Eo/.zarray": {
+        "Ao_cdf/.zarray": {
             "chunks": [
-                7
+                12
             ],
             "compressor": {
                 "blocksize": 0,
@@ -140,7 +190,57 @@
             "filters": null,
             "order": "C",
             "shape": [
-                7
+                12
+            ],
+            "zarr_format": 2
+        },
+        "Ao_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ao"
+            ]
+        },
+        "Ao_pdf/.zarray": {
+            "chunks": [
+                12
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                12
+            ],
+            "zarr_format": 2
+        },
+        "Ao_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ao"
+            ]
+        },
+        "Eo/.zarray": {
+            "chunks": [
+                11
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                11
             ],
             "zarr_format": 2
         },
@@ -148,13 +248,12 @@
             "_ARRAY_DIMENSIONS": [
                 "Eo"
             ],
-            "long_name": "Temperature sensitivity of MI",
+            "long_name": "Temperature sensitivity",
             "units": "eV"
         },
-        "trait_spc_active/.zarray": {
+        "Eo_cdf/.zarray": {
             "chunks": [
-                8,
-                7
+                11
             ],
             "compressor": {
                 "blocksize": 0,
@@ -168,13 +267,64 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8,
-                7
+                11
+            ],
+            "zarr_format": 2
+        },
+        "Eo_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Eo"
+            ]
+        },
+        "Eo_pdf/.zarray": {
+            "chunks": [
+                11
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                11
+            ],
+            "zarr_format": 2
+        },
+        "Eo_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Eo"
+            ]
+        },
+        "trait_spc_active/.zarray": {
+            "chunks": [
+                12,
+                11
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                12,
+                11
             ],
             "zarr_format": 2
         },
         "trait_spc_active/.zattrs": {
-            "N_traits": 56,
+            "N_traits": 132,
             "_ARRAY_DIMENSIONS": [
                 "Ac",
                 "Eo"
@@ -185,8 +335,8 @@
         },
         "trait_spc_resting/.zarray": {
             "chunks": [
-                8,
-                7
+                12,
+                11
             ],
             "compressor": {
                 "blocksize": 0,
@@ -200,13 +350,13 @@
             "filters": null,
             "order": "C",
             "shape": [
-                8,
-                7
+                12,
+                11
             ],
             "zarr_format": 2
         },
         "trait_spc_resting/.zattrs": {
-            "N_traits": 56,
+            "N_traits": 132,
             "_ARRAY_DIMENSIONS": [
                 "Ao",
                 "Eo"

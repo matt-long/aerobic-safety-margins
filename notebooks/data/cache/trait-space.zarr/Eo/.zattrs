@@ -2,6 +2,6 @@
     "_ARRAY_DIMENSIONS": [
         "Eo"
     ],
-    "long_name": "Temperature sensitivity of MI",
+    "long_name": "Temperature sensitivity",
     "units": "eV"
 }

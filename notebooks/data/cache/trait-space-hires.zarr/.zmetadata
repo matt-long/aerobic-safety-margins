@@ -94,8 +94,58 @@
             "_ARRAY_DIMENSIONS": [
                 "Ac"
             ],
-            "long_name": "Hypoxic tolerance (normalized by critical MI)",
+            "long_name": "Hypoxic tolerance (normalized by $\\Phi_{crit}$)",
             "units": "1/kPa"
+        },
+        "Ac_cdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Ac_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ac"
+            ]
+        },
+        "Ac_pdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Ac_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ac"
+            ]
         },
         "Ao/.zarray": {
             "chunks": [
@@ -124,6 +174,56 @@
             "long_name": "Hypoxic tolerance",
             "units": "1/kPa"
         },
+        "Ao_cdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Ao_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ao"
+            ]
+        },
+        "Ao_pdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Ao_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Ao"
+            ]
+        },
         "Eo/.zarray": {
             "chunks": [
                 30
@@ -148,8 +248,58 @@
             "_ARRAY_DIMENSIONS": [
                 "Eo"
             ],
-            "long_name": "Temperature sensitivity of MI",
+            "long_name": "Temperature sensitivity",
             "units": "eV"
+        },
+        "Eo_cdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Eo_cdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Eo"
+            ]
+        },
+        "Eo_pdf/.zarray": {
+            "chunks": [
+                30
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                30
+            ],
+            "zarr_format": 2
+        },
+        "Eo_pdf/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "Eo"
+            ]
         },
         "trait_spc_active/.zarray": {
             "chunks": [

@@ -30,6 +30,7 @@ def open_traits_df(pressure_kPa=True, add_ATmax=False, pull_remote=False):
         data = cat['MI-traits'].read()
 
         df = pd.DataFrame()
+        save_attrs = {}
         for key, info in data.items():
             attrs = info['attrs']
             data_type = info['data_type']
@@ -50,9 +51,11 @@ def open_traits_df(pressure_kPa=True, add_ATmax=False, pull_remote=False):
                 values *= scale_factor
 
             df[key] = values
-            df[key].attrs = attrs
+            save_attrs[key] = attrs
+
         if pull_remote:
             os.remove(f'{cache_file}.old')
+
     except:
         print('trait db access failed')
         if pull_remote:
@@ -72,6 +75,11 @@ def open_traits_df(pressure_kPa=True, add_ATmax=False, pull_remote=False):
             )
         df['ATmax_active'] = ATmax_active
         df['ATmax_resting'] = ATmax_resting
+
+    # add the attribute
+    for key, attrs in save_attrs.items():
+        df[key].attrs = attrs
+
     return df
 
 
@@ -80,17 +88,21 @@ class trait_pdf(object):
 
     normal_traits = ['Eo']
 
-    def __init__(self, df, trait, N, bounds=None):
+    def __init__(self, df, trait, N=None, bounds=None, coord_data=None):
 
-        if bounds is None:
-            bounds = df[trait].min(), df[trait].max()
+        if coord_data is None:
+            assert N is not None
+            if bounds is None:
+                bounds = df[trait].min(), df[trait].max()
 
         if trait in self.normal_traits:
             self.pdf_func = scistats.norm
-            coord_data = np.round(np.linspace(bounds[0], bounds[1], N), 4)
+            if coord_data is None:
+                coord_data = np.round(np.linspace(bounds[0], bounds[1], N), 4)
         else:
             self.pdf_func = scistats.lognorm
-            coord_data = np.round(np.logspace(np.log10(bounds[0]), np.log10(bounds[1]), N), 4)
+            if coord_data is None:
+                coord_data = np.round(np.logspace(np.log10(bounds[0]), np.log10(bounds[1]), N), 4)
 
         self.coord = xr.DataArray(
             coord_data,
@@ -101,8 +113,13 @@ class trait_pdf(object):
         )
         self.beta = self.pdf_func.fit(df[trait].values)
 
-    def fitted(self):
+    @property
+    def pdf(self):
         return self.pdf_func.pdf(self.coord, *self.beta)
+
+    @property
+    def cdf(self):
+        return self.pdf_func.cdf(self.coord, *self.beta)
 
     def median(self):
         return self.pdf_func.median(*self.beta)
@@ -174,7 +191,7 @@ def open_CTmax_data():
 def compute_ATmax(pO2, Ac, Eo, dEodT=0.0):
     """
     Compute the maximum temperature at which resting or active (sustained)
-    metabolic rate can be realized at a given po2.
+    metabolic rate can be realized at a given pO2.
 
     Parameters
     ----------

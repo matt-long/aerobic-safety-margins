@@ -33,10 +33,16 @@ def attrs_label(attrs):
 
 def label_plots(fig, axs, xoff=-0.04, yoff=0.02):
     alp = [chr(i).upper() for i in range(97, 97 + 26)]
+
+    if np.isscalar(xoff):
+        xoff = np.ones(len(axs)) * xoff
+    if np.isscalar(yoff):
+        yoff = np.ones(len(axs)) * yoff
+
     for i, ax in enumerate(axs):
         p = ax.get_position()
-        x = p.x0 + xoff
-        y = p.y1 + yoff
+        x = p.x0 + xoff[i]
+        y = p.y1 + yoff[i]
         fig.text(x, y, f'{alp[i]}', fontsize=14, fontweight='semibold')
 
 
@@ -223,7 +229,7 @@ class curator_local_assets(object):
         return intake.open_catalog(self.catalog_file)
 
     def __repr__(self):
-        return self.catalog.__repr__()
+        return self.catalog['sources'].keys().__repr__()
 
 
 def infer_lat_name(ds):
@@ -296,3 +302,33 @@ def compute_grid_area(ds, check_total=True):
     return xr.DataArray(
         area, dims=(lat_name, lon_name), attrs={'units': 'm^2', 'long_name': 'area'}
     )
+
+
+def percentile(da, q, coord):
+    """
+    Compute the q-th percentile of the data along the specified coordinate.
+
+    Returns the q-th percentile(s) of the array elements.
+
+    Parameters
+    ----------
+    da : xarray.DataArray
+        Input DataArray
+    q : array_like of float
+        Percentile or sequence of percentiles to compute, which must be between
+        0 and 1 inclusive.
+    coord : string
+        Coordinate along which the percentiles are computed.
+    """
+    nj = da.sizes['lat']
+    cdf = da.cumsum(dim=coord) / da.sum(coord)
+    p = xr.DataArray(
+        np.ones((len(q), nj)) * np.nan,
+        dims=('p', 'lat'),
+        coords={'lat': da.lat, 'p': q},
+        name=da.name,
+    )
+    for i in range(len(q)):
+        for j in range(nj):
+            p[i, j] = np.interp(q[i], cdf.isel(lat=j), da[coord])
+    return p

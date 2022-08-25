@@ -9,16 +9,17 @@ parts:
       - file: metabolic-index-defining
       - file: trait-space-joint-pdf
       - file: trait-space-obs-habitat-vol
-  - caption: Earth System Model Data
+  - caption: Earth System Data
     chapters:
       - file: data-assets-preprocessing
         sections:
+          - file: obs-woa2018
           - file: compute-drift-corr-cesm-le
-          #- file: compute-MI-cesm-le
           - file: compute-pO2-cesm-le
           - file: compute-habitat-cesm-le
           - file: compute-trends-cesm-le
           - file: compute-viable-traits
+          - file: compute-aerobic-safety-margin
   - caption: Aerobic Safety Margin
     chapters:
       - file: aerobic-habitat-change

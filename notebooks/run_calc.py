@@ -99,17 +99,18 @@ def install_conda_kernel(kernel_name):
     if path is None:
         raise ValueError(f'conda kernel "{kernel_name}" not found')
     path = path / pathlib.Path('share/jupyter/kernels')
+
     kernels_in_conda_env = jupyter_client.kernelspec._list_kernels_in(path)
-    if len(kernels_in_conda_env) > 1:
-        raise ValueError(f'expecting to find 1 kernel; found: {kernels_in_conda_env}')
-    k, kernel_path = kernels_in_conda_env.popitem()
+    py_kernel_key = [k for k in kernels_in_conda_env.keys() if 'python' in k][0]
+    kernel_path = kernels_in_conda_env[py_kernel_key]
+
     jupyter_client.kernelspec.install_kernel_spec(
         kernel_path, kernel_name=kernel_name, user=True, replace=True
     )
     assert kernel_name in jupyter_client.kernelspec.find_kernel_specs()
 
 
-def run(notebooks, kernel, stop_on_fail=True):
+def run(notebooks, kernel, stop_on_fail=True, output_dir=None):
     """
     Run a list of notebooks.
 
@@ -120,6 +121,8 @@ def run(notebooks, kernel, stop_on_fail=True):
     Warning: don't call this function on a notebook from *within* that
              same notebook. That could yield an infinite recursive loop.
     """
+    if isinstance(notebooks, str):
+        notebooks = [notebooks]
 
     # check kernels
     kernels = {}
@@ -132,7 +135,9 @@ def run(notebooks, kernel, stop_on_fail=True):
             f'not all notebooks have the same kernel: {kernels}\nrunning all notebooks with {kernel}'
         )
 
-    cwd = os.getcwd()
+    if output_dir is None:
+        output_dir = os.getcwd()
+
     ran_ok = []
     for nb in notebooks:
         print('-' * 80)
@@ -145,7 +150,7 @@ def run(notebooks, kernel, stop_on_fail=True):
         nb_clear_outputs(nb)
 
         # run the notebook
-        ok = nb_execute(nb, output_dir=cwd, kernel_name=kernel)
+        ok = nb_execute(nb, output_dir=output_dir, kernel_name=kernel)
         ran_ok.append(ok)
 
         # set the kernel back

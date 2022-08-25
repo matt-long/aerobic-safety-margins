@@ -1,0 +1,10 @@
+{
+    "_ARRAY_DIMENSIONS": [
+        "epoch",
+        "nlat",
+        "nlon"
+    ],
+    "coordinates": "ULONG TAREA KMT ULAT",
+    "long_name": "pO$_2$",
+    "units": "kPa"
+}

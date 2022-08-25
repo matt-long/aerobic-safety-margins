@@ -1,0 +1,118 @@
+{
+    "metadata": {
+        ".zattrs": {
+            "intake_esm_dataset_key": "20C.ocn.pop.h.drift-corrected.ann.ts-glb",
+            "intake_esm_varname": "TEMP\npO2"
+        },
+        ".zgroup": {
+            "zarr_format": 2
+        },
+        "TEMP/.zarray": {
+            "chunks": [
+                32,
+                181
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                32,
+                181
+            ],
+            "zarr_format": 2
+        },
+        "TEMP/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "member_id",
+                "time"
+            ]
+        },
+        "member_id/.zarray": {
+            "chunks": [
+                32
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                32
+            ],
+            "zarr_format": 2
+        },
+        "member_id/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "member_id"
+            ]
+        },
+        "pO2/.zarray": {
+            "chunks": [
+                32,
+                181
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<f8",
+            "fill_value": "NaN",
+            "filters": null,
+            "order": "C",
+            "shape": [
+                32,
+                181
+            ],
+            "zarr_format": 2
+        },
+        "pO2/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "member_id",
+                "time"
+            ]
+        },
+        "time/.zarray": {
+            "chunks": [
+                181
+            ],
+            "compressor": {
+                "blocksize": 0,
+                "clevel": 5,
+                "cname": "lz4",
+                "id": "blosc",
+                "shuffle": 1
+            },
+            "dtype": "<i8",
+            "fill_value": null,
+            "filters": null,
+            "order": "C",
+            "shape": [
+                181
+            ],
+            "zarr_format": 2
+        },
+        "time/.zattrs": {
+            "_ARRAY_DIMENSIONS": [
+                "time"
+            ]
+        }
+    },
+    "zarr_consolidated_format": 1
+}

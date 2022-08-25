@@ -67,11 +67,16 @@ def compute_pO2(O2, T, S, depth, isPOP=False, gravimetric_units=False):
     if not gravimetric_units:
         Kh *= 1e-3 * rho  # solubility [mmol/m3/atm]
 
-    pO2 = (xr.where(O2 < 0.0, 0.0, O2) / Kh) * pCor * constants.kPa_per_atm
+    with xr.set_options(keep_attrs=True):
+        pO2 = (xr.where(O2 < 0.0, 0.0, O2) / Kh) * pCor * constants.kPa_per_atm
+
     if isinstance(pO2, xr.DataArray):
+        pO2.attrs['standard_name'] = 'partial_pressure_oxygen_kPa'
         pO2.attrs['units'] = 'kPa'
         pO2.attrs['long_name'] = 'pO$_2$'
+        pO2.attrs['note'] = 'computed from O2, T, and S'
         pO2.name = 'pO2'
+
     return pO2
 
 

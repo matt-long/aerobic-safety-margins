@@ -73,14 +73,15 @@ def center_decode_time(ds, offset_days=0.0):
     return ds
 
 
-def resample_ann(ds):
+def resample_ann(ds, weights=None):
     """
     compute the annual mean of an xarray.Dataset
     assumes time has been centered
     """
     with dask.config.set(**{'array.slicing.split_large_chunks': True}):
-        weights = _gen_time_weights(ds)
-        weights = weights.groupby('time.year') / weights.groupby('time.year').sum()
+        if weights is None:
+            weights = _gen_time_weights(ds)
+            weights = weights.groupby('time.year') / weights.groupby('time.year').sum()
 
         # ensure they all add to one
         # TODO: build support for situations when they don't,
@@ -89,7 +90,10 @@ def resample_ann(ds):
         np.testing.assert_allclose(weights.groupby('time.year').sum().values, np.ones(nyr))
 
         # ascertain which variables have time and which don't
-        tb_name, tb_dim = _get_tb_name_and_tb_dim(ds)
+        try:
+            tb_name, tb_dim = _get_tb_name_and_tb_dim(ds)
+        except AssertionError:
+            tb_name = None
         time_vars = [v for v in ds.data_vars if 'time' in ds[v].dims and v != tb_name]
         other_vars = list(set(ds.variables) - set(time_vars) - {tb_name, 'time'})
 

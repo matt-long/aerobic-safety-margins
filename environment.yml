@@ -33,7 +33,8 @@ dependencies:
   - netcdf4
   - numba
   - numpy
-  - pandas #=1.2.5 # pinned to avoid indexing error: ds.sel(time=slice('1920', '2100'))
+  - pandas
+  - papermill
   - pint
   - pip
   - pop-tools
